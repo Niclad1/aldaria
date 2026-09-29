@@ -67,6 +67,17 @@ namespace Aldaria.EditorTools
             if (Application.isBatchMode && summary.result != UnityEditor.Build.Reporting.BuildResult.Succeeded) EditorApplication.Exit(1);
         }
 
+        /// <summary>
+        /// Abre a cena e já entra no Play. Usado pelo atualizar.ps1:
+        ///   Unity.exe -projectPath . -executeMethod Aldaria.EditorTools.Builder.Play
+        /// </summary>
+        public static void Play()
+        {
+            EnsureScene();
+            EditorSceneManager.OpenScene(ScenePath);
+            EditorApplication.delayCall += () => EditorApplication.EnterPlaymode();
+        }
+
         /// <summary>Só importa o projeto e compila os scripts (útil para checar erros pela linha de comando).</summary>
         public static void CheckCompile()
         {

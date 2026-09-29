@@ -26,6 +26,19 @@ alcance, linha de visão, área, empurrão, veneno e roubo de vida.
 4. Para gerar executável: menu **Aldaria → Build → WebGL / Windows / Linux**
    (ele cria a cena `Assets/Scenes/Aldaria.unity` sozinho se ainda não existir).
 
+### Atualizar e abrir pela linha de comando (Windows)
+
+No PowerShell (a primeira vez pode ser em qualquer pasta):
+
+```powershell
+irm https://raw.githubusercontent.com/Niclad1/aldaria/main/atualizar.ps1 | iex
+```
+
+O script acha o projeto na lista do Unity Hub, fecha o Unity se ele estiver aberto com o projeto e
+atualiza tudo (`git pull` se for um clone, senão baixa o zip do GitHub). Depois chama o Unity pela
+linha de comando (`Unity.exe -projectPath … -executeMethod Aldaria.EditorTools.Builder.Play`), que
+abre já no Play. Das próximas vezes, é só dar dois cliques em `atualizar.bat` na pasta do projeto.
+
 ## Controles
 
 | Ação | Como |

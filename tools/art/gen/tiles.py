@@ -178,6 +178,72 @@ def _surface_water(s, b, seed):
             s.path(f"M{f(x)} {f(y)} L{f(x + 7)} {f(y - 3)}", "none", stroke=INK, sw=1)
 
 
+def _blob(cx, cy, rx, ry, rng, n=18, jitter=0.07):
+    """Forma arredondada com borda irregular (mancha de caminho)."""
+    import math
+    pts = []
+    for i in range(n):
+        a = i / n * math.tau
+        # mistura de losango e elipse: pontas mais cheias nos 4 cantos do losango
+        k = 1 + rng.uniform(-jitter, jitter)
+        pts.append((cx + math.cos(a) * rx * k, cy + math.sin(a) * ry * k))
+    d = f"M{f(pts[0][0])} {f(pts[0][1])}"
+    for i in range(n):
+        x1, y1 = pts[i]
+        x2, y2 = pts[(i + 1) % n]
+        mx, my = (x1 + x2) / 2, (y1 + y2) / 2
+        d += f" Q{f(x1)} {f(y1)} {f(mx)} {f(my)}"
+    return d + " Z"
+
+
+def path_decal(biome, b, v):
+    """Caminho desenhado por cima da grama, maior que a célula: vizinhos se fundem numa trilha contínua."""
+    DW, DH = 260, 140
+    cx, cy = DW / 2, DH / 2
+    name = f"decal_{biome}_path_{v}"
+    s = Svg(name, DW, DH, pivot=(cx, DH - cy), kind="tile")
+    seed = zlib.crc32(name.encode()) % 100000
+    rng = random.Random(seed)
+    shape = _blob(cx, cy, 104, 55, rng)
+    kind = b["path"]
+    cid = s.clip(f'<path d="{shape}"/>')
+    bl = s.soft_filter(1.2)
+    if kind in ("dirt", "darkdirt", "mud"):
+        base = {"dirt": ("#e2c48a", "#c9a263"), "darkdirt": ("#c29a64", "#9f7a4a"), "mud": ("#8e7652", "#6d5a3d")}[kind]
+        s.path(shape, mix(base[0], base[1], 0.5), stroke=None, extra=f'filter="url(#{bl})"')
+        s.begin(f'clip-path="url(#{cid})"')
+        _blotches(s, rng, shape, [base[0], base[1], shade(base[1], -0.05)], n=6, blur=9, opacity=0.7)
+        nz = s.noise_filter(freq=0.08, octaves=3, seed=seed % 97, amount=0.2, color=shade(base[1], -0.3))
+        s.path(shape, "#000", stroke=None, extra=f'filter="url(#{nz})"')
+        for _ in range(8):
+            x, y = rng.uniform(40, 220), rng.uniform(25, 115)
+            s.ellipse(x, y, rng.uniform(2.5, 5), rng.uniform(1.8, 3), shade(base[0], 0.12), stroke=shade(base[1], -0.3), sw=1)
+        s.end()
+    else:
+        stone = ("#c8c3b6", "#a39d90") if kind == "cobble" else ("#b8b19c", "#8f8873")
+        s.path(shape, "#857e6f", stroke=None, extra=f'filter="url(#{bl})"')
+        s.begin(f'clip-path="url(#{cid})"')
+        step = 22 if kind == "cobble" else 40
+        for gy in range(-2, 10):
+            for gx in range(-2, 16):
+                x = gx * step + (gy % 2) * step * 0.5 + rng.uniform(-2, 2)
+                y = gy * step * 0.5 + rng.uniform(-1, 1)
+                col = mix(stone[0], stone[1], rng.random())
+                if kind == "cobble":
+                    s.ellipse(x, y, step * 0.46, step * 0.24, s.lin(shade(col, 0.08), shade(col, -0.1)), stroke=shade(stone[1], -0.32), sw=1.3)
+                else:
+                    s.path(diamond(x, y, step * 0.92, step * 0.46), s.lin(shade(col, 0.06), shade(col, -0.1)), stroke=shade(stone[1], -0.35), sw=1.3)
+        s.end()
+    # borda: sombra leve e tufos de grama invadindo o caminho
+    s.path(shape, "none", stroke="#000000", sw=3, extra='stroke-opacity="0.12"')
+    import math
+    for i in range(16):
+        a = i / 16 * math.tau + rng.uniform(-0.1, 0.1)
+        x, y = cx + math.cos(a) * 100, cy + math.sin(a) * 52
+        s.add(blade_tuft(rng, x, y + 2, rng.uniform(5, 9), b["tuft"], n=3, spread=3, sw=1.8))
+    return s
+
+
 def build():
     out = []
     for biome, b in BIOMES.items():
@@ -197,4 +263,6 @@ def build():
             else:
                 _surface_water(s, b, seed)
             out.append(s)
+        for v in range(2):
+            out.append(path_decal(biome, b, v))
     return out

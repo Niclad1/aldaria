@@ -35,6 +35,15 @@ namespace Aldaria.Game
                 tile.sprite = Art.Ground(map, c);
                 tile.sortingOrder = c.X + c.Y;
 
+                var decal = Art.Get(Visuals.Decal(map, c));
+                if (decal != null)
+                {
+                    var d = new GameObject("Caminho").AddComponent<SpriteRenderer>();
+                    d.transform.SetParent(tile.transform, false);
+                    d.sprite = decal;
+                    d.sortingOrder = 300 + c.X + c.Y;
+                }
+
                 var prop = Art.Prop(map, c);
                 if (prop != null)
                 {

@@ -117,7 +117,7 @@ namespace Aldaria.Game
         float regen;
         float respawnAt = -1f;
         bool changingMap;
-        const float MinZoom = 2.6f;
+        const float MinZoom = 2.4f;
 
         static readonly Color Gold = new Color(1f, 0.82f, 0.4f);
         static readonly Color Info = new Color(0.6f, 0.82f, 1f);
@@ -509,13 +509,14 @@ namespace Aldaria.Game
             if (changingMap) yield break;
             changingMap = true;
             ClosePanel();
-            int last = Map.Width - 1;
-            int mx = Map.MapX, my = Map.MapY;
-            Cell entry;
-            if (exit.X == 0) { mx--; entry = new Cell(last, exit.Y); }
-            else if (exit.X == last) { mx++; entry = new Cell(0, exit.Y); }
-            else if (exit.Y == 0) { my--; entry = new Cell(exit.X, last); }
-            else { my++; entry = new Cell(exit.X, 0); }
+            var side = MapGenerator.SideOf(exit);
+            if (!side.HasValue)
+            {
+                changingMap = false;
+                yield break;
+            }
+            MapGenerator.Neighbor(Map.MapX, Map.MapY, side.Value, out int mx, out int my);
+            var entry = MapGenerator.ExitCell(MapGenerator.Opposite(side.Value));
 
             for (float t = 0f; t < 1f; t += Time.deltaTime / 0.25f)
             {
@@ -812,14 +813,15 @@ namespace Aldaria.Game
             Cam.nearClipPlane = 0.1f;
             Cam.farClipPlane = 100f;
             Cam.transform.rotation = Quaternion.identity;
-            Cam.transform.position = new Vector3(0f, -4f, -10f);
+            Cam.transform.position = new Vector3(0f, -8f, -10f);
         }
 
         void FitCamera()
         {
             if (Cam == null || Map == null) return;
-            float halfW = (Map.Width + Map.Height) * 0.25f + 0.4f;
-            float halfH = (Map.Width + Map.Height) * 0.125f + 1.3f;
+            // O mapa é um retângulo de ~15 x 8,5 unidades; sobra uma margem para árvores e barrancos.
+            float halfW = MapGenerator.HalfWidth * 0.5f + 0.5f;
+            float halfH = MapGenerator.HalfHeight * 0.25f + 1.1f;
             maxZoom = Mathf.Max(halfH, halfW / Mathf.Max(0.5f, Cam.aspect));
             zoom = maxZoom;
             lastAspect = Cam.aspect;
@@ -832,7 +834,7 @@ namespace Aldaria.Game
             if (Mathf.Abs(Cam.aspect - lastAspect) > 0.001f) FitCamera();
             Cam.orthographicSize = Mathf.Lerp(Cam.orthographicSize, zoom, Time.deltaTime * 8f);
 
-            var center = Iso.ToWorld(Map.Center) + new Vector3(0f, -0.45f, 0f);
+            var center = Iso.ToWorld(Map.Center) + new Vector3(0f, -0.2f, 0f);
             var target = center;
             if (Player != null && maxZoom > MinZoom)
             {

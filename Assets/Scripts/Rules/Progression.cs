@@ -57,7 +57,7 @@ namespace Aldaria.Rules
     public sealed class PlayerProfile
     {
         public string Name = "Aventureiro";
-        public string ClassId = "guardiao";
+        public string ClassId = "guerreiro";
         public int Level = 1;
         public int Xp;
         public int Gold;
@@ -95,6 +95,14 @@ namespace Aldaria.Rules
         /// <summary>Corrige campos que podem vir nulos de saves antigos.</summary>
         public void Validate()
         {
+            // Saves antigos: classes renomeadas ou removidas.
+            switch (ClassId)
+            {
+                case "guardiao": case "monge": ClassId = "guerreiro"; break;
+                case "sentinela": ClassId = "arqueiro"; break;
+                case "arcanista": case "druida": ClassId = "mago"; break;
+                case "sombra": ClassId = "assassino"; break;
+            }
             if (Inventory == null) Inventory = new List<ItemStack>();
             if (Quests == null) Quests = new List<QuestProgress>();
             if (Equipment == null || Equipment.Length != SlotCount) Array.Resize(ref Equipment, SlotCount);

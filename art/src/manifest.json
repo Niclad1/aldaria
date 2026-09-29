@@ -111,8 +111,19 @@
    "group": "props"
   },
   {
-   "name": "char_arcanista",
-   "file": "char_arcanista.svg",
+   "name": "char_arqueiro",
+   "file": "char_arqueiro.svg",
+   "width": 220,
+   "height": 340,
+   "pivotX": 110,
+   "pivotY": 18,
+   "ppu": 200,
+   "kind": "char",
+   "group": "characters"
+  },
+  {
+   "name": "char_assassino",
+   "file": "char_assassino.svg",
    "width": 220,
    "height": 340,
    "pivotX": 110,
@@ -131,17 +142,6 @@
    "ppu": 200,
    "kind": "char",
    "group": "monsters"
-  },
-  {
-   "name": "char_druida",
-   "file": "char_druida.svg",
-   "width": 220,
-   "height": 340,
-   "pivotX": 110,
-   "pivotY": 18,
-   "ppu": 200,
-   "kind": "char",
-   "group": "characters"
   },
   {
    "name": "char_esqueleto",
@@ -166,8 +166,8 @@
    "group": "monsters"
   },
   {
-   "name": "char_guardiao",
-   "file": "char_guardiao.svg",
+   "name": "char_guerreiro",
+   "file": "char_guerreiro.svg",
    "width": 220,
    "height": 340,
    "pivotX": 110,
@@ -210,8 +210,8 @@
    "group": "monsters"
   },
   {
-   "name": "char_monge",
-   "file": "char_monge.svg",
+   "name": "char_mago",
+   "file": "char_mago.svg",
    "width": 220,
    "height": 340,
    "pivotX": 110,
@@ -331,26 +331,114 @@
    "group": "monsters"
   },
   {
-   "name": "char_sentinela",
-   "file": "char_sentinela.svg",
-   "width": 220,
-   "height": 340,
-   "pivotX": 110,
-   "pivotY": 18,
+   "name": "decal_forest_path_0",
+   "file": "decal_forest_path_0.svg",
+   "width": 260,
+   "height": 140,
+   "pivotX": 130.0,
+   "pivotY": 70.0,
    "ppu": 200,
-   "kind": "char",
-   "group": "characters"
+   "kind": "tile",
+   "group": "tiles"
   },
   {
-   "name": "char_sombra",
-   "file": "char_sombra.svg",
-   "width": 220,
-   "height": 340,
-   "pivotX": 110,
-   "pivotY": 18,
+   "name": "decal_forest_path_1",
+   "file": "decal_forest_path_1.svg",
+   "width": 260,
+   "height": 140,
+   "pivotX": 130.0,
+   "pivotY": 70.0,
    "ppu": 200,
-   "kind": "char",
-   "group": "characters"
+   "kind": "tile",
+   "group": "tiles"
+  },
+  {
+   "name": "decal_meadow_path_0",
+   "file": "decal_meadow_path_0.svg",
+   "width": 260,
+   "height": 140,
+   "pivotX": 130.0,
+   "pivotY": 70.0,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "tiles"
+  },
+  {
+   "name": "decal_meadow_path_1",
+   "file": "decal_meadow_path_1.svg",
+   "width": 260,
+   "height": 140,
+   "pivotX": 130.0,
+   "pivotY": 70.0,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "tiles"
+  },
+  {
+   "name": "decal_ruins_path_0",
+   "file": "decal_ruins_path_0.svg",
+   "width": 260,
+   "height": 140,
+   "pivotX": 130.0,
+   "pivotY": 70.0,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "tiles"
+  },
+  {
+   "name": "decal_ruins_path_1",
+   "file": "decal_ruins_path_1.svg",
+   "width": 260,
+   "height": 140,
+   "pivotX": 130.0,
+   "pivotY": 70.0,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "tiles"
+  },
+  {
+   "name": "decal_swamp_path_0",
+   "file": "decal_swamp_path_0.svg",
+   "width": 260,
+   "height": 140,
+   "pivotX": 130.0,
+   "pivotY": 70.0,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "tiles"
+  },
+  {
+   "name": "decal_swamp_path_1",
+   "file": "decal_swamp_path_1.svg",
+   "width": 260,
+   "height": 140,
+   "pivotX": 130.0,
+   "pivotY": 70.0,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "tiles"
+  },
+  {
+   "name": "decal_village_path_0",
+   "file": "decal_village_path_0.svg",
+   "width": 260,
+   "height": 140,
+   "pivotX": 130.0,
+   "pivotY": 70.0,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "tiles"
+  },
+  {
+   "name": "decal_village_path_1",
+   "file": "decal_village_path_1.svg",
+   "width": 260,
+   "height": 140,
+   "pivotX": 130.0,
+   "pivotY": 70.0,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "tiles"
   },
   {
    "name": "fence_x",
@@ -518,17 +606,6 @@
    "group": "icons"
   },
   {
-   "name": "icon_item_cajado_galho",
-   "file": "icon_item_cajado_galho.svg",
-   "width": 96,
-   "height": 96,
-   "pivotX": 48,
-   "pivotY": 48,
-   "ppu": 96,
-   "kind": "icon",
-   "group": "icons"
-  },
-  {
    "name": "icon_item_cajado_raiz",
    "file": "icon_item_cajado_raiz.svg",
    "width": 96,
@@ -630,17 +707,6 @@
   {
    "name": "icon_item_esporo",
    "file": "icon_item_esporo.svg",
-   "width": 96,
-   "height": 96,
-   "pivotX": 48,
-   "pivotY": 48,
-   "ppu": 96,
-   "kind": "icon",
-   "group": "icons"
-  },
-  {
-   "name": "icon_item_faixas_treino",
-   "file": "icon_item_faixas_treino.svg",
    "width": 96,
    "height": 96,
    "pivotX": 48,
@@ -815,30 +881,8 @@
    "group": "icons"
   },
   {
-   "name": "icon_spell_atracao",
-   "file": "icon_spell_atracao.svg",
-   "width": 96,
-   "height": 96,
-   "pivotX": 48,
-   "pivotY": 48,
-   "ppu": 96,
-   "kind": "icon",
-   "group": "icons"
-  },
-  {
    "name": "icon_spell_bola_fogo",
    "file": "icon_spell_bola_fogo.svg",
-   "width": 96,
-   "height": 96,
-   "pivotX": 48,
-   "pivotY": 48,
-   "ppu": 96,
-   "kind": "icon",
-   "group": "icons"
-  },
-  {
-   "name": "icon_spell_espinhos",
-   "file": "icon_spell_espinhos.svg",
    "width": 96,
    "height": 96,
    "pivotX": 48,
@@ -914,30 +958,8 @@
    "group": "icons"
   },
   {
-   "name": "icon_spell_meditacao",
-   "file": "icon_spell_meditacao.svg",
-   "width": 96,
-   "height": 96,
-   "pivotX": 48,
-   "pivotY": 48,
-   "ppu": 96,
-   "kind": "icon",
-   "group": "icons"
-  },
-  {
    "name": "icon_spell_nova",
    "file": "icon_spell_nova.svg",
-   "width": 96,
-   "height": 96,
-   "pivotX": 48,
-   "pivotY": 48,
-   "ppu": 96,
-   "kind": "icon",
-   "group": "icons"
-  },
-  {
-   "name": "icon_spell_palma",
-   "file": "icon_spell_palma.svg",
    "width": 96,
    "height": 96,
    "pivotX": 48,
@@ -969,17 +991,6 @@
    "group": "icons"
   },
   {
-   "name": "icon_spell_raizes",
-   "file": "icon_spell_raizes.svg",
-   "width": 96,
-   "height": 96,
-   "pivotX": 48,
-   "pivotY": 48,
-   "ppu": 96,
-   "kind": "icon",
-   "group": "icons"
-  },
-  {
    "name": "icon_spell_recuo",
    "file": "icon_spell_recuo.svg",
    "width": 96,
@@ -993,39 +1004,6 @@
   {
    "name": "icon_spell_salto",
    "file": "icon_spell_salto.svg",
-   "width": 96,
-   "height": 96,
-   "pivotX": 48,
-   "pivotY": 48,
-   "ppu": 96,
-   "kind": "icon",
-   "group": "icons"
-  },
-  {
-   "name": "icon_spell_seiva",
-   "file": "icon_spell_seiva.svg",
-   "width": 96,
-   "height": 96,
-   "pivotX": 48,
-   "pivotY": 48,
-   "ppu": 96,
-   "kind": "icon",
-   "group": "icons"
-  },
-  {
-   "name": "icon_spell_semente",
-   "file": "icon_spell_semente.svg",
-   "width": 96,
-   "height": 96,
-   "pivotX": 48,
-   "pivotY": 48,
-   "ppu": 96,
-   "kind": "icon",
-   "group": "icons"
-  },
-  {
-   "name": "icon_spell_sismico",
-   "file": "icon_spell_sismico.svg",
    "width": 96,
    "height": 96,
    "pivotX": 48,

@@ -346,19 +346,15 @@ def hero(name, spec):
 
 
 CLASSES = {
-    "guardiao": dict(main="#8a929c", second="#b8413e", trim="#e0c068", skin="#f2c9a0", hair="#7a4a28", headwear="helmet", armor="#c3ccd6",
-                     weapon="sword", back_hand="shield", shield="#b8413e", extras=["tabard", "pauldrons", "cape"], cape="#8e2f2b",
-                     pants="#5a4a40", boots="#4a3a30", mouth="smile"),
-    "sentinela": dict(main="#3f8f4e", second="#2f6e3b", trim="#c89b5a", skin="#e8b98f", hair="#a0522d", headwear="hood", hood="#2f7040",
-                      hood_trim="#c89b5a", back_hand="bow", extras=["quiver"], pants="#5a4a3a", boots="#6b4a2a", gloves="#8a5a30", iris="#3f7a3a"),
-    "druida": dict(main="#6f8f3c", second="#4f6e2a", trim="#e0c068", skin="#d9a37a", hair="#5b7a2e", hair_style="long", headwear="witch", hat="#7a5230",
-                   band="#6fae3f", weapon="staff", orb="#8ef06a", extras=["robe"], boots="#5a3a22", iris="#5a8a2a"),
-    "arcanista": dict(main="#4a3a8c", second="#352a66", trim="#e8c14a", skin="#f2d0b0", hair="#e8e4f0", hair_style="long", headwear="wizard", hat="#3d2f7a",
-                      weapon="wand", orb="#7fd3ff", extras=["robe"], boots="#2a2040", iris="#4a6ad0"),
-    "sombra": dict(main="#2f2d4a", second="#1f1e33", trim="#9a8ad0", skin="#e0b090", hair="#1f1e33", headwear="hood", hood="#26243c",
-                   extras=["mask", "scarf"], scarf="#b8323a", weapon="daggers", pants="#26243c", boots="#1f1e2e", gloves="#26243c", iris="#b8323a", angry=True),
-    "monge": dict(main="#e8903a", second="#c0632a", trim="#6b3a1f", skin="#e0a878", hair="#2b1a10", hair_style="bald", topknot=True, headwear="headband", band="#c0392b",
-                  weapon="wraps", bare_arms=True, extras=["beads", "wraps"], pants="#c0632a", boots="#6b4226", belt_color="#6b3a1f"),
+    "guerreiro": dict(main="#8a929c", second="#b8413e", trim="#e0c068", skin="#f2c9a0", hair="#7a4a28", headwear="helmet", armor="#c3ccd6",
+                      weapon="sword", back_hand="shield", shield="#b8413e", extras=["tabard", "pauldrons", "cape"], cape="#8e2f2b",
+                      pants="#5a4a40", boots="#4a3a30", mouth="smile"),
+    "arqueiro": dict(main="#3f8f4e", second="#2f6e3b", trim="#c89b5a", skin="#e8b98f", hair="#a0522d", headwear="hood", hood="#2f7040",
+                     hood_trim="#c89b5a", back_hand="bow", extras=["quiver"], pants="#5a4a3a", boots="#6b4a2a", gloves="#8a5a30", iris="#3f7a3a"),
+    "mago": dict(main="#2e2640", second="#1d1828", trim="#b58cff", skin="#e6c8b4", hair="#dcd6ea", hair_style="long", headwear="wizard", hat="#231c33",
+                 weapon="wand", orb="#c08cff", extras=["robe"], boots="#1a1524", iris="#9a5cff", angry=True),
+    "assassino": dict(main="#2f2d4a", second="#1f1e33", trim="#9a8ad0", skin="#e0b090", hair="#1f1e33", headwear="hood", hood="#26243c",
+                      extras=["mask", "scarf"], scarf="#b8323a", weapon="daggers", pants="#26243c", boots="#1f1e2e", gloves="#26243c", iris="#b8323a", angry=True),
 }
 
 NPCS = {

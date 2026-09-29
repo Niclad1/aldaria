@@ -46,17 +46,19 @@ static class Program
                 Check(npc.Cell.Neighbors().Any(n => m.IsWalkable(n) && reach.ContainsKey(n)), "npc inalcançável " + npc.Id);
             }
             regions[m.Region] = regions.TryGetValue(m.Region, out var k) ? k + 1 : 1;
+            Check(m.Exits.Count == 4 && m.Exits.TrueForAll(e => MapGenerator.SideOf(e).HasValue), "saídas");
+            int count = m.Cells().Count();
+            Check(count > 450, "mapa pequeno demais: " + count);
         }
-        Console.WriteLine("regiões: " + string.Join(", ", regions.Select(kv => $"{kv.Key}={kv.Value}")));
+        Console.WriteLine("regiões: " + string.Join(", ", regions.Select(kv => $"{kv.Key}={kv.Value}")) + $", células por mapa: {MapGenerator.Generate(1, 0).Cells().Count()}");
         Print(MapGenerator.Generate(0, 0));
-        Print(MapGenerator.Generate(0, 3));
-        Print(MapGenerator.Generate(-3, 0));
+                Print(MapGenerator.Generate(-3, 0));
 
         // ---- efeitos novos
         {
             var map = new GridMap(9, 9);
             var fight = new Fight(map, 1);
-            var sombra = Fighter.FromProfile(1, PlayerProfile.Create("S", "sombra"));
+            var sombra = Fighter.FromProfile(1, PlayerProfile.Create("S", "assassino"));
             var alvo = Fighter.FromMonster(2, Catalog.MonsterById("golem"), 1);
             fight.AddFighter(sombra, new Cell(4, 4));
             fight.AddFighter(alvo, new Cell(5, 4));
@@ -74,22 +76,24 @@ static class Program
             Check(alvo.Hp == hp - 5 || !alvo.IsAlive, $"veneno tirou 5 ({hp} -> {alvo.Hp})");
 
             var fight2 = new Fight(map, 2);
-            var monge = Fighter.FromProfile(1, PlayerProfile.Create("M", "monge"));
-            var longe = Fighter.FromMonster(2, Catalog.MonsterById("golem"), 1);
-            fight2.AddFighter(monge, new Cell(1, 4));
-            fight2.AddFighter(longe, new Cell(5, 4));
-            monge.Initiative = 999;
+            var mago = Fighter.FromProfile(1, PlayerProfile.Create("M", "mago"));
+            var perto = Fighter.FromMonster(2, Catalog.MonsterById("golem"), 1);
+            var longe = Fighter.FromMonster(3, Catalog.MonsterById("golem"), 1);
+            fight2.AddFighter(mago, new Cell(4, 4));
+            fight2.AddFighter(perto, new Cell(5, 5));
+            fight2.AddFighter(longe, new Cell(8, 4));
+            mago.Initiative = 999;
             fight2.Start();
-            Check(fight2.TryCast(monge, monge.Spells.First(s => s.Id == "atracao"), longe.Cell), "atração");
-            Check(longe.Cell == new Cell(2, 4), "puxou até colar: " + longe.Cell);
-            Check(fight2.TryCast(monge, monge.Spells.First(s => s.Id == "sismico"), monge.Cell), "sísmico");
-            Check(monge.Hp == monge.MaxHp, "sísmico não acerta o monge");
-            Check(longe.Hp < longe.MaxHp, "sísmico acerta o vizinho");
+            Check(fight2.TryCast(mago, mago.Spells.First(s => s.Id == "nova"), mago.Cell), "nova gélida");
+            Check(mago.Hp == mago.MaxHp, "nova não acerta o mago");
+            Check(perto.Hp < perto.MaxHp && longe.Hp == longe.MaxHp, "nova acerta só quem está perto");
+            int ap = mago.Ap;
+            Check(fight2.TryCast(mago, mago.Spells.First(s => s.Id == "foco"), mago.Cell) && mago.Ap == ap - 1 + 3, "pacto dá PA na hora");
         }
 
         // ---- inventário, equipamento, loja e missões
         {
-            var p = PlayerProfile.Create("Teste", "guardiao");
+            var p = PlayerProfile.Create("Teste", "guerreiro");
             Check(p.IsEquipped("espada_treino") && p.CountItem("pocao_pequena") == 3, "kit inicial");
             int baseHp = p.MaxHp;
             p.AddItem("gorro_la", 1);
@@ -216,6 +220,7 @@ static class Program
             for (int x = 0; x < m.Width; x++)
             {
                 var c = new Cell(x, y);
+                if (m[c] == Tile.Void) { sb.Append(' '); continue; }
                 if (npcs.Any(n => n.Cell == c)) { sb.Append('@'); continue; }
                 sb.Append(m[c] switch { Tile.Grass => '.', Tile.Flowers => '*', Tile.Path => '=', Tile.Water => '~', Tile.Tree => 'T', Tile.Rock => 'o', Tile.House => 'H', Tile.Fence => '#', Tile.Well => 'O', Tile.Pillar => 'I', _ => 'b' });
             }

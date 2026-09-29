@@ -18,10 +18,8 @@ namespace Aldaria.Rules
             // ---- armas iniciais
             Gear("espada_treino", "Espada de Treino", ItemSlot.Weapon, 1, 0, 30, new Stats { Power = 5 }, "Cega, mas honesta."),
             Gear("arco_curto", "Arco Curto", ItemSlot.Weapon, 1, 0, 30, new Stats { Power = 5 }, "Leve e fácil de puxar."),
-            Gear("cajado_galho", "Cajado de Galho", ItemSlot.Weapon, 1, 0, 30, new Stats { Power = 5 }, "Ainda tem umas folhas."),
-            Gear("varinha_aprendiz", "Varinha de Aprendiz", ItemSlot.Weapon, 1, 0, 30, new Stats { Power = 5 }, "Solta faíscas quando espirra."),
+            Gear("varinha_aprendiz", "Varinha de Osso", ItemSlot.Weapon, 1, 0, 30, new Stats { Power = 5 }, "Fria ao toque. Sussurra à noite."),
             Gear("adagas_gemeas", "Adagas Gêmeas", ItemSlot.Weapon, 1, 0, 30, new Stats { Power = 5 }, "Uma para cada mão."),
-            Gear("faixas_treino", "Faixas de Treino", ItemSlot.Weapon, 1, 0, 30, new Stats { Power = 5 }, "Protegem os punhos. Mais ou menos."),
             // ---- armas melhores
             Gear("lamina_javali", "Lâmina de Presa", ItemSlot.Weapon, 8, 1, 220, new Stats { Power = 15, Damage = 2 }, "Feita com presas de javali."),
             Gear("cajado_raiz", "Cajado de Raiz Antiga", ItemSlot.Weapon, 12, 2, 480, new Stats { Power = 22, Hp = 15 }, "Pulsa com a seiva da floresta."),

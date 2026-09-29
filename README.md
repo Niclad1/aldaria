@@ -44,9 +44,10 @@ alcance, linha de visão, área, empurrão, veneno e roubo de vida.
 
 ## O que tem no jogo
 
-- **6 classes**, cada uma com 4 feitiços: Guardião (corpo a corpo), Sentinela (arqueira),
-  Druida (cura e controle), Arcanista (magia de área), Sombra (assassina com veneno e roubo de vida)
-  e Monge (puxa, empurra e bagunça o campo).
+- **4 classes**, cada uma com 4 feitiços: **Guerreiro** (corpo a corpo, salto e escudo),
+  **Arqueiro** (distância, área e tiro que atravessa obstáculos), **Mago** (magia sombria,
+  explosão ao redor de si e PA extra) e **Assassino** (veneno, roubo de vida e teletransporte).
+- **Mapas grandes** que ocupam a tela inteira (543 células cada, no formato retangular do Dofus).
 - **10 monstros** em 4 regiões: Pradaria (Lanudo, Pipio, Cogumelo Bravo), Floresta (Javali,
   Lobo Cinzento), Pântano (Sapo Venenoso, Morcego), Ruínas (Esqueleto Arqueiro, Golem de Pedra)
   e o chefe **Rei Lanudo** no mapa `[-3,0]`.

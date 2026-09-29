@@ -140,10 +140,8 @@ def g_lotus(s):
 SPELL_GLYPHS = {
     "golpe": g_sword, "pancada": g_push, "salto": g_jump, "furia": g_flame,
     "flecha": g_arrow, "explosiva": g_burst, "recuo": g_chevrons, "tiro": lambda s: g_arrow(s, True),
-    "espinhos": g_thorns, "seiva": g_heal, "raizes": g_roots, "semente": g_seed,
     "bola_fogo": g_fireball, "nova": g_snow, "faisca": g_bolt, "foco": g_rune,
     "adaga": g_dagger_drop, "vampiro": g_fangs, "passo": g_shadow_step, "arremesso": g_knife,
-    "palma": g_palm, "atracao": g_pull, "sismico": g_quake, "meditacao": g_lotus,
 }
 SPELL_ELEMENT = {
     "golpe": "earth", "pancada": "earth", "salto": "air", "furia": "fire", "flecha": "air", "explosiva": "fire", "recuo": "air", "tiro": "water",
@@ -330,8 +328,8 @@ def i_crown(s):
 
 
 ITEM_ART = {
-    "espada_treino": lambda s: i_sword(s), "arco_curto": i_bow, "cajado_galho": lambda s: i_staff(s),
-    "varinha_aprendiz": i_wand, "adagas_gemeas": i_daggers, "faixas_treino": i_wraps,
+    "espada_treino": lambda s: i_sword(s), "arco_curto": i_bow,
+    "varinha_aprendiz": i_wand, "adagas_gemeas": i_daggers,
     "lamina_javali": lambda s: i_sword(s, "#fffaf0", "#8a5a36", big=True), "cajado_raiz": lambda s: i_staff(s, "#e8c14a", "#4a3020"),
     "gorro_la": i_beanie, "chapeu_cogumelo": i_mushroom_hat, "elmo_pedra": i_helm,
     "capa_penas": lambda s: i_cloak(s, "#ffd43b"), "capa_lobo": lambda s: i_cloak(s, "#8a8f98"),

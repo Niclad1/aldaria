@@ -14,7 +14,9 @@ namespace Aldaria.Rules
         House,
         Fence,
         Well,
-        Pillar
+        Pillar,
+        /// <summary>Fora do retângulo do mapa (não existe).</summary>
+        Void
     }
 
     /// <summary>Um mapa do mundo: grid de células com o tipo de terreno de cada uma.</summary>
@@ -41,11 +43,11 @@ namespace Aldaria.Rules
 
         public Cell Center => new Cell(Width / 2, Height / 2);
 
-        public bool InBounds(Cell c) => c.X >= 0 && c.Y >= 0 && c.X < Width && c.Y < Height;
+        public bool InBounds(Cell c) => c.X >= 0 && c.Y >= 0 && c.X < Width && c.Y < Height && tiles[c.Y * Width + c.X] != Tile.Void;
 
         public Tile this[Cell c]
         {
-            get => tiles[c.Y * Width + c.X];
+            get => c.X >= 0 && c.Y >= 0 && c.X < Width && c.Y < Height ? tiles[c.Y * Width + c.X] : Tile.Void;
             set => tiles[c.Y * Width + c.X] = value;
         }
 
@@ -64,11 +66,12 @@ namespace Aldaria.Rules
             return t == Tile.Tree || t == Tile.Rock || t == Tile.House || t == Tile.Well || t == Tile.Pillar;
         }
 
+        /// <summary>Todas as células que existem no mapa (dentro do retângulo).</summary>
         public IEnumerable<Cell> Cells()
         {
             for (int y = 0; y < Height; y++)
                 for (int x = 0; x < Width; x++)
-                    yield return new Cell(x, y);
+                    if (tiles[y * Width + x] != Tile.Void) yield return new Cell(x, y);
         }
     }
 }

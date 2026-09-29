@@ -151,7 +151,22 @@
    "kind": "prop"
   },
   {
-   "name": "char_arcanista",
+   "name": "char_arqueiro",
+   "width": 220,
+   "height": 340,
+   "pivotX": 110,
+   "pivotY": 18,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "char"
+  },
+  {
+   "name": "char_assassino",
    "width": 220,
    "height": 340,
    "pivotX": 110,
@@ -169,21 +184,6 @@
    "name": "char_cogumelo",
    "width": 220,
    "height": 230,
-   "pivotX": 110,
-   "pivotY": 18,
-   "ppu": 200,
-   "border": [
-    0,
-    0,
-    0,
-    0
-   ],
-   "kind": "char"
-  },
-  {
-   "name": "char_druida",
-   "width": 220,
-   "height": 340,
    "pivotX": 110,
    "pivotY": 18,
    "ppu": 200,
@@ -226,7 +226,7 @@
    "kind": "char"
   },
   {
-   "name": "char_guardiao",
+   "name": "char_guerreiro",
    "width": 220,
    "height": 340,
    "pivotX": 110,
@@ -286,7 +286,7 @@
    "kind": "char"
   },
   {
-   "name": "char_monge",
+   "name": "char_mago",
    "width": 220,
    "height": 340,
    "pivotX": 110,
@@ -451,11 +451,11 @@
    "kind": "char"
   },
   {
-   "name": "char_sentinela",
-   "width": 220,
-   "height": 340,
-   "pivotX": 110,
-   "pivotY": 18,
+   "name": "decal_forest_path_0",
+   "width": 260,
+   "height": 140,
+   "pivotX": 130,
+   "pivotY": 70,
    "ppu": 200,
    "border": [
     0,
@@ -463,14 +463,14 @@
     0,
     0
    ],
-   "kind": "char"
+   "kind": "tile"
   },
   {
-   "name": "char_sombra",
-   "width": 220,
-   "height": 340,
-   "pivotX": 110,
-   "pivotY": 18,
+   "name": "decal_forest_path_1",
+   "width": 260,
+   "height": 140,
+   "pivotX": 130,
+   "pivotY": 70,
    "ppu": 200,
    "border": [
     0,
@@ -478,7 +478,127 @@
     0,
     0
    ],
-   "kind": "char"
+   "kind": "tile"
+  },
+  {
+   "name": "decal_meadow_path_0",
+   "width": 260,
+   "height": 140,
+   "pivotX": 130,
+   "pivotY": 70,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "decal_meadow_path_1",
+   "width": 260,
+   "height": 140,
+   "pivotX": 130,
+   "pivotY": 70,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "decal_ruins_path_0",
+   "width": 260,
+   "height": 140,
+   "pivotX": 130,
+   "pivotY": 70,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "decal_ruins_path_1",
+   "width": 260,
+   "height": 140,
+   "pivotX": 130,
+   "pivotY": 70,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "decal_swamp_path_0",
+   "width": 260,
+   "height": 140,
+   "pivotX": 130,
+   "pivotY": 70,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "decal_swamp_path_1",
+   "width": 260,
+   "height": 140,
+   "pivotX": 130,
+   "pivotY": 70,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "decal_village_path_0",
+   "width": 260,
+   "height": 140,
+   "pivotX": 130,
+   "pivotY": 70,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "decal_village_path_1",
+   "width": 260,
+   "height": 140,
+   "pivotX": 130,
+   "pivotY": 70,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
   },
   {
    "name": "fence_x",
@@ -706,21 +826,6 @@
    "kind": "icon"
   },
   {
-   "name": "icon_item_cajado_galho",
-   "width": 96,
-   "height": 96,
-   "pivotX": 48,
-   "pivotY": 48,
-   "ppu": 96,
-   "border": [
-    0,
-    0,
-    0,
-    0
-   ],
-   "kind": "icon"
-  },
-  {
    "name": "icon_item_cajado_raiz",
    "width": 96,
    "height": 96,
@@ -857,21 +962,6 @@
   },
   {
    "name": "icon_item_esporo",
-   "width": 96,
-   "height": 96,
-   "pivotX": 48,
-   "pivotY": 48,
-   "ppu": 96,
-   "border": [
-    0,
-    0,
-    0,
-    0
-   ],
-   "kind": "icon"
-  },
-  {
-   "name": "icon_item_faixas_treino",
    "width": 96,
    "height": 96,
    "pivotX": 48,
@@ -1111,37 +1201,7 @@
    "kind": "icon"
   },
   {
-   "name": "icon_spell_atracao",
-   "width": 96,
-   "height": 96,
-   "pivotX": 48,
-   "pivotY": 48,
-   "ppu": 96,
-   "border": [
-    0,
-    0,
-    0,
-    0
-   ],
-   "kind": "icon"
-  },
-  {
    "name": "icon_spell_bola_fogo",
-   "width": 96,
-   "height": 96,
-   "pivotX": 48,
-   "pivotY": 48,
-   "ppu": 96,
-   "border": [
-    0,
-    0,
-    0,
-    0
-   ],
-   "kind": "icon"
-  },
-  {
-   "name": "icon_spell_espinhos",
    "width": 96,
    "height": 96,
    "pivotX": 48,
@@ -1246,37 +1306,7 @@
    "kind": "icon"
   },
   {
-   "name": "icon_spell_meditacao",
-   "width": 96,
-   "height": 96,
-   "pivotX": 48,
-   "pivotY": 48,
-   "ppu": 96,
-   "border": [
-    0,
-    0,
-    0,
-    0
-   ],
-   "kind": "icon"
-  },
-  {
    "name": "icon_spell_nova",
-   "width": 96,
-   "height": 96,
-   "pivotX": 48,
-   "pivotY": 48,
-   "ppu": 96,
-   "border": [
-    0,
-    0,
-    0,
-    0
-   ],
-   "kind": "icon"
-  },
-  {
-   "name": "icon_spell_palma",
    "width": 96,
    "height": 96,
    "pivotX": 48,
@@ -1321,21 +1351,6 @@
    "kind": "icon"
   },
   {
-   "name": "icon_spell_raizes",
-   "width": 96,
-   "height": 96,
-   "pivotX": 48,
-   "pivotY": 48,
-   "ppu": 96,
-   "border": [
-    0,
-    0,
-    0,
-    0
-   ],
-   "kind": "icon"
-  },
-  {
    "name": "icon_spell_recuo",
    "width": 96,
    "height": 96,
@@ -1352,51 +1367,6 @@
   },
   {
    "name": "icon_spell_salto",
-   "width": 96,
-   "height": 96,
-   "pivotX": 48,
-   "pivotY": 48,
-   "ppu": 96,
-   "border": [
-    0,
-    0,
-    0,
-    0
-   ],
-   "kind": "icon"
-  },
-  {
-   "name": "icon_spell_seiva",
-   "width": 96,
-   "height": 96,
-   "pivotX": 48,
-   "pivotY": 48,
-   "ppu": 96,
-   "border": [
-    0,
-    0,
-    0,
-    0
-   ],
-   "kind": "icon"
-  },
-  {
-   "name": "icon_spell_semente",
-   "width": 96,
-   "height": 96,
-   "pivotX": 48,
-   "pivotY": 48,
-   "ppu": 96,
-   "border": [
-    0,
-    0,
-    0,
-    0
-   ],
-   "kind": "icon"
-  },
-  {
-   "name": "icon_spell_sismico",
    "width": 96,
    "height": 96,
    "pivotX": 48,

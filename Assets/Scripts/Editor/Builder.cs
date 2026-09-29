@@ -35,7 +35,7 @@ namespace Aldaria.EditorTools
             cam.orthographic = true;
             cam.clearFlags = CameraClearFlags.SolidColor;
             cam.backgroundColor = new Color(0.106f, 0.149f, 0.133f);
-            cam.transform.position = new Vector3(0f, -4f, -10f);
+            cam.transform.position = new Vector3(0f, -8f, -10f);
             EditorSceneManager.SaveScene(scene, ScenePath);
             AssetDatabase.Refresh();
             Debug.Log("[Aldaria] Cena criada em " + ScenePath);

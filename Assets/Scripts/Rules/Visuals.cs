@@ -34,12 +34,19 @@ namespace Aldaria.Rules
             int v = Variant(m, c);
             switch (m[c])
             {
-                case Tile.Path: return $"tile_{b}_path_{v % 2}";
+                case Tile.Path: return $"tile_{b}_grass_{v % 3}";
                 case Tile.Water: return $"tile_{b}_water_0";
                 case Tile.Flowers: return $"tile_{b}_flowers_0";
                 case Tile.Well: return $"tile_{b}_path_0";
                 default: return $"tile_{b}_grass_{v % 3}";
             }
+        }
+
+        /// <summary>Caminho desenhado por cima do chão (maior que a célula, para as trilhas ficarem contínuas), ou null.</summary>
+        public static string Decal(GridMap m, Cell c)
+        {
+            if (m[c] != Tile.Path && m[c] != Tile.Well) return null;
+            return $"decal_{Biome(m.Region)}_path_{Variant(m, c) % 2}";
         }
 
         /// <summary>Desenho em pé na célula (árvore, pedra...), ou null. Casas são tratadas à parte (ocupam 2x2).</summary>
@@ -74,6 +81,6 @@ namespace Aldaria.Rules
 
         public static string House(GridMap m, Cell anchor) => $"house_{Variant(m, anchor) % 2}";
 
-        static bool IsFence(GridMap m, Cell c) => m.InBounds(c) && m[c] == Tile.Fence;
+        static bool IsFence(GridMap m, Cell c) => m[c] == Tile.Fence;
     }
 }

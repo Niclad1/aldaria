@@ -112,8 +112,13 @@ namespace Aldaria.Game
 
         // ------------------------------------------------------------------ atalhos usados pelo jogo
 
-        public static Sprite Ground(GridMap map, Cell c) =>
-            Get(Visuals.Ground(map, c)) ?? LegacyTile(map[c], Visuals.Variant(map, c));
+        public static Sprite Ground(GridMap map, Cell c)
+        {
+            var s = Get(Visuals.Ground(map, c));
+            if (s != null) return s;
+            // Sem a arte nova, o caminho volta a ser um tile inteiro.
+            return LegacyTile(map[c], Visuals.Variant(map, c));
+        }
 
         public static Sprite Prop(GridMap map, Cell c)
         {
@@ -131,7 +136,19 @@ namespace Aldaria.Game
         }
 
         public static Sprite Character(string visual) =>
-            Get("char_" + visual) ?? LegacyCharacter(visual.StartsWith("npc_") ? "guardiao" : visual);
+            Get("char_" + visual) ?? LegacyCharacter(LegacyId(visual));
+
+        static string LegacyId(string visual)
+        {
+            switch (visual)
+            {
+                case "guerreiro": return "guardiao";
+                case "arqueiro": return "sentinela";
+                case "mago": return "druida";
+                case "assassino": return "sentinela";
+                default: return visual.StartsWith("npc_") ? "guardiao" : visual;
+            }
+        }
 
         public static Texture2D SpellIcon(SpellDef s) => Get("icon_spell_" + s.Id)?.texture ?? LegacySpellIcon(s);
 

@@ -63,18 +63,18 @@ namespace Aldaria.Rules
 
         public static readonly List<NpcDef> Npcs = new List<NpcDef>
         {
-            new NpcDef { Id = "anciao", Name = "Ancião Borvo", Title = "Líder da vila", MapX = 0, MapY = 0, Cell = new Cell(6, 7),
+            new NpcDef { Id = "anciao", Name = "Ancião Borvo", Title = "Líder da vila", MapX = 0, MapY = 0, Cell = new Cell(13, 17),
                 Greeting = "Bem-vindo a Aldaria, jovem. Esta vila é pequena, mas o coração dela é grande." },
-            new NpcDef { Id = "mercador", Name = "Pipo", Title = "Mercador", MapX = 0, MapY = 0, Cell = new Cell(10, 7),
+            new NpcDef { Id = "mercador", Name = "Pipo", Title = "Mercador", MapX = 0, MapY = 0, Cell = new Cell(19, 15),
                 Greeting = "Olá, olá! Poções fresquinhas, anéis brilhantes, botas quase novas! E compro tudo o que você trouxer da mata.",
                 ShopItems = { "pao", "pocao_pequena", "pocao_media", "gorro_la", "botas_simples", "anel_cobre", "amuleto_la", "botas_viajante" } },
-            new NpcDef { Id = "costureira", Name = "Mila", Title = "Costureira", MapX = 0, MapY = 0, Cell = new Cell(6, 10),
+            new NpcDef { Id = "costureira", Name = "Mila", Title = "Costureira", MapX = 0, MapY = 0, Cell = new Cell(15, 12),
                 Greeting = "Linha, agulha e paciência. É tudo o que uma boa capa precisa." },
-            new NpcDef { Id = "herbalista", Name = "Tula", Title = "Herbalista", MapX = 0, MapY = 0, Cell = new Cell(10, 10),
+            new NpcDef { Id = "herbalista", Name = "Tula", Title = "Herbalista", MapX = 0, MapY = 0, Cell = new Cell(20, 18),
                 Greeting = "Cuidado onde pisa, essas ervas são delicadas. Ao contrário dos cogumelos lá fora..." },
-            new NpcDef { Id = "capita", Name = "Capitã Ferra", Title = "Guarda da estrada", MapX = 2, MapY = 0, Cell = new Cell(9, 9),
+            new NpcDef { Id = "capita", Name = "Capitã Ferra", Title = "Guarda da estrada", MapX = 2, MapY = 0, Cell = new Cell(17, 18),
                 Greeting = "Alto lá! Ah, um aventureiro. Ótimo, precisamos de gente com coragem por aqui." },
-            new NpcDef { Id = "eremita", Name = "Osvaldo", Title = "Eremita das ruínas", MapX = -2, MapY = 0, Cell = new Cell(8, 10),
+            new NpcDef { Id = "eremita", Name = "Osvaldo", Title = "Eremita das ruínas", MapX = -2, MapY = 0, Cell = new Cell(15, 18),
                 Greeting = "Hmm? Visitas? Faz anos que ninguém vem até as ruínas por vontade própria." },
         };
 

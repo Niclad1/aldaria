@@ -79,6 +79,27 @@ Assets/Resources/Art/ ← os PNGs que a Unity usa (gerados, não edite à mão)
   para gerar só um grupo, por exemplo `python3 generate.py monsters`).
 - Se algum desenho faltar, o jogo usa uma versão simples desenhada por código, então nunca quebra.
 
+### Pixel art com tamanho de pixel fixo (Aseprite)
+
+O jogo usa **64 pixels por célula** em tudo: chão, cenário, monstros, NPCs e heróis.
+Depois de gerar/editar os SVGs, rode:
+
+```
+cd tools/art
+node render.mjs                          # SVG → PNG em alta
+node pixelize.mjs --aseprite <aseprite>  # reduz para 64 px/célula + paleta fixa (art/palette.gpl)
+```
+
+O `pixelize.mjs` usa o **Aseprite pela linha de comando** (`pixelize.lua`): tira a transparência
+parcial e aplica a paleta única de 64 cores, então tudo combina. Os heróis do PixelLab
+(`art/pixellab`) só são ajustados para a mesma escala, mantendo as cores originais.
+`--palette` recria a paleta a partir da arte atual.
+
+Para compilar o Aseprite (versão só de linha de comando, sem interface):
+`git clone --recursive https://github.com/aseprite/aseprite` e
+`cmake -G Ninja -DLAF_BACKEND=none -DENABLE_UI=OFF .. && ninja aseprite`.
+Você também pode abrir e editar qualquer PNG de `Assets/Resources/Art` (renomeando de `.bytes`) no Aseprite normal.
+
 A fonte da interface é a **Fredoka** (licença OFL, em `Assets/Resources/Fonts`).
 
 ## Unity pela linha de comando

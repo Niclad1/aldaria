@@ -84,7 +84,7 @@ namespace Aldaria.Game
             // Mochila
             var right = new Rect(r.x + 316, r.y + 64, 340, 430);
             GUI.Label(new Rect(right.x, right.y, 200, 24), "Mochila", header);
-            GUI.Label(new Rect(right.x + 160, right.y + 2, 180, 24), $"<color=#9a6a10><b>{p.Gold}</b></color> de ouro", new GUIStyle(text) { alignment = TextAnchor.UpperRight });
+            GUI.Label(new Rect(right.x + 160, right.y + 2, 180, 24), $"<color=#f2c94c><b>{p.Gold}</b></color> de ouro", new GUIStyle(text) { alignment = TextAnchor.UpperRight });
             var items = new List<ItemStack>(p.Inventory);
             int cols = 5;
             float cell = 64;
@@ -138,8 +138,8 @@ namespace Aldaria.Game
         {
             if (it == null) return "";
             var sb = new StringBuilder($"<b><color={RarityColors[it.Rarity]}>{it.Name}</color></b>");
-            if (it.Kind == ItemKind.Equipment) sb.Append($"\n<color=#c9b48a>{ItemDef.SlotName(it.Slot)} • nível {it.Level} • {ItemDef.RarityName(it.Rarity)}</color>");
-            else sb.Append($"\n<color=#c9b48a>{(it.Kind == ItemKind.Consumable ? "Consumível" : "Recurso")}</color>");
+            if (it.Kind == ItemKind.Equipment) sb.Append($"\n<color=#9aa3c7>{ItemDef.SlotName(it.Slot)} • nível {it.Level} • {ItemDef.RarityName(it.Rarity)}</color>");
+            else sb.Append($"\n<color=#9aa3c7>{(it.Kind == ItemKind.Consumable ? "Consumível" : "Recurso")}</color>");
             var stats = it.StatsText();
             if (stats.Length > 0) sb.Append("\n<color=#9ae07a>").Append(stats).Append("</color>");
             sb.Append($"\n<i>{it.Description}</i>");
@@ -169,15 +169,15 @@ namespace Aldaria.Game
                 active++;
                 bool ready = QuestLog.IsComplete(p, q, prog);
                 var giver = Catalog.NpcById(q.TurnIn);
-                sb.Append($"<size=18><b>{q.Name}</b></size>{(ready ? "  <color=#2f8a2f><b>(pronta!)</b></color>" : "")}\n");
+                sb.Append($"<size=18><b>{q.Name}</b></size>{(ready ? "  <color=#7fd04a><b>(pronta!)</b></color>" : "")}\n");
                 sb.Append($"<i>{q.Progress}</i>\n");
                 for (int i = 0; i < q.Objectives.Count; i++)
                 {
                     int c = QuestLog.ObjectiveCount(p, q, prog, i);
                     bool ok = c >= q.Objectives[i].Count;
-                    sb.Append(ok ? "<color=#2f8a2f>✔ " : "• ").Append($"{q.Objectives[i].Text}: {c}/{q.Objectives[i].Count}").Append(ok ? "</color>\n" : "\n");
+                    sb.Append(ok ? "<color=#7fd04a>✔ " : "• ").Append($"{q.Objectives[i].Text}: {c}/{q.Objectives[i].Count}").Append(ok ? "</color>\n" : "\n");
                 }
-                sb.Append($"<color=#7a5a3a>Entregar para {giver.Name} em [{giver.MapX},{giver.MapY}]</color>\n\n");
+                sb.Append($"<color=#9aa3c7>Entregar para {giver.Name} em [{giver.MapX},{giver.MapY}]</color>\n\n");
             }
             if (active == 0) sb.Append("Nenhuma missão em andamento.\nProcure moradores com <b>!</b> sobre a cabeça na Vila de Aldaria.");
             var content = new GUIContent(sb.ToString());
@@ -246,7 +246,7 @@ namespace Aldaria.Game
             {
                 sb.Append(q.Offer);
                 GUI.Label(body, sb.ToString(), text);
-                GUI.Label(new Rect(body.x, body.yMax - 4, body.width, 22), "Recompensa: " + RewardText(q), new GUIStyle(small) { normal = { textColor = new Color(0.45f, 0.3f, 0.05f) } });
+                GUI.Label(new Rect(body.x, body.yMax - 4, body.width, 22), "Recompensa: " + RewardText(q), new GUIStyle(small) { normal = { textColor = GoldText } });
                 if (Btn("Aceitar", 160)) game.AcceptQuest(q);
                 if (Btn("Agora não", 160)) game.DialogueQuest = null;
             }
@@ -254,7 +254,7 @@ namespace Aldaria.Game
             {
                 sb.Append(q.Complete);
                 GUI.Label(body, sb.ToString(), text);
-                GUI.Label(new Rect(body.x, body.yMax - 4, body.width, 22), "Recompensa: " + RewardText(q), new GUIStyle(small) { normal = { textColor = new Color(0.45f, 0.3f, 0.05f) } });
+                GUI.Label(new Rect(body.x, body.yMax - 4, body.width, 22), "Recompensa: " + RewardText(q), new GUIStyle(small) { normal = { textColor = GoldText } });
                 if (Btn("Entregar missão", 200)) game.TurnInQuest(q);
                 if (Btn("Voltar", 130)) game.DialogueQuest = null;
             }
@@ -288,7 +288,7 @@ namespace Aldaria.Game
             var p = game.Profile;
             var r = Panel(new Rect(vw / 2f - 380, 70, 760, 540), panel);
             PanelHeader(r, $"Loja de {npc.Name}");
-            GUI.Label(new Rect(r.x + 30, r.y + 58, 400, 24), $"Seu ouro: <color=#9a6a10><b>{p.Gold}</b></color>", text);
+            GUI.Label(new Rect(r.x + 30, r.y + 58, 400, 24), $"Seu ouro: <color=#f2c94c><b>{p.Gold}</b></color>", text);
 
             // Comprar
             var buy = new Rect(r.x + 30, r.y + 92, 340, 420);
@@ -332,7 +332,7 @@ namespace Aldaria.Game
 
         void PanelHeader(Rect r, string label)
         {
-            ShadowLabel(new Rect(r.x + 26, r.y + 18, r.width - 100, 34), label, new GUIStyle(header) { fontSize = 26, normal = { textColor = new Color(0.45f, 0.25f, 0.08f) } });
+            ShadowLabel(new Rect(r.x + 26, r.y + 18, r.width - 100, 34), label, new GUIStyle(header) { fontSize = 24, normal = { textColor = GoldText } });
             if (GUI.Button(new Rect(r.xMax - 54, r.y + 16, 38, 36), "X", smallButton)) game.ClosePanel();
         }
     }

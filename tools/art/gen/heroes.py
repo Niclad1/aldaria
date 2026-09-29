@@ -198,3 +198,114 @@ def assassino():
 
 def build():
     return [guerreiro(), arqueiro(), mago(), assassino()]
+
+
+# ---------------------------------------------------------------------- moradores (mesma proporção dos heróis)
+
+# Proporção dos heróis PixelLab (cabeça grande, corpo curto): o corpo é achatado a partir dos pés
+# e a cabeça ampliada a partir do pescoço, que desce para o novo ombro.
+_SY, _HS = 0.64, 1.35
+_NECK = FEET - (FEET - 130) * _SY
+BODY_T = f'<g transform="translate(100 {FEET}) scale(1.08 {_SY}) translate(-100 -{FEET})">'
+HEAD_T = f'<g transform="translate(100 {_NECK + 4}) scale({_HS}) translate(-100 -130)">'
+
+
+def _npc(name, main, skin, hair, eyes="#3a2a1f", robe=False, pants="#4a3b30", boots="#4a3020", hair_style="short",
+         beard=None, hat=None, cape=None, extra=None, weapon=None):
+    s = Svg(name, W, H, pivot=(100, H - FEET), kind="char")
+    ol = s.outline_filter(1.6, LINE)
+    s.begin(f'filter="url(#{ol})"')
+    hx, hy = 100, 98
+    s.add(BODY_T)
+    if cape:
+        cel(s, "M78 132 Q58 200 56 284 Q100 296 140 282 Q130 200 122 132 Z", cape, (56, 132, 140, 296), stroke=LINE, sw=2.2)
+    s.add("</g>")
+    s.add(HEAD_T)
+    if hair_style == "long":
+        cel(s, "M72 96 Q66 150 78 190 Q100 198 124 188 Q132 150 128 96 Z", hair, (66, 96, 132, 198), stroke=LINE, sw=2.2)
+    s.add("</g>")
+    s.add(BODY_T)
+    if extra == "backpack":
+        cel(s, "M58 136 Q54 176 62 204 L86 206 L88 138 Z", "#8a5a34", (54, 136, 88, 206), stroke=LINE, sw=2.2)
+        cel(s, "M56 130 Q70 118 88 128 L86 142 Q70 134 58 142 Z", "#c89a62", (56, 118, 88, 142), stroke=LINE, sw=2)
+    _arm(s, [(80, 142), (70, 176), (68, 202)], 12, shade(main, -0.1), skin)
+    if not robe:
+        _leg(s, 91, 206, FEET - 2, 13, pants, boots)
+        _leg(s, 110, 206, FEET, 13, pants, boots)
+        d = "M78 134 Q74 172 80 212 Q100 220 122 212 Q128 172 122 134 Q100 126 78 134 Z"
+        cel(s, d, main, (74, 126, 128, 220), stroke=LINE, sw=2.4)
+    else:
+        d = "M78 134 Q72 190 66 286 Q100 298 136 286 Q128 190 122 134 Q100 126 78 134 Z"
+        cel(s, d, main, (66, 126, 136, 298), stroke=LINE, sw=2.4)
+        for x in (88, 110):
+            s.ellipse(x + 4, FEET - 4, 11, 6, boots, stroke=LINE, sw=2)
+    if extra == "apron":
+        cel(s, "M86 168 L116 168 L120 250 Q100 258 82 250 Z", "#efe6d2", (82, 168, 120, 258), stroke=LINE, sw=2, shadow=0.08)
+    if extra == "vest":
+        s.path("M80 138 Q76 176 82 208 L98 210 L98 140 Z", "#c9a24a", stroke=LINE, sw=2)
+    if extra == "armor":
+        cel(s, "M80 136 Q78 170 84 204 L118 204 Q124 170 120 136 Q100 130 80 136 Z", "#aab4c0", (78, 130, 124, 204), stroke=LINE, sw=2)
+        for x in (82, 118):
+            d2, bb = ell(x, 140, 13, 10)
+            cel(s, d2, "#aab4c0", bb, stroke=LINE, sw=2)
+    s.path("M80 206 Q100 212 122 206", "none", stroke="#4a2e1a", sw=5)
+    s.add("</g>")
+    s.add(HEAD_T)
+    _face(s, hx, hy, skin, hair, eyes=eyes, beard=beard)
+    if hair_style == "short":
+        cel(s, f"M{hx - 28} {hy - 2} Q{hx - 30} {hy - 34} {hx} {hy - 36} Q{hx + 30} {hy - 34} {hx + 28} {hy - 6} Q{hx + 14} {hy - 20} {hx} {hy - 18} Q{hx - 16} {hy - 18} {hx - 28} {hy - 2} Z", hair, (hx - 30, hy - 36, hx + 30, hy - 2), stroke=LINE, sw=2)
+    elif hair_style == "bun":
+        cel(s, f"M{hx - 28} {hy - 2} Q{hx - 30} {hy - 34} {hx} {hy - 36} Q{hx + 30} {hy - 34} {hx + 28} {hy - 6} Q{hx + 10} {hy - 22} {hx - 28} {hy - 2} Z", hair, (hx - 30, hy - 36, hx + 30, hy - 2), stroke=LINE, sw=2)
+        d2, bb = ell(hx - 12, hy - 38, 13, 11)
+        cel(s, d2, hair, bb, stroke=LINE, sw=2)
+    elif hair_style == "long":
+        cel(s, f"M{hx - 28} {hy + 8} Q{hx - 32} {hy - 34} {hx} {hy - 36} Q{hx + 30} {hy - 34} {hx + 28} {hy - 4} Q{hx + 6} {hy - 22} {hx - 20} {hy - 10} Z", hair, (hx - 32, hy - 36, hx + 30, hy + 8), stroke=LINE, sw=2)
+    elif hair_style == "bald":
+        s.ellipse(hx - 8, hy - 20, 9, 5, "#ffffff", stroke=None, extra='opacity="0.3"')
+    if hat == "cap":
+        cel(s, f"M{hx - 30} {hy - 10} Q{hx - 30} {hy - 44} {hx + 2} {hy - 44} Q{hx + 32} {hy - 42} {hx + 30} {hy - 12} Q{hx} {hy - 20} {hx - 30} {hy - 10} Z", "#a8322b", (hx - 30, hy - 44, hx + 32, hy - 10), stroke=LINE, sw=2)
+        s.path(f"M{hx + 14} {hy - 14} Q{hx + 38} {hy - 20} {hx + 48} {hy - 10} Q{hx + 34} {hy - 6} {hx + 18} {hy - 8} Z", "#8a2822", stroke=LINE, sw=2)
+    elif hat == "hood":
+        cel(s, f"M{hx - 34} {hy + 22} Q{hx - 40} {hy - 34} {hx + 2} {hy - 42} Q{hx + 40} {hy - 36} {hx + 34} {hy + 16} Q{hx + 24} {hy - 18} {hx + 2} {hy - 20} Q{hx - 22} {hy - 18} {hx - 26} {hy + 22} Z", shade(main, -0.08), (hx - 40, hy - 42, hx + 40, hy + 22), stroke=LINE, sw=2.2)
+    elif hat == "flowers":
+        import math
+        for k in range(5):
+            a = math.pi * (1.15 + 0.7 * k / 4)
+            x, y = hx + math.cos(a) * 28, hy - 8 + math.sin(a) * 26
+            s.circle(x, y, 5, ("#f5a3b8", "#ffe07a", "#ffffff")[k % 3], stroke=LINE, sw=1.2)
+    elif hat == "helm":
+        cel(s, f"M{hx - 30} {hy} Q{hx - 32} {hy - 40} {hx} {hy - 42} Q{hx + 32} {hy - 40} {hx + 30} {hy - 2} L{hx + 22} {hy - 2} Q{hx + 18} {hy - 16} {hx} {hy - 16} Q{hx - 18} {hy - 16} {hx - 22} {hy} Z", "#aab4c0", (hx - 32, hy - 42, hx + 32, hy), stroke=LINE, sw=2)
+    s.add("</g>")
+    s.add(BODY_T)
+    # mão da frente + objeto
+    if weapon == "staff":
+        s.limb([(136, 296), (140, 110)], 5, "#6b4226", outline=LINE, ow=2, highlight=False)
+        s.path("M140 110 Q150 96 138 90", "none", stroke="#6b4226", sw=5)
+    elif weapon == "spear":
+        s.limb([(136, 296), (142, 70)], 4, "#6b4226", outline=LINE, ow=2, highlight=False)
+        s.path("M142 50 L148 74 L142 80 L136 74 Z", s.lin("#f0f4f8", "#9aa6b2"), stroke=LINE, sw=2)
+    elif weapon == "lantern":
+        s.limb([(140, 200), (140, 214)], 2, LINE, outline=LINE, ow=0, highlight=False)
+        s.circle(140, 228, 22, "#ffd76a", stroke=None, extra='opacity="0.25"')
+        cel(s, "M130 214 L150 214 L148 242 L132 242 Z", "#ffcf5a", (130, 214, 150, 242), stroke=LINE, sw=2, shadow=0.05)
+    elif weapon == "basket":
+        cel(s, "M124 196 L156 196 L152 222 L128 222 Z", "#c89456", (124, 196, 156, 222), stroke=LINE, sw=2)
+        for x, c in ((132, "#e8453c"), (140, "#74b83f"), (148, "#ffe066")):
+            s.circle(x, 194, 4.5, c, stroke=LINE, sw=1.2)
+    elif weapon == "scroll":
+        cel(s, "M126 190 L154 190 L154 206 L126 206 Z", "#f2e6c8", (126, 190, 154, 206), stroke=LINE, sw=2, shadow=0.05)
+    _arm(s, [(120, 142), (132, 172), (136, 198)], 12, main, skin)
+    s.add("</g>")
+    s.end()
+    return s
+
+
+def build_npcs():
+    return [
+        _npc("char_npc_anciao", "#6e5438", "#e8c0a0", "#e8e4dc", robe=True, hair_style="bald", beard="#ece8e0", weapon="staff"),
+        _npc("char_npc_mercador", "#3f6e48", "#eac29c", "#8a4a2a", hat="cap", extra="backpack", weapon="scroll", pants="#5a4434"),
+        _npc("char_npc_costureira", "#b85a76", "#f2cdb2", "#7a3420", robe=True, hair_style="bun", extra="apron", eyes="#3a5f8a"),
+        _npc("char_npc_herbalista", "#577f4f", "#c98a60", "#3a2a1f", robe=True, hair_style="long", hat="flowers", extra="apron", weapon="basket"),
+        _npc("char_npc_capita", "#34507f", "#e2b48c", "#b8552a", hat="helm", extra="armor", cape="#2a3f66", weapon="spear", pants="#44465a", boots="#33343f"),
+        _npc("char_npc_eremita", "#5c5b62", "#dcb698", "#d6d2ca", robe=True, hat="hood", beard="#dcd8d0", weapon="lantern", hair_style="none"),
+    ]

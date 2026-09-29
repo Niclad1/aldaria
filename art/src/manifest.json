@@ -1,6 +1,28 @@
 {
  "sprites": [
   {
+   "name": "barrels",
+   "file": "barrels.svg",
+   "width": 180,
+   "height": 170,
+   "pivotX": 90,
+   "pivotY": 24,
+   "ppu": 200,
+   "kind": "prop",
+   "group": "props"
+  },
+  {
+   "name": "bench",
+   "file": "bench.svg",
+   "width": 200,
+   "height": 150,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "prop",
+   "group": "props"
+  },
+  {
    "name": "bush_forest_0",
    "file": "bush_forest_0.svg",
    "width": 170,
@@ -255,10 +277,10 @@
   {
    "name": "char_npc_anciao",
    "file": "char_npc_anciao.svg",
-   "width": 220,
-   "height": 340,
-   "pivotX": 110,
-   "pivotY": 18,
+   "width": 200,
+   "height": 320,
+   "pivotX": 100,
+   "pivotY": 20,
    "ppu": 200,
    "kind": "char",
    "group": "characters"
@@ -266,10 +288,10 @@
   {
    "name": "char_npc_capita",
    "file": "char_npc_capita.svg",
-   "width": 220,
-   "height": 340,
-   "pivotX": 110,
-   "pivotY": 18,
+   "width": 200,
+   "height": 320,
+   "pivotX": 100,
+   "pivotY": 20,
    "ppu": 200,
    "kind": "char",
    "group": "characters"
@@ -277,10 +299,10 @@
   {
    "name": "char_npc_costureira",
    "file": "char_npc_costureira.svg",
-   "width": 220,
-   "height": 340,
-   "pivotX": 110,
-   "pivotY": 18,
+   "width": 200,
+   "height": 320,
+   "pivotX": 100,
+   "pivotY": 20,
    "ppu": 200,
    "kind": "char",
    "group": "characters"
@@ -288,10 +310,10 @@
   {
    "name": "char_npc_eremita",
    "file": "char_npc_eremita.svg",
-   "width": 220,
-   "height": 340,
-   "pivotX": 110,
-   "pivotY": 18,
+   "width": 200,
+   "height": 320,
+   "pivotX": 100,
+   "pivotY": 20,
    "ppu": 200,
    "kind": "char",
    "group": "characters"
@@ -299,10 +321,10 @@
   {
    "name": "char_npc_herbalista",
    "file": "char_npc_herbalista.svg",
-   "width": 220,
-   "height": 340,
-   "pivotX": 110,
-   "pivotY": 18,
+   "width": 200,
+   "height": 320,
+   "pivotX": 100,
+   "pivotY": 20,
    "ppu": 200,
    "kind": "char",
    "group": "characters"
@@ -310,10 +332,10 @@
   {
    "name": "char_npc_mercador",
    "file": "char_npc_mercador.svg",
-   "width": 220,
-   "height": 340,
-   "pivotX": 110,
-   "pivotY": 18,
+   "width": 200,
+   "height": 320,
+   "pivotX": 100,
+   "pivotY": 20,
    "ppu": 200,
    "kind": "char",
    "group": "characters"
@@ -350,6 +372,17 @@
    "ppu": 200,
    "kind": "char",
    "group": "monsters"
+  },
+  {
+   "name": "crates",
+   "file": "crates.svg",
+   "width": 200,
+   "height": 180,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "prop",
+   "group": "props"
   },
   {
    "name": "decal_forest_path_0",
@@ -462,6 +495,446 @@
    "group": "tiles"
   },
   {
+   "name": "decor_forest_leaves_0",
+   "file": "decor_forest_leaves_0.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_forest_leaves_1",
+   "file": "decor_forest_leaves_1.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_forest_mush_0",
+   "file": "decor_forest_mush_0.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_forest_mush_1",
+   "file": "decor_forest_mush_1.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_forest_pebbles_0",
+   "file": "decor_forest_pebbles_0.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_forest_pebbles_1",
+   "file": "decor_forest_pebbles_1.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_forest_tufts_0",
+   "file": "decor_forest_tufts_0.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_forest_tufts_1",
+   "file": "decor_forest_tufts_1.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_meadow_clover_0",
+   "file": "decor_meadow_clover_0.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_meadow_clover_1",
+   "file": "decor_meadow_clover_1.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_meadow_flowers_0",
+   "file": "decor_meadow_flowers_0.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_meadow_flowers_1",
+   "file": "decor_meadow_flowers_1.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_meadow_pebbles_0",
+   "file": "decor_meadow_pebbles_0.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_meadow_pebbles_1",
+   "file": "decor_meadow_pebbles_1.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_meadow_tufts_0",
+   "file": "decor_meadow_tufts_0.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_meadow_tufts_1",
+   "file": "decor_meadow_tufts_1.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_ruins_bones_0",
+   "file": "decor_ruins_bones_0.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_ruins_bones_1",
+   "file": "decor_ruins_bones_1.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_ruins_leaves_0",
+   "file": "decor_ruins_leaves_0.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_ruins_leaves_1",
+   "file": "decor_ruins_leaves_1.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_ruins_pebbles_0",
+   "file": "decor_ruins_pebbles_0.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_ruins_pebbles_1",
+   "file": "decor_ruins_pebbles_1.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_ruins_tufts_0",
+   "file": "decor_ruins_tufts_0.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_ruins_tufts_1",
+   "file": "decor_ruins_tufts_1.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_swamp_clover_0",
+   "file": "decor_swamp_clover_0.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_swamp_clover_1",
+   "file": "decor_swamp_clover_1.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_swamp_mush_0",
+   "file": "decor_swamp_mush_0.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_swamp_mush_1",
+   "file": "decor_swamp_mush_1.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_swamp_pebbles_0",
+   "file": "decor_swamp_pebbles_0.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_swamp_pebbles_1",
+   "file": "decor_swamp_pebbles_1.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_swamp_tufts_0",
+   "file": "decor_swamp_tufts_0.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_swamp_tufts_1",
+   "file": "decor_swamp_tufts_1.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_village_clover_0",
+   "file": "decor_village_clover_0.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_village_clover_1",
+   "file": "decor_village_clover_1.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_village_flowers_0",
+   "file": "decor_village_flowers_0.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_village_flowers_1",
+   "file": "decor_village_flowers_1.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_village_pebbles_0",
+   "file": "decor_village_pebbles_0.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_village_pebbles_1",
+   "file": "decor_village_pebbles_1.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_village_tufts_0",
+   "file": "decor_village_tufts_0.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
+   "name": "decor_village_tufts_1",
+   "file": "decor_village_tufts_1.svg",
+   "width": 200,
+   "height": 100,
+   "pivotX": 100,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "tile",
+   "group": "props"
+  },
+  {
    "name": "fence_x",
    "file": "fence_x.svg",
    "width": 220,
@@ -484,12 +957,23 @@
    "group": "props"
   },
   {
+   "name": "haystack",
+   "file": "haystack.svg",
+   "width": 190,
+   "height": 170,
+   "pivotX": 95,
+   "pivotY": 24,
+   "ppu": 200,
+   "kind": "prop",
+   "group": "props"
+  },
+  {
    "name": "house_0",
    "file": "house_0.svg",
-   "width": 420,
-   "height": 520,
-   "pivotX": 210,
-   "pivotY": 120,
+   "width": 440,
+   "height": 560,
+   "pivotX": 220,
+   "pivotY": 130,
    "ppu": 200,
    "kind": "prop",
    "group": "props"
@@ -497,10 +981,54 @@
   {
    "name": "house_1",
    "file": "house_1.svg",
-   "width": 420,
-   "height": 520,
-   "pivotX": 210,
-   "pivotY": 120,
+   "width": 440,
+   "height": 560,
+   "pivotX": 220,
+   "pivotY": 130,
+   "ppu": 200,
+   "kind": "prop",
+   "group": "props"
+  },
+  {
+   "name": "house_2",
+   "file": "house_2.svg",
+   "width": 440,
+   "height": 560,
+   "pivotX": 220,
+   "pivotY": 130,
+   "ppu": 200,
+   "kind": "prop",
+   "group": "props"
+  },
+  {
+   "name": "house_3",
+   "file": "house_3.svg",
+   "width": 440,
+   "height": 560,
+   "pivotX": 220,
+   "pivotY": 130,
+   "ppu": 200,
+   "kind": "prop",
+   "group": "props"
+  },
+  {
+   "name": "house_4",
+   "file": "house_4.svg",
+   "width": 440,
+   "height": 560,
+   "pivotX": 220,
+   "pivotY": 130,
+   "ppu": 200,
+   "kind": "prop",
+   "group": "props"
+  },
+  {
+   "name": "house_5",
+   "file": "house_5.svg",
+   "width": 440,
+   "height": 560,
+   "pivotX": 220,
+   "pivotY": 130,
    "ppu": 200,
    "kind": "prop",
    "group": "props"
@@ -1056,6 +1584,50 @@
    "group": "icons"
   },
   {
+   "name": "lamp",
+   "file": "lamp.svg",
+   "width": 110,
+   "height": 290,
+   "pivotX": 55,
+   "pivotY": 20,
+   "ppu": 200,
+   "kind": "prop",
+   "group": "props"
+  },
+  {
+   "name": "log",
+   "file": "log.svg",
+   "width": 220,
+   "height": 130,
+   "pivotX": 110,
+   "pivotY": 26,
+   "ppu": 200,
+   "kind": "prop",
+   "group": "props"
+  },
+  {
+   "name": "mushrooms",
+   "file": "mushrooms.svg",
+   "width": 160,
+   "height": 150,
+   "pivotX": 80,
+   "pivotY": 22,
+   "ppu": 200,
+   "kind": "prop",
+   "group": "props"
+  },
+  {
+   "name": "mushrooms_swamp",
+   "file": "mushrooms_swamp.svg",
+   "width": 160,
+   "height": 150,
+   "pivotX": 80,
+   "pivotY": 22,
+   "ppu": 200,
+   "kind": "prop",
+   "group": "props"
+  },
+  {
    "name": "patch_forest_leaves_0",
    "file": "patch_forest_leaves_0.svg",
    "width": 440,
@@ -1562,6 +2134,72 @@
    "group": "props"
   },
   {
+   "name": "rubble",
+   "file": "rubble.svg",
+   "width": 190,
+   "height": 140,
+   "pivotX": 95,
+   "pivotY": 50,
+   "ppu": 200,
+   "kind": "prop",
+   "group": "props"
+  },
+  {
+   "name": "signpost",
+   "file": "signpost.svg",
+   "width": 170,
+   "height": 230,
+   "pivotX": 85,
+   "pivotY": 20,
+   "ppu": 200,
+   "kind": "prop",
+   "group": "props"
+  },
+  {
+   "name": "stall_0",
+   "file": "stall_0.svg",
+   "width": 260,
+   "height": 290,
+   "pivotX": 130,
+   "pivotY": 60,
+   "ppu": 200,
+   "kind": "prop",
+   "group": "props"
+  },
+  {
+   "name": "stall_1",
+   "file": "stall_1.svg",
+   "width": 260,
+   "height": 290,
+   "pivotX": 130,
+   "pivotY": 60,
+   "ppu": 200,
+   "kind": "prop",
+   "group": "props"
+  },
+  {
+   "name": "stump",
+   "file": "stump.svg",
+   "width": 150,
+   "height": 120,
+   "pivotX": 75,
+   "pivotY": 22,
+   "ppu": 200,
+   "kind": "prop",
+   "group": "props"
+  },
+  {
+   "name": "stump_moss",
+   "file": "stump_moss.svg",
+   "width": 150,
+   "height": 120,
+   "pivotX": 75,
+   "pivotY": 22,
+   "ppu": 200,
+   "kind": "prop",
+   "group": "props"
+  },
+  {
    "name": "tile_forest_flowers_0",
    "file": "tile_forest_flowers_0.svg",
    "width": 200,
@@ -1947,6 +2585,50 @@
    "group": "tiles"
   },
   {
+   "name": "tree_apple",
+   "file": "tree_apple.svg",
+   "width": 180,
+   "height": 260,
+   "pivotX": 90,
+   "pivotY": 20,
+   "ppu": 200,
+   "kind": "prop",
+   "group": "props"
+  },
+  {
+   "name": "tree_birch",
+   "file": "tree_birch.svg",
+   "width": 220,
+   "height": 370,
+   "pivotX": 110,
+   "pivotY": 24,
+   "ppu": 200,
+   "kind": "prop",
+   "group": "props"
+  },
+  {
+   "name": "tree_cypress",
+   "file": "tree_cypress.svg",
+   "width": 170,
+   "height": 420,
+   "pivotX": 85,
+   "pivotY": 24,
+   "ppu": 200,
+   "kind": "prop",
+   "group": "props"
+  },
+  {
+   "name": "tree_cypress_swamp",
+   "file": "tree_cypress_swamp.svg",
+   "width": 170,
+   "height": 420,
+   "pivotX": 85,
+   "pivotY": 24,
+   "ppu": 200,
+   "kind": "prop",
+   "group": "props"
+  },
+  {
    "name": "tree_forest_0",
    "file": "tree_forest_0.svg",
    "width": 220,
@@ -2013,6 +2695,28 @@
    "group": "props"
   },
   {
+   "name": "tree_oak_big",
+   "file": "tree_oak_big.svg",
+   "width": 340,
+   "height": 420,
+   "pivotX": 170,
+   "pivotY": 24,
+   "ppu": 200,
+   "kind": "prop",
+   "group": "props"
+  },
+  {
+   "name": "tree_oak_forest",
+   "file": "tree_oak_forest.svg",
+   "width": 340,
+   "height": 420,
+   "pivotX": 170,
+   "pivotY": 24,
+   "ppu": 200,
+   "kind": "prop",
+   "group": "props"
+  },
+  {
    "name": "tree_ruins_0",
    "file": "tree_ruins_0.svg",
    "width": 240,
@@ -2029,6 +2733,28 @@
    "width": 240,
    "height": 340,
    "pivotX": 120,
+   "pivotY": 24,
+   "ppu": 200,
+   "kind": "prop",
+   "group": "props"
+  },
+  {
+   "name": "tree_ruins_2",
+   "file": "tree_ruins_2.svg",
+   "width": 260,
+   "height": 320,
+   "pivotX": 130,
+   "pivotY": 24,
+   "ppu": 200,
+   "kind": "prop",
+   "group": "props"
+  },
+  {
+   "name": "tree_spruce",
+   "file": "tree_spruce.svg",
+   "width": 200,
+   "height": 460,
+   "pivotX": 100,
    "pivotY": 24,
    "ppu": 200,
    "kind": "prop",
@@ -2079,139 +2805,183 @@
    "group": "props"
   },
   {
+   "name": "tree_young",
+   "file": "tree_young.svg",
+   "width": 180,
+   "height": 260,
+   "pivotX": 90,
+   "pivotY": 20,
+   "ppu": 200,
+   "kind": "prop",
+   "group": "props"
+  },
+  {
    "name": "ui_button",
    "file": "ui_button.svg",
-   "width": 96,
-   "height": 48,
-   "pivotX": 48,
-   "pivotY": 24,
+   "width": 64,
+   "height": 40,
+   "pivotX": 32.0,
+   "pivotY": 20.0,
    "ppu": 100,
    "kind": "ui",
    "border": [
-    20,
-    20,
-    20,
-    20
+    16,
+    16,
+    16,
+    16
    ],
    "group": "ui"
   },
   {
    "name": "ui_button_down",
    "file": "ui_button_down.svg",
-   "width": 96,
-   "height": 48,
-   "pivotX": 48,
-   "pivotY": 24,
+   "width": 64,
+   "height": 40,
+   "pivotX": 32.0,
+   "pivotY": 20.0,
    "ppu": 100,
    "kind": "ui",
    "border": [
-    20,
-    20,
-    20,
-    20
+    16,
+    16,
+    16,
+    16
    ],
    "group": "ui"
   },
   {
    "name": "ui_button_hover",
    "file": "ui_button_hover.svg",
-   "width": 96,
-   "height": 48,
-   "pivotX": 48,
-   "pivotY": 24,
+   "width": 64,
+   "height": 40,
+   "pivotX": 32.0,
+   "pivotY": 20.0,
    "ppu": 100,
    "kind": "ui",
    "border": [
-    20,
-    20,
-    20,
-    20
+    16,
+    16,
+    16,
+    16
    ],
    "group": "ui"
   },
   {
    "name": "ui_dark",
    "file": "ui_dark.svg",
-   "width": 64,
-   "height": 64,
-   "pivotX": 32,
-   "pivotY": 32,
+   "width": 48,
+   "height": 48,
+   "pivotX": 24.0,
+   "pivotY": 24.0,
    "ppu": 100,
    "kind": "ui",
    "border": [
-    20,
-    20,
-    20,
-    20
+    14,
+    14,
+    14,
+    14
    ],
+   "group": "ui"
+  },
+  {
+   "name": "ui_diamond",
+   "file": "ui_diamond.svg",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "kind": "icon",
+   "group": "ui"
+  },
+  {
+   "name": "ui_heart",
+   "file": "ui_heart.svg",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "kind": "icon",
    "group": "ui"
   },
   {
    "name": "ui_panel",
    "file": "ui_panel.svg",
-   "width": 96,
-   "height": 96,
-   "pivotX": 48,
-   "pivotY": 48,
+   "width": 64,
+   "height": 64,
+   "pivotX": 32.0,
+   "pivotY": 32.0,
    "ppu": 100,
    "kind": "ui",
    "border": [
-    30,
-    30,
-    30,
-    30
+    18,
+    18,
+    18,
+    18
    ],
    "group": "ui"
   },
   {
    "name": "ui_slot",
    "file": "ui_slot.svg",
-   "width": 64,
-   "height": 64,
-   "pivotX": 32,
-   "pivotY": 32,
+   "width": 48,
+   "height": 48,
+   "pivotX": 24.0,
+   "pivotY": 24.0,
    "ppu": 100,
    "kind": "ui",
    "border": [
-    18,
-    18,
-    18,
-    18
+    14,
+    14,
+    14,
+    14
    ],
    "group": "ui"
   },
   {
    "name": "ui_slot_hover",
    "file": "ui_slot_hover.svg",
-   "width": 64,
-   "height": 64,
-   "pivotX": 32,
-   "pivotY": 32,
+   "width": 48,
+   "height": 48,
+   "pivotX": 24.0,
+   "pivotY": 24.0,
    "ppu": 100,
    "kind": "ui",
    "border": [
-    18,
-    18,
-    18,
-    18
+    14,
+    14,
+    14,
+    14
    ],
    "group": "ui"
   },
   {
    "name": "ui_slot_on",
    "file": "ui_slot_on.svg",
-   "width": 64,
-   "height": 64,
-   "pivotX": 32,
-   "pivotY": 32,
+   "width": 48,
+   "height": 48,
+   "pivotX": 24.0,
+   "pivotY": 24.0,
    "ppu": 100,
    "kind": "ui",
    "border": [
-    18,
-    18,
-    18,
-    18
+    14,
+    14,
+    14,
+    14
    ],
+   "group": "ui"
+  },
+  {
+   "name": "ui_star",
+   "file": "ui_star.svg",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "kind": "icon",
    "group": "ui"
   },
   {

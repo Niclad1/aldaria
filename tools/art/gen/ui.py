@@ -1,53 +1,56 @@
-"""Peças da interface (9-slice): pergaminho, couro escuro, botões de madeira e espaços de item."""
+"""Interface no estilo Dofus: painéis azul-marinho com borda fina, destaques dourados e ícones de PV/PA/PM."""
+import math
 from .lib import Svg, INK, shade, f
 from .characters import rrect
 
+NAVY = "#1c2036"
+NAVY_DARK = "#12152a"
+EDGE = "#3d4670"
+GOLD = "#f2c94c"
 
-def panel():
-    s = Svg("ui_panel", 96, 96, pivot=(48, 48), ppu=100, border=[30, 30, 30, 30], kind="ui")
-    d, _ = rrect(3, 3, 90, 90, 14)
-    s.path(d, s.lin("#8a5a30", "#5a3518"), stroke=INK, sw=3)
-    d2, _ = rrect(11, 11, 74, 74, 8)
-    s.path(d2, s.lin("#fbf1d8", "#ead8b0"), stroke="#5a3518", sw=2)
-    nz = s.noise_filter(freq=0.08, octaves=3, seed=4, amount=0.12, color="#b08a50")
-    s.path(d2, "#000", stroke=None, extra=f'filter="url(#{nz})"')
-    s.path("M8 10 Q48 4 88 10", "none", stroke="#c89060", sw=2, extra='opacity="0.7"')
-    for x, y in ((10, 10), (86, 10), (10, 86), (86, 86)):
-        s.circle(x, y, 5, s.rad("#fff0b0", "#b8862a"), stroke=INK, sw=2)
+
+def _box(name, w, h, fill_top, fill_bottom, edge, radius=8, border=None, edge_w=2, glow=None):
+    s = Svg(name, w, h, pivot=(w / 2, h / 2), ppu=100, border=border or [18, 18, 18, 18], kind="ui")
+    d, _ = rrect(1.5, 1.5, w - 3, h - 3, radius)
+    s.path(d, s.lin(fill_top, fill_bottom), stroke=edge, sw=edge_w)
+    d2, _ = rrect(4, 4, w - 8, h - 8, max(2, radius - 3))
+    s.path(d2, "none", stroke="#ffffff", sw=1, extra='stroke-opacity="0.06"')
+    if glow:
+        s.path(f"M{radius + 2} 3 L{w - radius - 2} 3", "none", stroke=glow, sw=1.5, extra='stroke-opacity="0.6"')
     return s
 
 
-def dark():
-    s = Svg("ui_dark", 64, 64, pivot=(32, 32), ppu=100, border=[20, 20, 20, 20], kind="ui")
-    d, _ = rrect(2, 2, 60, 60, 12)
-    s.path(d, "#b08d57", stroke=INK, sw=2.5)
-    d2, _ = rrect(6, 6, 52, 52, 9)
-    s.path(d2, s.lin("#3a2c22", "#231a14"), stroke=None, extra='opacity="0.95"')
+def heart():
+    s = Svg("ui_heart", 96, 96, pivot=(48, 48), ppu=96, kind="icon")
+    d = "M48 86 C18 64 6 46 10 30 C14 14 34 10 48 26 C62 10 82 14 86 30 C90 46 78 64 48 86 Z"
+    s.path(d, s.rad("#ff7a7a", "#a3161f", 0.35, 0.3, 0.9), stroke="#3a0b10", sw=4)
+    s.path("M22 32 C24 22 34 20 40 26", "none", stroke="#ffffff", sw=5, extra='stroke-opacity="0.5" stroke-linecap="round"')
     return s
 
 
-def button(name, top, bottom, pressed=False):
-    s = Svg(name, 96, 48, pivot=(48, 24), ppu=100, border=[20, 20, 20, 20], kind="ui")
-    d, _ = rrect(2, 2 + (2 if pressed else 0), 92, 42, 12)
-    s.path(d, s.lin(top, bottom), stroke=INK, sw=3)
-    if not pressed:
-        d2, _ = rrect(8, 6, 80, 14, 7)
-        s.path(d2, "#ffffff", stroke=None, extra='opacity="0.25"')
-    s.path("M10 40 Q48 46 86 40", "none", stroke=shade(bottom, -0.25), sw=2, extra='opacity="0.6"')
+def star():
+    s = Svg("ui_star", 96, 96, pivot=(48, 48), ppu=96, kind="icon")
+    pts = " ".join(f"{f(48 + math.cos(math.radians(-90 + k * 36)) * (42 if k % 2 == 0 else 19))},{f(50 + math.sin(math.radians(-90 + k * 36)) * (42 if k % 2 == 0 else 19))}" for k in range(10))
+    s.add(f'<polygon points="{pts}" fill="{s.rad("#8fd0ff", "#1f5fb8", 0.4, 0.3, 0.9)}" stroke="#0b1d3a" stroke-width="4" stroke-linejoin="round"/>')
     return s
 
 
-def slot(name, rim, fill_top="#4c3828", fill_bottom="#2e2219", width=3):
-    s = Svg(name, 64, 64, pivot=(32, 32), ppu=100, border=[18, 18, 18, 18], kind="ui")
-    d, _ = rrect(2, 2, 60, 60, 11)
-    s.path(d, s.lin(shade(rim, 0.15), shade(rim, -0.2)), stroke=INK, sw=2.5)
-    d2, _ = rrect(2 + width + 2, 2 + width + 2, 60 - 2 * (width + 2), 60 - 2 * (width + 2), 8)
-    s.path(d2, s.lin(fill_top, fill_bottom), stroke=INK, sw=1.5)
-    s.path("M12 14 Q32 8 52 14", "none", stroke="#000000", sw=4, extra='opacity="0.25"')
+def diamond_icon():
+    s = Svg("ui_diamond", 96, 96, pivot=(48, 48), ppu=96, kind="icon")
+    s.path("M48 6 L88 48 L48 90 L8 48 Z", s.rad("#9cf07a", "#2a8a2a", 0.4, 0.3, 0.9), stroke="#0d2a0d", sw=4)
+    s.path("M48 16 L30 40", "none", stroke="#ffffff", sw=4, extra='stroke-opacity="0.45" stroke-linecap="round"')
     return s
 
 
 def build():
-    return [panel(), dark(),
-            button("ui_button", "#f0a24a", "#b8661d"), button("ui_button_hover", "#ffb866", "#c97a2c"), button("ui_button_down", "#c8741e", "#9a5516", pressed=True),
-            slot("ui_slot", "#b08d57"), slot("ui_slot_hover", "#f0d08a", "#5e4632", "#3a2a1f"), slot("ui_slot_on", "#ffd54f", "#7a5530", "#4d3520", width=4)]
+    return [
+        _box("ui_panel", 64, 64, "#232842", NAVY_DARK, EDGE, glow="#5a6699"),
+        _box("ui_dark", 48, 48, "#171a2e", "#0f1122", "#2c3354", radius=6, border=[14, 14, 14, 14]),
+        _box("ui_button", 64, 40, "#343c63", "#252b4a", "#56609a", radius=8, border=[16, 16, 16, 16]),
+        _box("ui_button_hover", 64, 40, "#414b7a", "#2e365c", GOLD, radius=8, border=[16, 16, 16, 16]),
+        _box("ui_button_down", 64, 40, "#1f2440", "#2a3152", GOLD, radius=8, border=[16, 16, 16, 16]),
+        _box("ui_slot", 48, 48, "#161a2e", "#0e1020", "#39426a", radius=6, border=[14, 14, 14, 14]),
+        _box("ui_slot_hover", 48, 48, "#1d2240", "#12152a", "#8e9ad0", radius=6, border=[14, 14, 14, 14]),
+        _box("ui_slot_on", 48, 48, "#2a2a1e", "#16150f", GOLD, radius=6, border=[14, 14, 14, 14], edge_w=3),
+        heart(), star(), diamond_icon(),
+    ]

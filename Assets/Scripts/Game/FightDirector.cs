@@ -24,7 +24,7 @@ namespace Aldaria.Game
 
         static readonly Color PlayersColor = new Color(0.25f, 0.55f, 1f, 0.9f);
         static readonly Color MonstersColor = new Color(1f, 0.3f, 0.25f, 0.9f);
-        static readonly string[] Layers = { "place_p", "place_m", "reach", "path", "range", "range_off", "area" };
+        static readonly string[] Layers = { "place_p", "place_m", "reach", "path", "range", "range_off", "area", "impact" };
 
         GameController game;
         MonsterGroup group;
@@ -286,6 +286,11 @@ namespace Aldaria.Game
                         TurnTimeLeft = TurnTime;
                         Selected = null;
                         game.AddLog($"Sua vez! {Player.Ap} PA, {Player.Mp} PM.", Art.Hex("#9ad0ff"));
+                        game.Banner("Sua vez!", Art.Hex("#f2c94c"));
+                    }
+                    else
+                    {
+                        game.Banner($"Vez de {e.Source.Name}", e.Source.Team == Team.Players ? Art.Hex("#8fd0ff") : Art.Hex("#ff8a80"));
                     }
                     Actors[e.Source].Flash(new Color(1f, 1f, 0.6f));
                     yield return new WaitForSeconds(0.15f);
@@ -305,23 +310,38 @@ namespace Aldaria.Game
                     var target = Iso.ToWorld(e.Cell);
                     var color = Art.ElementColor(e.Spell.Element);
                     game.AddLog($"{e.Source.Name} lança {e.Spell.Name}.", Color.white);
-                    if (e.Spell.Target == SpellTarget.Self)
+                    // Nome da habilidade bem visível em cima de quem lançou.
+                    game.Popup(a.HeadPosition + Vector3.up * 0.25f, e.Spell.Name, Color.Lerp(color, Color.white, 0.35f), true);
+                    Fx.Spawn(a.transform.position + Vector3.up * 0.4f, color, 0.4f, 1.6f, 0.35f);
+                    if (e.Spell.Target == SpellTarget.Self && e.Spell.Area == 0)
                     {
-                        Fx.Spawn(a.transform.position + Vector3.up * 0.35f, color, 0.5f, 2.2f, 0.5f);
-                        yield return new WaitForSeconds(0.25f);
+                        Fx.Ring(a.transform.position, color, 2.2f, 0.5f);
+                        yield return new WaitForSeconds(0.35f);
                         break;
                     }
                     StartCoroutine(a.Lunge(target));
+                    yield return new WaitForSeconds(0.15f);
                     if (e.Source.Cell.DistanceTo(e.Cell) > 1 && e.Spell.Effect != SpellEffect.Teleport)
                         yield return Projectile(a.transform.position + Vector3.up * 0.4f, target + Vector3.up * 0.3f, color);
                     else
-                        yield return new WaitForSeconds(0.12f);
+                        yield return new WaitForSeconds(0.1f);
 
                     if (e.Spell.Area > 0)
-                        foreach (var c in Fight.AreaCells(e.Spell, e.Cell))
-                            Fx.Spawn(Iso.ToWorld(c) + Vector3.up * 0.1f, color, 0.6f, 2.4f, 0.45f);
+                    {
+                        var cells = Fight.AreaCells(e.Spell, e.Cell);
+                        game.World.SetLayer("impact", cells, new Color(color.r, color.g, color.b, 0.75f), 615);
+                        foreach (var c in cells)
+                            Fx.Spawn(Iso.ToWorld(c) + Vector3.up * 0.1f, color, 0.6f, 2.6f, 0.5f);
+                        Fx.Ring(target, color, 4.5f, 0.6f);
+                        yield return new WaitForSeconds(0.25f);
+                        game.World.ClearLayer("impact");
+                    }
                     else if (e.Spell.Effect != SpellEffect.Teleport)
-                        Fx.Spawn(target + Vector3.up * 0.3f, color, 0.8f, 2.8f, 0.35f);
+                    {
+                        Fx.Spawn(target + Vector3.up * 0.3f, color, 0.8f, 3.2f, 0.4f);
+                        Fx.Spawn(target + Vector3.up * 0.3f, Color.white, 0.4f, 1.6f, 0.25f);
+                        Fx.Ring(target, color, 2.4f, 0.45f);
+                    }
                     break;
                 }
 
@@ -379,15 +399,41 @@ namespace Aldaria.Game
 
         IEnumerator Projectile(Vector3 from, Vector3 to, Color color)
         {
-            var fx = Fx.Spawn(from, color, 0.9f, 0.9f, 10f);
+            var fx = Fx.Spawn(from, color, 1.1f, 1.1f, 10f);
             float dist = Vector3.Distance(from, to);
-            float duration = Mathf.Clamp(dist * 0.07f, 0.12f, 0.4f);
+            float duration = Mathf.Clamp(dist * 0.08f, 0.15f, 0.45f);
+            float trail = 0f;
             for (float t = 0f; t < 1f; t += Time.deltaTime / duration)
             {
                 fx.transform.position = Vector3.Lerp(from, to, t) + Vector3.up * Mathf.Sin(t * Mathf.PI) * dist * 0.12f;
+                trail += Time.deltaTime;
+                if (trail > 0.025f)
+                {
+                    trail = 0f;
+                    Fx.Spawn(fx.transform.position, color, 0.7f, 0.1f, 0.3f);
+                }
                 yield return null;
             }
             Destroy(fx.gameObject);
+        }
+
+        /// <summary>Texto de previsão ao mirar: dano ou cura esperados no alvo sob o mouse.</summary>
+        public string Preview(Cell? hover)
+        {
+            if (Selected == null || !hover.HasValue || !IsPlayerTurn) return null;
+            var problem = Fight.CastProblem(Player, Selected, hover.Value);
+            if (problem != null) return $"<color=#ff8a80>{problem}</color>";
+            var s = Selected;
+            int bonus = s.Effect == SpellEffect.Damage ? Player.BuffTotal(BuffStat.Damage) + Player.FlatDamage : 0;
+            int min = (s.Min + bonus) * (100 + Player.Power) / 100, max = (s.Max + bonus) * (100 + Player.Power) / 100;
+            var victims = new List<string>();
+            foreach (var c in Fight.AreaCells(s, hover.Value))
+            {
+                var f = Fight.FighterAt(c);
+                if (f != null && !(s.ExcludeCaster && f == Player)) victims.Add(f.Name);
+            }
+            string what = s.Effect == SpellEffect.Heal ? $"cura {min}-{max}" : s.Effect == SpellEffect.Damage ? $"{min}-{max} de dano" : s.Effect == SpellEffect.Teleport ? "teleporta para cá" : "efeito em você";
+            return $"<b>{s.Name}</b> ({s.ApCost} PA)\n{what}" + (victims.Count > 0 ? $"\nAtinge: {string.Join(", ", victims)}" : "");
         }
 
         void Finish()

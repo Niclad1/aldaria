@@ -1,6 +1,38 @@
 {
  "sprites": [
   {
+   "name": "barrels",
+   "width": 58,
+   "height": 54,
+   "pivotX": 29,
+   "pivotY": 8,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop",
+   "filter": "point"
+  },
+  {
+   "name": "bench",
+   "width": 64,
+   "height": 48,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop",
+   "filter": "point"
+  },
+  {
    "name": "bush_forest_0",
    "width": 54,
    "height": 45,
@@ -354,9 +386,9 @@
   },
   {
    "name": "char_npc_anciao",
-   "width": 70,
-   "height": 109,
-   "pivotX": 35,
+   "width": 64,
+   "height": 102,
+   "pivotX": 32,
    "pivotY": 6,
    "ppu": 64,
    "border": [
@@ -370,9 +402,9 @@
   },
   {
    "name": "char_npc_capita",
-   "width": 70,
-   "height": 109,
-   "pivotX": 35,
+   "width": 64,
+   "height": 102,
+   "pivotX": 32,
    "pivotY": 6,
    "ppu": 64,
    "border": [
@@ -386,9 +418,9 @@
   },
   {
    "name": "char_npc_costureira",
-   "width": 70,
-   "height": 109,
-   "pivotX": 35,
+   "width": 64,
+   "height": 102,
+   "pivotX": 32,
    "pivotY": 6,
    "ppu": 64,
    "border": [
@@ -402,9 +434,9 @@
   },
   {
    "name": "char_npc_eremita",
-   "width": 70,
-   "height": 109,
-   "pivotX": 35,
+   "width": 64,
+   "height": 102,
+   "pivotX": 32,
    "pivotY": 6,
    "ppu": 64,
    "border": [
@@ -418,9 +450,9 @@
   },
   {
    "name": "char_npc_herbalista",
-   "width": 70,
-   "height": 109,
-   "pivotX": 35,
+   "width": 64,
+   "height": 102,
+   "pivotX": 32,
    "pivotY": 6,
    "ppu": 64,
    "border": [
@@ -434,9 +466,9 @@
   },
   {
    "name": "char_npc_mercador",
-   "width": 70,
-   "height": 109,
-   "pivotX": 35,
+   "width": 64,
+   "height": 102,
+   "pivotX": 32,
    "pivotY": 6,
    "ppu": 64,
    "border": [
@@ -494,6 +526,22 @@
     0
    ],
    "kind": "char",
+   "filter": "point"
+  },
+  {
+   "name": "crates",
+   "width": 64,
+   "height": 58,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop",
    "filter": "point"
   },
   {
@@ -657,6 +705,646 @@
    "filter": "point"
   },
   {
+   "name": "decor_forest_leaves_0",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_forest_leaves_1",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_forest_mush_0",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_forest_mush_1",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_forest_pebbles_0",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_forest_pebbles_1",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_forest_tufts_0",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_forest_tufts_1",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_meadow_clover_0",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_meadow_clover_1",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_meadow_flowers_0",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_meadow_flowers_1",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_meadow_pebbles_0",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_meadow_pebbles_1",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_meadow_tufts_0",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_meadow_tufts_1",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_ruins_bones_0",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_ruins_bones_1",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_ruins_leaves_0",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_ruins_leaves_1",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_ruins_pebbles_0",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_ruins_pebbles_1",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_ruins_tufts_0",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_ruins_tufts_1",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_swamp_clover_0",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_swamp_clover_1",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_swamp_mush_0",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_swamp_mush_1",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_swamp_pebbles_0",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_swamp_pebbles_1",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_swamp_tufts_0",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_swamp_tufts_1",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_village_clover_0",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_village_clover_1",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_village_flowers_0",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_village_flowers_1",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_village_pebbles_0",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_village_pebbles_1",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_village_tufts_0",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
+   "name": "decor_village_tufts_1",
+   "width": 64,
+   "height": 32,
+   "pivotX": 32,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "point"
+  },
+  {
    "name": "fence_x",
    "width": 70,
    "height": 48,
@@ -689,11 +1377,27 @@
    "filter": "point"
   },
   {
+   "name": "haystack",
+   "width": 61,
+   "height": 54,
+   "pivotX": 30,
+   "pivotY": 8,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop",
+   "filter": "point"
+  },
+  {
    "name": "house_0",
-   "width": 134,
-   "height": 166,
-   "pivotX": 67,
-   "pivotY": 38,
+   "width": 141,
+   "height": 179,
+   "pivotX": 70,
+   "pivotY": 42,
    "ppu": 64,
    "border": [
     0,
@@ -706,10 +1410,74 @@
   },
   {
    "name": "house_1",
-   "width": 134,
-   "height": 166,
-   "pivotX": 67,
-   "pivotY": 38,
+   "width": 141,
+   "height": 179,
+   "pivotX": 70,
+   "pivotY": 42,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop",
+   "filter": "point"
+  },
+  {
+   "name": "house_2",
+   "width": 141,
+   "height": 179,
+   "pivotX": 70,
+   "pivotY": 42,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop",
+   "filter": "point"
+  },
+  {
+   "name": "house_3",
+   "width": 141,
+   "height": 179,
+   "pivotX": 70,
+   "pivotY": 42,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop",
+   "filter": "point"
+  },
+  {
+   "name": "house_4",
+   "width": 141,
+   "height": 179,
+   "pivotX": 70,
+   "pivotY": 42,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop",
+   "filter": "point"
+  },
+  {
+   "name": "house_5",
+   "width": 141,
+   "height": 179,
+   "pivotX": 70,
+   "pivotY": 42,
    "ppu": 64,
    "border": [
     0,
@@ -1521,6 +2289,70 @@
    "filter": "smooth"
   },
   {
+   "name": "lamp",
+   "width": 35,
+   "height": 93,
+   "pivotX": 18,
+   "pivotY": 6,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop",
+   "filter": "point"
+  },
+  {
+   "name": "log",
+   "width": 70,
+   "height": 42,
+   "pivotX": 35,
+   "pivotY": 8,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop",
+   "filter": "point"
+  },
+  {
+   "name": "mushrooms",
+   "width": 51,
+   "height": 48,
+   "pivotX": 26,
+   "pivotY": 7,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop",
+   "filter": "point"
+  },
+  {
+   "name": "mushrooms_swamp",
+   "width": 51,
+   "height": 48,
+   "pivotX": 26,
+   "pivotY": 7,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop",
+   "filter": "point"
+  },
+  {
    "name": "patch_forest_leaves_0",
    "width": 141,
    "height": 77,
@@ -2257,6 +3089,102 @@
    "filter": "point"
   },
   {
+   "name": "rubble",
+   "width": 61,
+   "height": 45,
+   "pivotX": 30,
+   "pivotY": 16,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop",
+   "filter": "point"
+  },
+  {
+   "name": "signpost",
+   "width": 54,
+   "height": 74,
+   "pivotX": 27,
+   "pivotY": 6,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop",
+   "filter": "point"
+  },
+  {
+   "name": "stall_0",
+   "width": 83,
+   "height": 93,
+   "pivotX": 42,
+   "pivotY": 19,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop",
+   "filter": "point"
+  },
+  {
+   "name": "stall_1",
+   "width": 83,
+   "height": 93,
+   "pivotX": 42,
+   "pivotY": 19,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop",
+   "filter": "point"
+  },
+  {
+   "name": "stump",
+   "width": 48,
+   "height": 38,
+   "pivotX": 24,
+   "pivotY": 7,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop",
+   "filter": "point"
+  },
+  {
+   "name": "stump_moss",
+   "width": 48,
+   "height": 38,
+   "pivotX": 24,
+   "pivotY": 7,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop",
+   "filter": "point"
+  },
+  {
    "name": "tile_forest_flowers_0",
    "width": 64,
    "height": 44,
@@ -2817,6 +3745,70 @@
    "filter": "point"
   },
   {
+   "name": "tree_apple",
+   "width": 58,
+   "height": 83,
+   "pivotX": 29,
+   "pivotY": 6,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop",
+   "filter": "point"
+  },
+  {
+   "name": "tree_birch",
+   "width": 70,
+   "height": 118,
+   "pivotX": 35,
+   "pivotY": 8,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop",
+   "filter": "point"
+  },
+  {
+   "name": "tree_cypress",
+   "width": 54,
+   "height": 134,
+   "pivotX": 27,
+   "pivotY": 8,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop",
+   "filter": "point"
+  },
+  {
+   "name": "tree_cypress_swamp",
+   "width": 54,
+   "height": 134,
+   "pivotX": 27,
+   "pivotY": 8,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop",
+   "filter": "point"
+  },
+  {
    "name": "tree_forest_0",
    "width": 70,
    "height": 128,
@@ -2913,6 +3905,38 @@
    "filter": "point"
   },
   {
+   "name": "tree_oak_big",
+   "width": 109,
+   "height": 134,
+   "pivotX": 54,
+   "pivotY": 8,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop",
+   "filter": "point"
+  },
+  {
+   "name": "tree_oak_forest",
+   "width": 109,
+   "height": 134,
+   "pivotX": 54,
+   "pivotY": 8,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop",
+   "filter": "point"
+  },
+  {
    "name": "tree_ruins_0",
    "width": 77,
    "height": 109,
@@ -2933,6 +3957,38 @@
    "width": 77,
    "height": 109,
    "pivotX": 38,
+   "pivotY": 8,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop",
+   "filter": "point"
+  },
+  {
+   "name": "tree_ruins_2",
+   "width": 83,
+   "height": 102,
+   "pivotX": 42,
+   "pivotY": 8,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop",
+   "filter": "point"
+  },
+  {
+   "name": "tree_spruce",
+   "width": 64,
+   "height": 147,
+   "pivotX": 32,
    "pivotY": 8,
    "ppu": 64,
    "border": [
@@ -3009,131 +4065,195 @@
    "filter": "point"
   },
   {
+   "name": "tree_young",
+   "width": 58,
+   "height": 83,
+   "pivotX": 29,
+   "pivotY": 6,
+   "ppu": 64,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop",
+   "filter": "point"
+  },
+  {
    "name": "ui_button",
-   "width": 96,
-   "height": 48,
-   "pivotX": 48,
-   "pivotY": 24,
+   "width": 64,
+   "height": 40,
+   "pivotX": 32,
+   "pivotY": 20,
    "ppu": 100,
    "border": [
-    20,
-    20,
-    20,
-    20
+    16,
+    16,
+    16,
+    16
    ],
    "kind": "ui",
    "filter": "smooth"
   },
   {
    "name": "ui_button_down",
-   "width": 96,
-   "height": 48,
-   "pivotX": 48,
-   "pivotY": 24,
+   "width": 64,
+   "height": 40,
+   "pivotX": 32,
+   "pivotY": 20,
    "ppu": 100,
    "border": [
-    20,
-    20,
-    20,
-    20
+    16,
+    16,
+    16,
+    16
    ],
    "kind": "ui",
    "filter": "smooth"
   },
   {
    "name": "ui_button_hover",
-   "width": 96,
-   "height": 48,
-   "pivotX": 48,
-   "pivotY": 24,
+   "width": 64,
+   "height": 40,
+   "pivotX": 32,
+   "pivotY": 20,
    "ppu": 100,
    "border": [
-    20,
-    20,
-    20,
-    20
+    16,
+    16,
+    16,
+    16
    ],
    "kind": "ui",
    "filter": "smooth"
   },
   {
    "name": "ui_dark",
+   "width": 48,
+   "height": 48,
+   "pivotX": 24,
+   "pivotY": 24,
+   "ppu": 100,
+   "border": [
+    14,
+    14,
+    14,
+    14
+   ],
+   "kind": "ui",
+   "filter": "smooth"
+  },
+  {
+   "name": "ui_diamond",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon",
+   "filter": "smooth"
+  },
+  {
+   "name": "ui_heart",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon",
+   "filter": "smooth"
+  },
+  {
+   "name": "ui_panel",
    "width": 64,
    "height": 64,
    "pivotX": 32,
    "pivotY": 32,
    "ppu": 100,
    "border": [
-    20,
-    20,
-    20,
-    20
-   ],
-   "kind": "ui",
-   "filter": "smooth"
-  },
-  {
-   "name": "ui_panel",
-   "width": 96,
-   "height": 96,
-   "pivotX": 48,
-   "pivotY": 48,
-   "ppu": 100,
-   "border": [
-    30,
-    30,
-    30,
-    30
+    18,
+    18,
+    18,
+    18
    ],
    "kind": "ui",
    "filter": "smooth"
   },
   {
    "name": "ui_slot",
-   "width": 64,
-   "height": 64,
-   "pivotX": 32,
-   "pivotY": 32,
+   "width": 48,
+   "height": 48,
+   "pivotX": 24,
+   "pivotY": 24,
    "ppu": 100,
    "border": [
-    18,
-    18,
-    18,
-    18
+    14,
+    14,
+    14,
+    14
    ],
    "kind": "ui",
    "filter": "smooth"
   },
   {
    "name": "ui_slot_hover",
-   "width": 64,
-   "height": 64,
-   "pivotX": 32,
-   "pivotY": 32,
+   "width": 48,
+   "height": 48,
+   "pivotX": 24,
+   "pivotY": 24,
    "ppu": 100,
    "border": [
-    18,
-    18,
-    18,
-    18
+    14,
+    14,
+    14,
+    14
    ],
    "kind": "ui",
    "filter": "smooth"
   },
   {
    "name": "ui_slot_on",
-   "width": 64,
-   "height": 64,
-   "pivotX": 32,
-   "pivotY": 32,
+   "width": 48,
+   "height": 48,
+   "pivotX": 24,
+   "pivotY": 24,
    "ppu": 100,
    "border": [
-    18,
-    18,
-    18,
-    18
+    14,
+    14,
+    14,
+    14
    ],
    "kind": "ui",
+   "filter": "smooth"
+  },
+  {
+   "name": "ui_star",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon",
    "filter": "smooth"
   },
   {

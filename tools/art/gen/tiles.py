@@ -280,20 +280,22 @@ def ground_patch(biome, b, kind, v):
     shape = _blob(cx, cy, rng.uniform(150, 190), rng.uniform(70, 90), rng, n=14, jitter=0.18)
     if kind in ("shade", "moss"):
         col = shade(g1, -0.07) if kind == "shade" else "#6f7d43"
-        s.path(shape, col, stroke=None, extra=f'filter="url(#{blur})" opacity="0.75"')
-        for _ in range(26):
-            a, r = rng.uniform(0, math.tau), rng.uniform(0, 1) ** 0.5
-            x, y = cx + math.cos(a) * r * 150, cy + math.sin(a) * r * 70
-            s.add(blade_tuft(rng, x, y, rng.uniform(7, 12), shade(b["tuft"], -0.05), n=3, spread=3.5, sw=2))
+        # Sem mancha chapada (vira um recorte duro no pixel art): só tufos, mais densos no meio.
+        for _ in range(70):
+            a, r = rng.uniform(0, math.tau), rng.uniform(0, 1) ** 0.7
+            x, y = cx + math.cos(a) * r * 160, cy + math.sin(a) * r * 75
+            s.add(blade_tuft(rng, x, y, rng.uniform(7, 12), col if kind == "moss" else shade(b["tuft"], -0.05), n=3, spread=3.5, sw=2))
             s.add(blade_tuft(rng, x + 2, y, rng.uniform(5, 8), shade(g0, 0.08), n=2, spread=3, sw=1.4))
     elif kind in ("sun", "sand"):
         col = shade(g0, 0.07) if kind == "sun" else "#d6c38f"
-        s.path(shape, col, stroke=None, extra=f'filter="url(#{blur})" opacity="{0.55 if kind == "sun" else 0.8}"')
-        for _ in range(10):
-            a, r = rng.uniform(0, math.tau), rng.uniform(0, 1) ** 0.5
-            s.add(blade_tuft(rng, cx + math.cos(a) * r * 150, cy + math.sin(a) * r * 70, rng.uniform(5, 8), b["tuft"], n=2, spread=3, sw=1.6))
+        for _ in range(55):
+            a, r = rng.uniform(0, math.tau), rng.uniform(0, 1) ** 0.7
+            x, y = cx + math.cos(a) * r * 160, cy + math.sin(a) * r * 75
+            if kind == "sun":
+                s.add(blade_tuft(rng, x, y, rng.uniform(5, 9), shade(g0, 0.14), n=2, spread=3, sw=1.8))
+            else:
+                s.ellipse(x, y, rng.uniform(2, 3.5), rng.uniform(1.2, 2), shade(col, rng.uniform(-0.15, 0.1)), stroke=None)
     elif kind == "flowers":
-        s.path(shape, shade(g0, 0.03), stroke=None, extra=f'filter="url(#{blur})" opacity="0.5"')
         for _ in range(34):
             a, r = rng.uniform(0, math.tau), rng.uniform(0, 1) ** 0.5
             x, y = cx + math.cos(a) * r * 150, cy + math.sin(a) * r * 70
@@ -304,7 +306,6 @@ def ground_patch(biome, b, kind, v):
                 s.ellipse(x + math.cos(t) * 3, y + math.sin(t) * 2, 2.6, 2, col, stroke=shade(col, -0.35), sw=0.7)
             s.circle(x, y, 1.6, "#e8a23a", stroke=None)
     elif kind == "leaves":
-        s.path(shape, "#8a7a45", stroke=None, extra=f'filter="url(#{blur})" opacity="0.35"')
         for _ in range(40):
             a, r = rng.uniform(0, math.tau), rng.uniform(0, 1) ** 0.5
             x, y = cx + math.cos(a) * r * 150, cy + math.sin(a) * r * 70

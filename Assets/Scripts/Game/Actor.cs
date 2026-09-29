@@ -251,6 +251,15 @@ namespace Aldaria.Game
         float life, maxLife, fromScale, toScale;
         Color color;
 
+        /// <summary>Onda de choque: anel que cresce no chão.</summary>
+        public static Fx Ring(Vector3 pos, Color color, float toScale, float life)
+        {
+            var fx = Spawn(pos, color, 0.3f, toScale, life);
+            fx.r.sprite = Art.TeamRing;
+            fx.r.sortingOrder = 720;
+            return fx;
+        }
+
         public static Fx Spawn(Vector3 pos, Color color, float fromScale, float toScale, float life)
         {
             var go = new GameObject("Fx");

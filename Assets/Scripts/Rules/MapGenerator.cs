@@ -115,7 +115,7 @@ namespace Aldaria.Rules
             {
                 Cell pond;
                 do pond = cells[rng.Next(cells.Count)]; while (EdgeDistance(pond) < 4);
-                int r = rng.Next(1, region == Region.Swamp ? 4 : 3);
+                int r = rng.Next(2, region == Region.Swamp ? 4 : 3);  // raio 1 vira uma "poça" de 1 célula, feia
                 foreach (var c in cells)
                 {
                     int d = c.DistanceTo(pond);
@@ -220,6 +220,30 @@ namespace Aldaria.Rules
                     var f = start.X > start.Y ? new Cell(start.X, start.Y + k) : new Cell(start.X + k, start.Y);
                     if (map.InBounds(f) && map[f] == Tile.Grass || map.InBounds(f) && map[f] == Tile.Flowers) map[f] = Tile.Fence;
                 }
+
+            // Postes de luz (e uma placa) entre as ruas, em volta da praça.
+            foreach (var d in new[] { new Cell(4, 0), new Cell(-4, 0), new Cell(0, 4), new Cell(0, -4) })
+            {
+                var c = new Cell(center.X + d.X, center.Y + d.Y);
+                if (map[c] == Tile.Grass || map[c] == Tile.Flowers) map[c] = Tile.Pillar;
+            }
+
+            // Vida na vila: caixotes, barris, bancas e bancos em volta das casas, sem encostar nas ruas.
+            foreach (var c in cells)
+            {
+                if (map[c] != Tile.Grass && map[c] != Tile.Flowers) continue;
+                if (EdgeDistance(c) < 2 || c.DistanceTo(center) < 5) continue;
+                bool nearPath = false, nearHouse = false;
+                foreach (var n in c.Neighbors())
+                {
+                    if (map[n] == Tile.Path || map[n] == Tile.Well) nearPath = true;
+                    if (map[n] == Tile.House) nearHouse = true;
+                }
+                if (nearPath) continue;
+                double roll = rng.NextDouble();
+                if (roll < (nearHouse ? 0.22 : 0.035)) map[c] = Tile.Rock;
+                else if (roll < (nearHouse ? 0.3 : 0.06)) map[c] = Tile.Bush;
+            }
         }
 
         static void CarvePath(GridMap map, Cell from, Cell to, Random rng, double wiggleChance)

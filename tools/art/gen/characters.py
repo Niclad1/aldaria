@@ -375,5 +375,7 @@ NPCS = {
 
 def build():
     # As 4 classes jogáveis agora vêm do PixelLab (art/pixellab). CLASSES fica como referência/plano B.
-    return [hero(f"char_npc_{k}", v) for k, v in NPCS.items()]
+    # Moradores com proporção adulta (heroes.py); os cabeçudos antigos ficam em NPCS como referência.
+    from .heroes import build_npcs
+    return build_npcs()
 

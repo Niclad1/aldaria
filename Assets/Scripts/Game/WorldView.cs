@@ -50,8 +50,20 @@ namespace Aldaria.Game
                     var r = new GameObject("Cenário").AddComponent<SpriteRenderer>();
                     r.transform.SetParent(tile.transform, false);
                     r.sprite = prop;
+                    r.flipX = Visuals.PropFlip(map, c);
+                    r.transform.localScale = Vector3.one * Visuals.PropScale(map, c);
                     r.sortingOrder = Iso.SortOrder(tile.transform.position.y, 1);
                     view.props.Add(r);
+                }
+
+                var decor = Art.Get(Visuals.Decor(map, c));
+                if (decor != null)
+                {
+                    var d = new GameObject("Detalhe").AddComponent<SpriteRenderer>();
+                    d.transform.SetParent(tile.transform, false);
+                    d.sprite = decor;
+                    d.flipX = Visuals.PropFlip(map, c);
+                    d.sortingOrder = 250 + c.X + c.Y;
                 }
             }
 
@@ -87,6 +99,8 @@ namespace Aldaria.Game
                     var pr = new GameObject("Cenário").AddComponent<SpriteRenderer>();
                     pr.transform.SetParent(t.transform, false);
                     pr.sprite = prop;
+                    pr.flipX = Visuals.BorderFlip(map, c);
+                    pr.transform.localScale = Vector3.one * Visuals.BorderScale(map, c);
                     pr.sortingOrder = Iso.SortOrder(t.transform.position.y, 1);
                     view.props.Add(pr);
                 }

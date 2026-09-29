@@ -94,6 +94,17 @@ namespace Aldaria.Game
         public NpcInstance HoverNpc { get; private set; }
         public Vector2 MouseWorld { get; private set; }
         public float FadeAlpha { get; private set; }
+        /// <summary>Faixa grande no centro da tela ("Sua vez!").</summary>
+        public string BannerText { get; private set; }
+        public Color BannerColor { get; private set; }
+        public float BannerAge { get; private set; } = 99f;
+
+        public void Banner(string text, Color color)
+        {
+            BannerText = text;
+            BannerColor = color;
+            BannerAge = 0f;
+        }
 
         public UiPanel OpenPanel { get; private set; }
         public NpcDef DialogueNpc { get; private set; }
@@ -303,6 +314,7 @@ namespace Aldaria.Game
             }
             World.SetExitsVisible(Mode != GameMode.Fight);
 
+            BannerAge += Time.deltaTime;
             for (int i = Popups.Count - 1; i >= 0; i--)
             {
                 Popups[i].Age += Time.deltaTime;

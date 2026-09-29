@@ -406,11 +406,10 @@ def build():
     for biome, kind in (("meadow", "berry"), ("village", "flower"), ("forest", "fern"), ("swamp", "reeds"), ("ruins", "dry")):
         for v in range(2):
             out.append(bush(f"bush_{biome}_{v}", kind, zlib.crc32(f"{biome}{v}".encode()) % 1000 + v))
-    out.append(house("house_0", "#c4553a"))
-    out.append(house("house_1", "#4a78b8", wall="#efe2c8"))
     out.append(fence("fence_x", True))
     out.append(fence("fence_y", False))
     out.append(well("well"))
     out.append(pillar("pillar_0", False))
     out.append(pillar("pillar_1", True))
-    return out
+    from .scenery import build as more  # espécies extras, objetos de vila, detalhes de chão e casas
+    return out + more()

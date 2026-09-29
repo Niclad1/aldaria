@@ -27,9 +27,10 @@ namespace Aldaria.Game
         int classIndex;
         bool creating;
 
-        static readonly Color Brown = new Color(0.25f, 0.15f, 0.07f);
-        static readonly Color Cream = new Color(0.97f, 0.93f, 0.84f);
-        static readonly Color GoldText = new Color(1f, 0.83f, 0.35f);
+        // Texto principal sobre os painéis azul-marinho (estilo Dofus)
+        static readonly Color Brown = new Color(0.91f, 0.9f, 0.95f);
+        static readonly Color Cream = new Color(0.91f, 0.9f, 0.95f);
+        static readonly Color GoldText = new Color(0.95f, 0.79f, 0.3f);
 
         void Awake() => game = GetComponent<GameController>();
 
@@ -60,6 +61,7 @@ namespace Aldaria.Game
                 case GameMode.Exploration: DrawExploration(); break;
                 case GameMode.Fight: DrawFight(); break;
             }
+            DrawBanner();
             if (game.LastResult != null) DrawResult(game.LastResult);
             DrawPopups();
             if (tooltip != null) DrawTooltip(tooltip);
@@ -210,7 +212,7 @@ namespace Aldaria.Game
             else if (game.HoverNpc != null && game.OpenPanel == UiPanel.None)
             {
                 var n = game.HoverNpc.Def;
-                tooltip = $"<b>{n.Name}</b>\n<color=#c9b48a>{n.Title}</color>\n<color=#ffd166>Clique para conversar</color>";
+                tooltip = $"<b>{n.Name}</b>\n<color=#9aa3c7>{n.Title}</color>\n<color=#ffd166>Clique para conversar</color>";
             }
         }
 
@@ -235,6 +237,8 @@ namespace Aldaria.Game
             DrawTimeline(fd);
             DrawChat(new Rect(12, VH - 176, 330, 164));
             DrawActionBar(fd);
+            var preview = game.PointerOverUi ? null : fd.Preview(game.HoverCell);
+            if (preview != null) tooltip = preview;
 
             if (!game.PointerOverUi && game.LastResult == null)
             {
@@ -250,6 +254,22 @@ namespace Aldaria.Game
                     tooltip = sb.ToString();
                 }
             }
+        }
+
+        void DrawBanner()
+        {
+            float age = game.BannerAge;
+            if (game.BannerText == null || age > 1.4f) return;
+            float a = age < 0.15f ? age / 0.15f : age > 1.0f ? 1f - (age - 1.0f) / 0.4f : 1f;
+            float y = VH * 0.32f;
+            GUI.color = new Color(0.07f, 0.08f, 0.16f, 0.75f * a);
+            GUI.DrawTexture(new Rect(0, y - 34, vw, 68), Art.White);
+            GUI.color = new Color(0.95f, 0.79f, 0.3f, 0.8f * a);
+            GUI.DrawTexture(new Rect(0, y - 34, vw, 2), Art.White);
+            GUI.DrawTexture(new Rect(0, y + 32, vw, 2), Art.White);
+            GUI.color = Color.white;
+            var c = game.BannerColor;
+            ShadowLabel(new Rect(0, y - 34, vw, 68), game.BannerText, new GUIStyle(title) { fontSize = 40, normal = { textColor = new Color(c.r, c.g, c.b, a) } });
         }
 
         static string BuffText(Buff b)
@@ -274,7 +294,7 @@ namespace Aldaria.Game
             var t = new GUIStyle(title) { fontSize = 44, normal = { textColor = r.Victory ? GoldText : new Color(1f, 0.45f, 0.4f) } };
             ShadowLabel(new Rect(rect.x, rect.y + 20, rect.width, 56), r.Victory ? "Vitória!" : "Derrota", t);
             string body = r.Victory
-                ? $"+{r.Xp} de experiência    +{r.Gold} de ouro" + (r.LevelsGained > 0 ? $"\n<color=#b8860b><b>Subiu para o nível {r.NewLevel}!</b></color>" : "")
+                ? $"+{r.Xp} de experiência    +{r.Gold} de ouro" + (r.LevelsGained > 0 ? $"\n<color=#f2c94c><b>Subiu para o nível {r.NewLevel}!</b></color>" : "")
                 : "Você desmaiou...\nVai acordar na Vila de Aldaria.";
             GUI.Label(new Rect(rect.x + 20, rect.y + 84, rect.width - 40, 60), body, new GUIStyle(text) { alignment = TextAnchor.UpperCenter, fontSize = 17 });
             if (r.Victory && r.Drops.Count > 0)
@@ -303,7 +323,9 @@ namespace Aldaria.Game
             Art.DrawPortrait(new Rect(r.x + 19, r.y + 18, 80, 80), Art.Character(p.ClassId));
             GUI.Label(new Rect(r.x + 114, r.y + 12, 196, 28), p.Name, header);
             GUI.Label(new Rect(r.x + 114, r.y + 38, 196, 20), $"{p.Class.Name} • Nv {p.Level} • {p.Gold} ouro", small);
-            Bar(new Rect(r.x + 114, r.y + 62, 190, 20), (float)hp / Mathf.Max(1, maxHp), new Color(0.86f, 0.22f, 0.22f), $"{hp} / {maxHp} PV");
+            var heart = Art.Get("ui_heart")?.texture;
+            if (heart != null) GUI.DrawTexture(new Rect(r.x + 110, r.y + 58, 26, 26), heart, ScaleMode.ScaleToFit);
+            Bar(new Rect(r.x + 138, r.y + 62, 166, 20), (float)hp / Mathf.Max(1, maxHp), new Color(0.86f, 0.22f, 0.22f), $"{hp} / {maxHp} PV");
             int next = Progression.XpToNext(p.Level);
             Bar(new Rect(r.x + 114, r.y + 88, 190, 14), (float)p.Xp / next, new Color(0.95f, 0.72f, 0.2f), $"XP {p.Xp} / {next}");
         }
@@ -313,7 +335,7 @@ namespace Aldaria.Game
             var map = game.Map;
             var r = Block(new Rect(vw / 2f - 190, 12, 380, 44));
             GUI.Box(r, GUIContent.none, dark);
-            GUI.Label(r, $"{map.Name}  <color=#ffd166>[{map.MapX},{map.MapY}]</color>  <color=#c9b48a>{Catalog.RegionName(map.Region)}</color>",
+            GUI.Label(r, $"{map.Name}  <color=#ffd166>[{map.MapX},{map.MapY}]</color>  <color=#9aa3c7>{Catalog.RegionName(map.Region)}</color>",
                 new GUIStyle(textLight) { alignment = TextAnchor.MiddleCenter, fontSize = 16 });
         }
 
@@ -366,7 +388,7 @@ namespace Aldaria.Game
                 GUI.DrawTexture(new Rect(row.x + 4, row.y + 8, 4, 32), Art.White);
                 GUI.color = baseCol;
                 Art.DrawPortrait(new Rect(row.x + 12, row.y + 4, 40, 40), Art.Character(f.Visual));
-                GUI.Label(new Rect(row.x + 58, row.y + 4, 150, 20), $"{f.Name} <color=#c9b48a>nv {f.Level}</color>", smallLight);
+                GUI.Label(new Rect(row.x + 58, row.y + 4, 150, 20), $"{f.Name} <color=#9aa3c7>nv {f.Level}</color>", smallLight);
                 Bar(new Rect(row.x + 58, row.y + 28, 146, 12), (float)f.Hp / f.MaxHp, stripe, "");
                 GUI.color = Color.white;
             }
@@ -512,9 +534,15 @@ namespace Aldaria.Game
 
         void Orb(Rect r, string value, string label, Color color)
         {
-            GUI.Box(r, GUIContent.none, slot);
-            ShadowLabel(new Rect(r.x + 6, r.y, 38, r.height), value, new GUIStyle(bigNumber) { fontSize = 26, normal = { textColor = color } });
-            GUI.Label(new Rect(r.x + 42, r.y, 30, r.height), label, new GUIStyle(smallLight) { alignment = TextAnchor.MiddleLeft, fontStyle = FontStyle.Bold });
+            // Estrela (PA) / losango (PM) / coração (PV) com o número em cima, como no Dofus.
+            string icon = label == "PA" ? "ui_star" : label == "PM" ? "ui_diamond" : "ui_heart";
+            var tex = Art.Get(icon)?.texture;
+            float size = Mathf.Min(r.height + 6, 46);
+            var ir = new Rect(r.x, r.y + (r.height - size) / 2, size, size);
+            if (tex != null) GUI.DrawTexture(ir, tex, ScaleMode.ScaleToFit);
+            else GUI.Box(ir, GUIContent.none, slot);
+            ShadowLabel(ir, value, new GUIStyle(bigNumber) { fontSize = 20, normal = { textColor = Color.white } });
+            GUI.Label(new Rect(ir.xMax + 4, r.y, 36, r.height), label, new GUIStyle(smallLight) { alignment = TextAnchor.MiddleLeft, fontStyle = FontStyle.Bold, normal = { textColor = color } });
         }
 
         void ShadowLabel(Rect r, string content, GUIStyle style)
@@ -620,9 +648,9 @@ namespace Aldaria.Game
                 font = font,
                 fontSize = 18,
                 padding = new RectOffset(12, 12, 7, 7),
-                normal = { background = Art.LegacyField(false), textColor = Brown },
-                focused = { background = Art.LegacyField(true), textColor = Brown },
-                hover = { background = Art.LegacyField(false), textColor = Brown },
+                normal = { background = Art.Get("ui_slot")?.texture ?? Art.LegacyField(false), textColor = Brown },
+                focused = { background = Art.Get("ui_slot_on")?.texture ?? Art.LegacyField(true), textColor = Brown },
+                hover = { background = Art.Get("ui_slot_hover")?.texture ?? Art.LegacyField(false), textColor = Brown },
                 border = new RectOffset(8, 8, 8, 8),
             };
             bigNumber = new GUIStyle(text) { font = bold, fontSize = 30, alignment = TextAnchor.MiddleCenter, wordWrap = false, normal = { textColor = Color.white } };

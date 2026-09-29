@@ -5,7 +5,7 @@ from .characters import cel, ell, rrect
 
 S = 96
 ELEMENT = {"earth": "#b5773a", "fire": "#e8572e", "water": "#3a8fd9", "air": "#4fb866", "neutral": "#9a8a7a"}
-CREAM = "#fff8e8"
+CREAM = "#ffffff"
 
 
 def star(cx, cy, r1, r2, n=5, rot=-90):
@@ -151,12 +151,17 @@ SPELL_ELEMENT = {
 
 
 def spell_icon(spell_id):
+    """Ícone limpo: quadrado arredondado na cor do elemento + símbolo branco grande."""
     s = Svg(f"icon_spell_{spell_id}", S, S, pivot=(48, 48), ppu=96, kind="icon")
     col = ELEMENT[SPELL_ELEMENT[spell_id]]
-    s.circle(48, 48, 44, s.lin("#f2d27a", "#a8762a"), stroke=INK, sw=3)
-    s.circle(48, 48, 37, s.rad(shade(col, 0.2), shade(col, -0.25), 0.35, 0.3, 0.9), stroke=INK, sw=2.5)
-    s.ellipse(38, 30, 20, 10, "#ffffff", stroke=None, extra='opacity="0.22"')
+    d, _ = rrect(4, 4, 88, 88, 18)
+    s.path(d, s.lin(shade(col, 0.1), shade(col, -0.22)), stroke=shade(col, -0.4), sw=3)
+    d2, _ = rrect(9, 9, 78, 34, 12)
+    s.path(d2, "#ffffff", stroke=None, extra='opacity="0.12"')
+    # símbolo maior e com contorno escuro para ler bem em tamanho pequeno
+    s.add('<g transform="translate(48 50) scale(1.12) translate(-48 -48)">')
     SPELL_GLYPHS[spell_id](s)
+    s.add("</g>")
     return s
 
 

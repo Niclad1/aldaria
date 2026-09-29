@@ -8,16 +8,16 @@ H = TOP + SKIRT + 2
 CX, CY = 100, 50
 
 BIOMES = {
-    "village": dict(grass=("#96cc5a", "#72ad3e"), tuft="#4f8a2c", dirt="#9c6b3e", path="cobble", water=("#5bb4e6", "#2f86c2"),
-                    flowers=["#ffffff", "#ffd84d", "#ff8fb4", "#b9a0ff"]),
-    "meadow": dict(grass=("#8fc653", "#6aa53a"), tuft="#4a8429", dirt="#9a693c", path="dirt", water=("#56b0e3", "#2c7fbd"),
-                   flowers=["#ffffff", "#ffe066", "#ff9ec0"]),
-    "forest": dict(grass=("#5e9d3f", "#437f2f"), tuft="#2d5e22", dirt="#7c5230", path="darkdirt", water=("#3f95c9", "#246aa0"),
-                   flowers=["#fff3c4", "#c8e6ff"]),
-    "swamp": dict(grass=("#86994b", "#627a38"), tuft="#3f5626", dirt="#5e4a33", path="mud", water=("#6b9a73", "#3d6b52"),
-                  flowers=["#e6d27a", "#c3a5e8"]),
-    "ruins": dict(grass=("#b9bb6d", "#949a52"), tuft="#737a36", dirt="#8a7552", path="slab", water=("#6fb0c9", "#3f84a3"),
-                  flowers=["#f0e2b0", "#e89a6a"]),
+    "village": dict(grass=("#b3c777", "#9db565"), tuft="#6f8c3f", dirt="#9c7a52", path="flag", water=("#6fb7d8", "#3f8cb8"),
+                    flowers=["#fff6d8", "#ffd86b", "#f5a3b8", "#c9b5ff"]),
+    "meadow": dict(grass=("#a9c26c", "#90ad5a"), tuft="#667f38", dirt="#957250", path="dirt", water=("#6ab3d6", "#3a86b3"),
+                   flowers=["#fff6d8", "#ffe07a", "#f5a3b8"]),
+    "forest": dict(grass=("#7f9d52", "#678845"), tuft="#425e2c", dirt="#7a5a3c", path="darkdirt", water=("#4f97bf", "#2f6f99"),
+                   flowers=["#f6ecc8", "#cfe3f0"]),
+    "swamp": dict(grass=("#909b62", "#77834f"), tuft="#4c5731", dirt="#5f4d38", path="mud", water=("#789d7c", "#4d7058"),
+                  flowers=["#e8d98a", "#cdb6e6"]),
+    "ruins": dict(grass=("#c6bd83", "#aca36b"), tuft="#857f45", dirt="#8d7a58", path="slab", water=("#79b3c8", "#4b88a2"),
+                  flowers=["#f3e6bb", "#e6a07a"]),
 }
 
 
@@ -68,20 +68,20 @@ def _surface_grass(s, b, seed, variant, flowers):
     rng = random.Random(seed)
     top = diamond(CX, CY, W, TOP, grow=1.2)
     g0, g1 = b["grass"]
-    s.path(top, mix(g0, g1, 0.45), stroke=None)
-    _blotches(s, rng, top, [shade(g1, -0.04), shade(g0, 0.05), g1, g0], n=7, blur=10, opacity=0.65)
-    nz = s.noise_filter(freq=0.07, octaves=3, seed=seed % 97, amount=0.16, color=shade(g1, -0.22))
+    s.path(top, mix(g0, g1, 0.5), stroke=None)
+    _blotches(s, rng, top, [g1, g0], n=4, blur=14, opacity=0.25)
+    nz = s.noise_filter(freq=0.09, octaves=2, seed=seed % 97, amount=0.1, color=shade(g1, -0.18))
     s.path(top, "#000", stroke=None, extra=f'filter="url(#{nz})"')
     cid = s.clip(f'<path d="{top}"/>')
     s.begin(f'clip-path="url(#{cid})"')
     # trevos e folhinhas
-    for _ in range(4):
+    for _ in range(1):
         x, y = rng.uniform(20, 180), rng.uniform(15, 85)
         for k in range(3):
             a = k / 3 * math.tau + rng.uniform(0, 1)
             s.ellipse(x + math.cos(a) * 3, y + math.sin(a) * 2, 3, 2.2, shade(g0, -0.06), stroke=shade(g1, -0.18), sw=0.8)
     # tufos
-    for _ in range(16 + variant * 3):
+    for _ in range(5 + variant * 2):
         x, y = rng.uniform(8, 192), rng.uniform(4, 98)
         if inside_diamond(x, y, CX, CY, W, TOP, 0.04):
             s.add(blade_tuft(rng, x, y, rng.uniform(6, 11), b["tuft"], n=3, spread=3.5, sw=2))
@@ -196,6 +196,20 @@ def _blob(cx, cy, rx, ry, rng, n=18, jitter=0.07):
     return d + " Z"
 
 
+def _squircle(cx, cy, a, bb, rng, p=1.45, n=64, jitter=0.025):
+    """Losango arredondado: vizinhos em diagonal viram uma faixa reta, sem bolhas."""
+    import math
+    pts = []
+    for i in range(n):
+        t = i / n * math.tau
+        c, s_ = math.cos(t), math.sin(t)
+        k = 1 + rng.uniform(-jitter, jitter)
+        x = cx + a * k * math.copysign(abs(c) ** (2 / p), c)
+        y = cy + bb * k * math.copysign(abs(s_) ** (2 / p), s_)
+        pts.append((x, y))
+    return "M" + " L".join(f"{f(x)} {f(y)}" for x, y in pts) + " Z"
+
+
 def path_decal(biome, b, v):
     """Caminho desenhado por cima da grama, maior que a célula: vizinhos se fundem numa trilha contínua."""
     DW, DH = 260, 140
@@ -204,7 +218,7 @@ def path_decal(biome, b, v):
     s = Svg(name, DW, DH, pivot=(cx, DH - cy), kind="tile")
     seed = zlib.crc32(name.encode()) % 100000
     rng = random.Random(seed)
-    shape = _blob(cx, cy, 104, 55, rng)
+    shape = _squircle(cx, cy, 114, 57, rng)
     kind = b["path"]
     cid = s.clip(f'<path d="{shape}"/>')
     bl = s.soft_filter(1.2)
@@ -220,10 +234,10 @@ def path_decal(biome, b, v):
             s.ellipse(x, y, rng.uniform(2.5, 5), rng.uniform(1.8, 3), shade(base[0], 0.12), stroke=shade(base[1], -0.3), sw=1)
         s.end()
     else:
-        stone = ("#c8c3b6", "#a39d90") if kind == "cobble" else ("#b8b19c", "#8f8873")
-        s.path(shape, "#857e6f", stroke=None, extra=f'filter="url(#{bl})"')
+        stone = {"cobble": ("#c8c3b6", "#a39d90"), "flag": ("#eadcb4", "#d6c496")}.get(kind, ("#b8b19c", "#8f8873"))
+        s.path(shape, "#b9a77e" if kind == "flag" else "#857e6f", stroke=None, extra=f'filter="url(#{bl})"')
         s.begin(f'clip-path="url(#{cid})"')
-        step = 22 if kind == "cobble" else 40
+        step = 22 if kind == "cobble" else 48 if kind == "flag" else 40
         for gy in range(-2, 10):
             for gx in range(-2, 16):
                 x = gx * step + (gy % 2) * step * 0.5 + rng.uniform(-2, 2)
@@ -232,15 +246,80 @@ def path_decal(biome, b, v):
                 if kind == "cobble":
                     s.ellipse(x, y, step * 0.46, step * 0.24, s.lin(shade(col, 0.08), shade(col, -0.1)), stroke=shade(stone[1], -0.32), sw=1.3)
                 else:
-                    s.path(diamond(x, y, step * 0.92, step * 0.46), s.lin(shade(col, 0.06), shade(col, -0.1)), stroke=shade(stone[1], -0.35), sw=1.3)
+                    s.path(diamond(x, y, step * 0.96, step * 0.48), s.lin(shade(col, 0.06), shade(col, -0.08)), stroke=shade(stone[1], -0.28), sw=1.2)
         s.end()
     # borda: sombra leve e tufos de grama invadindo o caminho
-    s.path(shape, "none", stroke="#000000", sw=3, extra='stroke-opacity="0.12"')
+    s.path(shape, "none", stroke="#000000", sw=2, extra='stroke-opacity="0.08"')
     import math
     for i in range(16):
         a = i / 16 * math.tau + rng.uniform(-0.1, 0.1)
         x, y = cx + math.cos(a) * 100, cy + math.sin(a) * 52
         s.add(blade_tuft(rng, x, y + 2, rng.uniform(5, 9), b["tuft"], n=3, spread=3, sw=1.8))
+    return s
+
+
+PATCHES = {
+    "village": ["shade", "sun", "flowers", "stones"],
+    "meadow": ["shade", "sun", "flowers", "stones"],
+    "forest": ["shade", "leaves", "sun", "stones"],
+    "swamp": ["shade", "moss", "flowers", "stones"],
+    "ruins": ["shade", "sand", "stones", "sun"],
+}
+
+
+def ground_patch(biome, b, kind, v):
+    """Mancha grande e macia desenhada sobre o chão (cobre umas 3 células), para o chão não parecer tabuleiro."""
+    import math
+    PW, PH = 440, 240
+    cx, cy = PW / 2, PH / 2
+    name = f"patch_{biome}_{kind}_{v}"
+    s = Svg(name, PW, PH, pivot=(cx, PH - cy), kind="tile")
+    rng = random.Random(zlib.crc32(name.encode()))
+    g0, g1 = b["grass"]
+    blur = s.soft_filter(10)
+    shape = _blob(cx, cy, rng.uniform(150, 190), rng.uniform(70, 90), rng, n=14, jitter=0.18)
+    if kind in ("shade", "moss"):
+        col = shade(g1, -0.07) if kind == "shade" else "#6f7d43"
+        s.path(shape, col, stroke=None, extra=f'filter="url(#{blur})" opacity="0.75"')
+        for _ in range(26):
+            a, r = rng.uniform(0, math.tau), rng.uniform(0, 1) ** 0.5
+            x, y = cx + math.cos(a) * r * 150, cy + math.sin(a) * r * 70
+            s.add(blade_tuft(rng, x, y, rng.uniform(7, 12), shade(b["tuft"], -0.05), n=3, spread=3.5, sw=2))
+            s.add(blade_tuft(rng, x + 2, y, rng.uniform(5, 8), shade(g0, 0.08), n=2, spread=3, sw=1.4))
+    elif kind in ("sun", "sand"):
+        col = shade(g0, 0.07) if kind == "sun" else "#d6c38f"
+        s.path(shape, col, stroke=None, extra=f'filter="url(#{blur})" opacity="{0.55 if kind == "sun" else 0.8}"')
+        for _ in range(10):
+            a, r = rng.uniform(0, math.tau), rng.uniform(0, 1) ** 0.5
+            s.add(blade_tuft(rng, cx + math.cos(a) * r * 150, cy + math.sin(a) * r * 70, rng.uniform(5, 8), b["tuft"], n=2, spread=3, sw=1.6))
+    elif kind == "flowers":
+        s.path(shape, shade(g0, 0.03), stroke=None, extra=f'filter="url(#{blur})" opacity="0.5"')
+        for _ in range(34):
+            a, r = rng.uniform(0, math.tau), rng.uniform(0, 1) ** 0.5
+            x, y = cx + math.cos(a) * r * 150, cy + math.sin(a) * r * 70
+            col = rng.choice(b["flowers"])
+            s.add(blade_tuft(rng, x, y + 6, 8, b["tuft"], n=1, sw=1.5))
+            for k in range(5):
+                t = k / 5 * math.tau
+                s.ellipse(x + math.cos(t) * 3, y + math.sin(t) * 2, 2.6, 2, col, stroke=shade(col, -0.35), sw=0.7)
+            s.circle(x, y, 1.6, "#e8a23a", stroke=None)
+    elif kind == "leaves":
+        s.path(shape, "#8a7a45", stroke=None, extra=f'filter="url(#{blur})" opacity="0.35"')
+        for _ in range(40):
+            a, r = rng.uniform(0, math.tau), rng.uniform(0, 1) ** 0.5
+            x, y = cx + math.cos(a) * r * 150, cy + math.sin(a) * r * 70
+            col = rng.choice(["#c9892f", "#a8662a", "#d9a647", "#7f8f3a"])
+            s.ellipse(x, y, 4.5, 2.4, col, stroke=shade(col, -0.35), sw=0.8, extra=f'transform="rotate({rng.randint(0, 180)} {f(x)} {f(y)})"')
+    else:  # stones
+        for _ in range(9):
+            a, r = rng.uniform(0, math.tau), rng.uniform(0, 1) ** 0.5
+            x, y = cx + math.cos(a) * r * 140, cy + math.sin(a) * r * 62
+            rx = rng.uniform(4, 11)
+            s.ellipse(x + 1, y + 2, rx, rx * 0.55, "#000000", stroke=None, extra='opacity="0.18"')
+            s.ellipse(x, y, rx, rx * 0.6, s.lin("#d8d2c2", "#a39c8c"), stroke=shade("#8f887a", -0.25), sw=1.2)
+        for _ in range(8):
+            a, r = rng.uniform(0, math.tau), rng.uniform(0, 1) ** 0.5
+            s.add(blade_tuft(rng, cx + math.cos(a) * r * 150, cy + math.sin(a) * r * 70, rng.uniform(5, 8), b["tuft"], n=3, spread=3, sw=1.6))
     return s
 
 
@@ -265,4 +344,7 @@ def build():
             out.append(s)
         for v in range(2):
             out.append(path_decal(biome, b, v))
+        for kind in PATCHES[biome]:
+            for v in range(2):
+                out.append(ground_patch(biome, b, kind, v))
     return out

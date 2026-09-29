@@ -55,6 +55,42 @@ namespace Aldaria.Game
                 }
             }
 
+            // Manchas de chão e moldura de cenário fora do retângulo jogável.
+            var patches = new GameObject("Manchas").transform;
+            patches.SetParent(go.transform, false);
+            foreach (var c in map.Cells())
+            {
+                var patch = Art.Get(Visuals.Patch(map, c));
+                if (patch == null) continue;
+                var r = new GameObject("Mancha").AddComponent<SpriteRenderer>();
+                r.transform.SetParent(patches, false);
+                r.transform.position = Iso.ToWorld(c);
+                r.sprite = patch;
+                r.sortingOrder = 200 + c.X + c.Y;
+            }
+            int depth = Visuals.BorderDepth;
+            for (int y = -depth; y < map.Height + depth; y++)
+                for (int x = -depth; x < map.Width + depth; x++)
+                {
+                    var c = new Cell(x, y);
+                    int edge = MapGenerator.EdgeDistance(c);
+                    if (edge >= 0 || edge < -depth) continue;
+                    var ground = Art.Get(Visuals.BorderGround(map, c));
+                    if (ground == null) continue;
+                    var t = new GameObject("Borda").AddComponent<SpriteRenderer>();
+                    t.transform.SetParent(tiles, false);
+                    t.transform.position = Iso.ToWorld(c);
+                    t.sprite = ground;
+                    t.sortingOrder = c.X + c.Y;
+                    var prop = Art.Get(Visuals.BorderProp(map, c));
+                    if (prop == null) continue;
+                    var pr = new GameObject("Cenário").AddComponent<SpriteRenderer>();
+                    pr.transform.SetParent(t.transform, false);
+                    pr.sprite = prop;
+                    pr.sortingOrder = Iso.SortOrder(t.transform.position.y, 1);
+                    view.props.Add(pr);
+                }
+
             // Casas ocupam 2x2 células: ficam no centro do terreno e são ordenadas pela célula da frente.
             foreach (var h in map.Houses)
             {

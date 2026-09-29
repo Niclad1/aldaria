@@ -1521,6 +1521,646 @@
    "filter": "smooth"
   },
   {
+   "name": "patch_forest_leaves_0",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_forest_leaves_1",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_forest_shade_0",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_forest_shade_1",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_forest_stones_0",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_forest_stones_1",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_forest_sun_0",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_forest_sun_1",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_meadow_flowers_0",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_meadow_flowers_1",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_meadow_shade_0",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_meadow_shade_1",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_meadow_stones_0",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_meadow_stones_1",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_meadow_sun_0",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_meadow_sun_1",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_ruins_sand_0",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_ruins_sand_1",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_ruins_shade_0",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_ruins_shade_1",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_ruins_stones_0",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_ruins_stones_1",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_ruins_sun_0",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_ruins_sun_1",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_swamp_flowers_0",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_swamp_flowers_1",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_swamp_moss_0",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_swamp_moss_1",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_swamp_shade_0",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_swamp_shade_1",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_swamp_stones_0",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_swamp_stones_1",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_village_flowers_0",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_village_flowers_1",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_village_shade_0",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_village_shade_1",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_village_stones_0",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_village_stones_1",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_village_sun_0",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
+   "name": "patch_village_sun_1",
+   "width": 440,
+   "height": 240,
+   "pivotX": 220,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile",
+   "filter": "smooth"
+  },
+  {
    "name": "pillar_0",
    "width": 150,
    "height": 300,

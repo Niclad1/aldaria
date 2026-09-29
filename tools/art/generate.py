@@ -16,7 +16,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from gen import tiles  # noqa: E402
 
 GROUPS = {"tiles": tiles.build}
-for mod in ("props", "characters", "monsters", "icons", "ui"):
+for mod in ("props", "characters", "monsters", "icons", "ui"):  # "heroes" = heróis desenhados (alternativa, fora do padrão)
     try:
         GROUPS[mod] = __import__(f"gen.{mod}", fromlist=["build"]).build
     except ModuleNotFoundError:

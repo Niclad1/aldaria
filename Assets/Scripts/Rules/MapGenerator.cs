@@ -136,6 +136,8 @@ namespace Aldaria.Rules
                 if (map[c] == Tile.Water) continue;
                 int edge = EdgeDistance(c);
                 double tree = edge <= 0 ? edge0 : edge == 1 ? edge1 : inner;
+                // Borda de baixo (mais perto da câmera): menos árvores altas para não tapar o mapa.
+                if (c.X + c.Y > Size - 1 + HalfHeight - 3) tree *= 0.25;
                 double roll = rng.NextDouble();
                 if (roll < tree) map[c] = Tile.Tree;
                 else if (roll < tree + rock) map[c] = Tile.Rock;

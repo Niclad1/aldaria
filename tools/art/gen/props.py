@@ -27,9 +27,9 @@ def cloud(cx, cy, r, bumps, rng, squash=0.88, jitter=0.12):
 def foliage(s, clumps, pal, rng, dots=None):
     """Copa em camadas: contorno único, preenchimento com gradiente, brilho no topo-esquerda."""
     dark, mid, light = pal
-    paths = [cloud(x, y, r, max(7, int(r / 6)), rng) for x, y, r in clumps]
+    paths = [cloud(x, y, r, max(9, int(r / 4)), rng, jitter=0.2) for x, y, r in clumps]
     for d in paths:
-        s.path(d, INK, stroke=INK, sw=7)
+        s.path(d, "#1f2a14", stroke="#1f2a14", sw=4)
     grad = s.lin(mid, dark, 0.2, 0.1, 0.7, 1)
     for d in paths:
         s.path(d, grad, stroke=None)
@@ -37,8 +37,8 @@ def foliage(s, clumps, pal, rng, dots=None):
     for (x, y, r), d in zip(clumps, paths):
         cid = s.clip(f'<path d="{d}"/>')
         s.add(f'<g clip-path="url(#{cid})">'
-              f'<path d="{cloud(x - r * 0.22, y - r * 0.28, r * 0.72, max(6, int(r / 7)), rng)}" fill="{light}" opacity="0.75"/>'
-              f'<path d="{cloud(x - r * 0.3, y - r * 0.42, r * 0.36, 6, rng)}" fill="{shade(light, 0.1)}" opacity="0.6"/>'
+              f'<path d="{cloud(x - r * 0.22, y - r * 0.28, r * 0.72, max(8, int(r / 5)), rng, jitter=0.2)}" fill="{light}" opacity="0.55"/>'
+              f'<path d="{cloud(x - r * 0.3, y - r * 0.42, r * 0.36, 7, rng, jitter=0.2)}" fill="{shade(light, 0.08)}" opacity="0.45"/>'
               f'</g>')
     # sombra interna embaixo, linhas de gomo
     for (x, y, r), d in zip(clumps, paths):
@@ -77,10 +77,10 @@ def tree_round(name, pal, seed, blossom=None, size=1.0):
     trunk(s, 130, base, base - 150 * size, 13 * size, "#7a4a28", rng, lean=rng.uniform(-6, 6))
     cy = base - 190 * size
     clumps = [
-        (130 + rng.uniform(-6, 6), cy + 10, 78 * size),
-        (78, cy + 32, 50 * size), (184, cy + 30, 50 * size),
-        (98, cy - 38, 54 * size), (164, cy - 40, 52 * size),
-        (130, cy - 78 * size, 44 * size),
+        (130 + rng.uniform(-6, 6), cy + 10, 74 * size),
+        (74, cy + 34, 44 * size), (188, cy + 30, 44 * size),
+        (96, cy - 36, 50 * size), (166, cy - 38, 48 * size),
+        (130, cy - 76 * size, 42 * size), (112, cy + 44, 38 * size), (152, cy + 46, 36 * size),
     ]
     foliage(s, clumps, pal, rng, dots=blossom)
     return s
@@ -203,7 +203,7 @@ def bush(name, kind, seed):
     base = H - 20
     ground_shadow(s, 85, base, 56, 14)
     if kind in ("berry", "flower"):
-        pal = ("#3b6e24", "#5f9a34", "#8cc84b")
+        pal = ("#34502a", "#557d3c", "#93b35c")
         foliage(s, [(60, base - 34, 30), (108, base - 36, 32), (84, base - 58, 34)], pal, rng,
                 dots=(("#e8453c" if seed % 2 == 0 else "#6f5bd6") if kind == "berry" else ("#ff9ec8" if seed % 2 == 0 else "#fff4a3"), 9))
     elif kind == "fern":
@@ -386,19 +386,19 @@ def pillar(name, broken):
 
 def build():
     out = []
-    greens = ("#2f5d1e", "#4f8f2a", "#8fd04e")
+    greens = ("#2e4a22", "#4d7434", "#8fae55")
     out.append(tree_round("tree_meadow_0", greens, 1))
-    out.append(tree_round("tree_meadow_1", ("#2d5a26", "#4b8a36", "#86c95a"), 2, size=0.92))
-    out.append(tree_round("tree_meadow_2", ("#7a3510", "#d0681e", "#f7b041"), 3))
+    out.append(tree_round("tree_meadow_1", ("#34502a", "#557d3c", "#98b862"), 2, size=0.92))
+    out.append(tree_round("tree_meadow_2", ("#6b3a18", "#b06a2a", "#e0a551"), 3))
     out.append(tree_pine("tree_forest_0", ("#1c3d2a", "#2f6b45", "#5ea36a"), 4))
     out.append(tree_pine("tree_forest_1", ("#1a3a30", "#2a5f4c", "#4f9577"), 5))
-    out.append(tree_round("tree_forest_2", ("#1f3f18", "#356b26", "#5f9a3c"), 6, size=1.05))
+    out.append(tree_round("tree_forest_2", ("#22361a", "#3a5a2a", "#6e8f46"), 6, size=1.05))
     out.append(tree_willow("tree_swamp_0", 7))
     out.append(tree_dead("tree_swamp_1", 8, leaves=(("#4f6b2a", "#7a9a3c"), 5)))
     out.append(tree_dead("tree_ruins_0", 9))
     out.append(tree_dead("tree_ruins_1", 10, leaves=(("#8a7a2a", "#c9b050"), 7)))
-    out.append(tree_round("tree_village_0", ("#2f5d1e", "#4f9a2a", "#94d652"), 11, blossom=("#ff5a4a", 7)))
-    out.append(tree_round("tree_village_1", ("#a8436a", "#ec8fb4", "#ffd3e6"), 12, blossom=("#ffffff", 10)))
+    out.append(tree_round("tree_village_0", ("#2e4a22", "#4f7a36", "#94b45a"), 11, blossom=("#d9583f", 5)))
+    out.append(tree_round("tree_village_1", ("#8a4a5e", "#c98aa0", "#efc9d4"), 12, blossom=("#fff4ec", 6)))
     out.append(rock("rock_0", 20))
     out.append(rock("rock_1", 21))
     out.append(rock("rock_moss_0", 22, moss=True))

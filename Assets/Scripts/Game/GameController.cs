@@ -217,7 +217,12 @@ namespace Aldaria.Game
             if (Mode != GameMode.Title && Profile != null)
             {
                 var cell = entry.HasValue && IsPassable(entry.Value) ? entry.Value : NearestWalkable(entry ?? Map.Center);
-                if (Player == null) Player = Actor.Create(Profile.Name, Art.Character(Profile.ClassId), cell, transform);
+                if (Player == null)
+                {
+                    Player = Actor.Create(Profile.Name, Art.Character(Profile.ClassId), cell, transform);
+                    var walk = Art.Get("char_" + Profile.ClassId + "_walk");
+                    if (walk != null) Player.SetWalkSprite(walk);
+                }
                 else Player.Place(cell);
                 Player.Speed = 4.2f;
                 Profile.MapX = mapX;

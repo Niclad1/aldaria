@@ -43,6 +43,14 @@ const browser = await chromium.launch({ executablePath: findChromium() });
 const page = await browser.newPage({ deviceScaleFactor: 1 });
 let done = 0;
 for (const m of sprites) {
+  if (m.png) {
+    // Sprite pronto (PixelLab): só copia o PNG.
+    const png = fs.readFileSync(path.join(root, "art", "pixellab", m.png));
+    fs.writeFileSync(path.join(out, m.name + ".bytes"), png);
+    if (pngDir) fs.writeFileSync(path.join(pngDir, m.name + ".png"), png);
+    done++;
+    continue;
+  }
   const svg = fs.readFileSync(path.join(src, m.file), "utf8");
   await page.setViewportSize({ width: m.width, height: m.height });
   await page.setContent(`<!doctype html><html><body style="margin:0;background:transparent;overflow:hidden">${svg}</body></html>`);
@@ -54,6 +62,6 @@ for (const m of sprites) {
 await browser.close();
 
 // Manifesto que a Unity lê para saber pivô e tamanho de cada sprite.
-const unityManifest = manifest.sprites.map(({ name, width, height, pivotX, pivotY, ppu, border, kind }) => ({ name, width, height, pivotX, pivotY, ppu, border: border || [0, 0, 0, 0], kind }));
+const unityManifest = manifest.sprites.map(({ name, width, height, pivotX, pivotY, ppu, border, kind, filter }) => ({ name, width, height, pivotX, pivotY, ppu, border: border || [0, 0, 0, 0], kind, filter: filter || "smooth" }));
 fs.writeFileSync(path.join(out, "manifest.json"), JSON.stringify({ sprites: unityManifest }, null, 1));
 console.log(`${done} sprites renderizados em ${path.relative(root, out)}`);

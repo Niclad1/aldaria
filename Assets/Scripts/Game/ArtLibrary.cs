@@ -24,6 +24,7 @@ namespace Aldaria.Game
             public float ppu;
             public int[] border;
             public string kind;
+            public string filter;
         }
 
         [Serializable]
@@ -62,12 +63,13 @@ namespace Aldaria.Game
                 var data = Resources.Load<TextAsset>("Art/" + name);
                 if (data != null)
                 {
-                    bool world = meta.kind != "ui" && meta.kind != "icon";
+                    bool pixel = meta.filter == "point";
+                    bool world = meta.kind != "ui" && meta.kind != "icon" && !pixel;
                     var tex = new Texture2D(2, 2, TextureFormat.RGBA32, world)
                     {
                         name = name,
                         wrapMode = TextureWrapMode.Clamp,
-                        filterMode = world ? FilterMode.Trilinear : FilterMode.Bilinear,
+                        filterMode = pixel ? FilterMode.Point : world ? FilterMode.Trilinear : FilterMode.Bilinear,
                         anisoLevel = 0,
                     };
                     if (tex.LoadImage(data.bytes, false))

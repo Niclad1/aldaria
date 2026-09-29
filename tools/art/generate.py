@@ -34,6 +34,7 @@ def main():
     if os.path.exists(manifest_path):
         for m in json.load(open(manifest_path))["sprites"]:
             manifest[m["name"]] = m
+    # os SVGs de personagens jogáveis foram substituídos pelos do PixelLab
     for group in wanted:
         for svg in GROUPS[group]():
             with open(os.path.join(SRC, svg.name + ".svg"), "w") as fh:

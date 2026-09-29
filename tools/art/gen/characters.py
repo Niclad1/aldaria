@@ -374,6 +374,6 @@ NPCS = {
 
 
 def build():
-    out = [hero(f"char_{k}", v) for k, v in CLASSES.items()]
-    out += [hero(f"char_npc_{k}", v) for k, v in NPCS.items()]
-    return out
+    # As 4 classes jogáveis agora vêm do PixelLab (art/pixellab). CLASSES fica como referência/plano B.
+    return [hero(f"char_npc_{k}", v) for k, v in NPCS.items()]
+

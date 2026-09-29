@@ -29,6 +29,15 @@ namespace Aldaria.Game
         Color flashColor;
         Action onArrive;
         Vector3 baseScale = Vector3.one;
+        Sprite idleSprite, walkSprite;
+        float walkClock;
+
+        /// <summary>Quadro alternativo usado enquanto anda (ex.: pose de corrida do PixelLab).</summary>
+        public void SetWalkSprite(Sprite walk)
+        {
+            idleSprite = body.sprite;
+            walkSprite = walk;
+        }
 
         public static Actor Create(string name, Sprite sprite, Cell cell, Transform parent)
         {
@@ -204,6 +213,12 @@ namespace Aldaria.Game
                     Cell = stepCell;
                     if (path.Count == 0) Arrive();
                 }
+            }
+
+            if (walkSprite != null)
+            {
+                walkClock = moving ? walkClock + dt : 0f;
+                body.sprite = moving && Mathf.Repeat(walkClock, 0.36f) < 0.18f ? walkSprite : idleSprite;
             }
 
             bobPhase += dt;

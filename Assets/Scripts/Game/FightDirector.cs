@@ -38,7 +38,7 @@ namespace Aldaria.Game
             group = grp;
             var map = g.Map;
             Fight = new Fight(map, Random.Range(0, int.MaxValue));
-            Player = Fighter.FromClass(1, g.Profile.Name, g.Profile.Class, g.Profile.Level, g.Profile.Hp);
+            Player = Fighter.FromProfile(1, g.Profile);
 
             // Área de posicionamento de cada time: jogador perto de onde está, monstros a uma boa distância.
             var playerCells = NearestCells(map, g.Player.Cell, 5, null);
@@ -56,6 +56,7 @@ namespace Aldaria.Game
                 var f = Fighter.FromMonster(10 + i, def, level);
                 Fight.AddFighter(f, monsterCells[i]);
                 Actors[f] = i == 0 ? grp.Actor : Actor.Create(def.Name, Art.Character(def.Id), monsterCells[i], g.transform);
+                if (def.IsBoss) g.AddLog($"<b>{def.Name}</b> entra na luta!", new Color(1f, 0.6f, 0.4f));
             }
 
             foreach (var kv in Actors)
@@ -327,9 +328,10 @@ namespace Aldaria.Game
                 case FightEventKind.Damaged:
                 {
                     var a = Actors[e.Target];
-                    a.Flash(new Color(1f, 0.25f, 0.2f));
-                    game.AddPopup(a.HeadPosition, $"-{e.Value}", new Color(1f, 0.35f, 0.3f), true);
-                    game.AddLog($"{e.Target.Name} perde {e.Value} PV.", new Color(1f, 0.75f, 0.7f));
+                    bool poison = e.Source == null && e.Text != null;
+                    a.Flash(poison ? new Color(0.5f, 1f, 0.3f) : new Color(1f, 0.25f, 0.2f));
+                    game.Popup(a.HeadPosition, $"-{e.Value}", poison ? new Color(0.6f, 1f, 0.35f) : new Color(1f, 0.35f, 0.3f), true);
+                    game.AddLog(e.Text != null ? $"{e.Target.Name} perde {e.Value} PV ({e.Text})." : $"{e.Target.Name} perde {e.Value} PV.", new Color(1f, 0.75f, 0.7f));
                     yield return new WaitForSeconds(0.28f);
                     break;
                 }
@@ -338,7 +340,7 @@ namespace Aldaria.Game
                 {
                     var a = Actors[e.Target];
                     a.Flash(new Color(0.4f, 1f, 0.4f));
-                    game.AddPopup(a.HeadPosition, $"+{e.Value}", new Color(0.45f, 1f, 0.45f), true);
+                    game.Popup(a.HeadPosition, $"+{e.Value}", new Color(0.45f, 1f, 0.45f), true);
                     game.AddLog($"{e.Target.Name} recupera {e.Value} PV.", new Color(0.7f, 1f, 0.7f));
                     yield return new WaitForSeconds(0.28f);
                     break;
@@ -354,7 +356,7 @@ namespace Aldaria.Game
                     break;
 
                 case FightEventKind.BuffApplied:
-                    game.AddPopup(Actors[e.Target].HeadPosition, e.Text, new Color(0.75f, 0.6f, 1f));
+                    game.Popup(Actors[e.Target].HeadPosition, e.Text, new Color(0.75f, 0.6f, 1f));
                     game.AddLog($"{e.Target.Name}: {e.Text}", new Color(0.8f, 0.7f, 1f));
                     yield return new WaitForSeconds(0.2f);
                     break;
@@ -393,26 +395,16 @@ namespace Aldaria.Game
             finished = true;
             foreach (var l in Layers) game.World.ClearLayer(l);
 
-            var profile = game.Profile;
             var result = new FightResult { Victory = Fight.Winner == Team.Players };
             var monsters = Fight.Fighters.FindAll(f => f.Team == Team.Monsters);
             if (result.Victory)
             {
-                result.Xp = Progression.XpReward(monsters, profile.Level);
-                result.Gold = Progression.GoldReward(monsters, new System.Random());
-                profile.Hp = Mathf.Max(1, Player.Hp);
-                profile.Gold += result.Gold;
-                profile.Victories++;
-                result.LevelsGained = profile.GainXp(result.Xp);
-                game.AddLog($"Vitória! +{result.Xp} XP, +{result.Gold} de ouro.", Art.Hex("#ffd166"));
-                if (result.LevelsGained > 0) game.AddLog($"Você subiu para o nível {profile.Level}!", Art.Hex("#ffd166"));
+                var rng = new System.Random();
+                result.Xp = Progression.XpReward(monsters, game.Profile.Level);
+                result.Gold = Progression.GoldReward(monsters, rng);
+                result.Drops = Progression.RollDrops(monsters, rng);
             }
-            else
-            {
-                game.AddLog("Derrota...", Art.Hex("#ff8a80"));
-            }
-            result.NewLevel = profile.Level;
-            game.OnFightFinished(result);
+            game.OnFightFinished(result, monsters, Player.Hp);
         }
 
         static List<Cell> NearestCells(GridMap map, Cell start, int count, HashSet<Cell> exclude)

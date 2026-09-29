@@ -69,6 +69,28 @@ namespace Aldaria.Rules
             foreach (var s in me.Spells)
             {
                 if (s.Effect != SpellEffect.Damage) continue;
+                if (s.Target == SpellTarget.Self)
+                {
+                    // Explosão ao redor de si: vale a pena se pegar inimigos e não pegar aliados.
+                    if (fight.CastProblem(me, s, from, from) != null) continue;
+                    int hits = 0;
+                    foreach (var other in fight.Fighters)
+                    {
+                        if (!other.IsAlive || other == me) continue;
+                        var cell = other.Cell;
+                        int d = cell.DistanceTo(from);
+                        if (d == 0 || d > s.Area) continue;
+                        hits += other.Team == me.Team ? -1 : 1;
+                    }
+                    if (hits <= 0) continue;
+                    int areaScore = (s.Min + s.Max) * 10 * hits;
+                    if (areaScore > bestScore)
+                    {
+                        bestScore = areaScore;
+                        best = new AiAction { Kind = AiActionKind.Cast, Spell = s, Target = from };
+                    }
+                    continue;
+                }
                 foreach (var e in enemies)
                 {
                     if (fight.CastProblem(me, s, e.Cell, from) != null) continue;

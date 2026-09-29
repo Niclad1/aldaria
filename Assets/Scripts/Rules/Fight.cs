@@ -107,7 +107,7 @@ namespace Aldaria.Rules
             Round = 1;
             turnIndex = 0;
             Emit(new FightEvent { Kind = FightEventKind.FightStarted });
-            BeginTurn();
+            if (!BeginTurn(order[0])) AdvanceTurn();
         }
 
         // ---------------------------------------------------------------- consultas
@@ -227,26 +227,29 @@ namespace Aldaria.Rules
             switch (s.Effect)
             {
                 case SpellEffect.Damage:
-                    foreach (var victim in VictimsOf(s, target))
+                    foreach (var victim in VictimsOf(f, s, target))
                     {
-                        Damage(f, victim, Roll(f, s, true));
+                        int dealt = Damage(f, victim, Roll(f, s, true));
+                        if (s.LifeSteal > 0 && f.IsAlive && dealt > 0) Heal(f, f, Math.Max(1, dealt * s.LifeSteal / 100));
                         if (!victim.IsAlive) continue;
-                        if (s.Push > 0) Push(f, victim, s.Area > 0 && victim.Cell != target ? target : f.Cell, s.Push);
+                        var pushOrigin = s.Area > 0 && victim.Cell != target ? target : f.Cell;
+                        if (s.Push > 0) Push(f, victim, pushOrigin, s.Push);
+                        if (s.Pull > 0) Pull(f, victim, s.Pull);
                         if (s.MpSteal > 0 && victim.IsAlive)
                         {
                             victim.Buffs.Add(new Buff { Stat = BuffStat.Mp, Value = -s.MpSteal, TurnsLeft = 1, Source = s.Name });
                             Emit(new FightEvent { Kind = FightEventKind.BuffApplied, Source = f, Target = victim, Value = -s.MpSteal, Text = $"-{s.MpSteal} PM" });
                         }
+                        if (s.PoisonDamage > 0 && victim.IsAlive)
+                        {
+                            victim.Buffs.Add(new Buff { Stat = BuffStat.Poison, Value = s.PoisonDamage, TurnsLeft = s.PoisonTurns, Source = s.Name });
+                            Emit(new FightEvent { Kind = FightEventKind.BuffApplied, Source = f, Target = victim, Value = s.PoisonDamage, Text = "Envenenado!" });
+                        }
                     }
                     break;
 
                 case SpellEffect.Heal:
-                    foreach (var ally in VictimsOf(s, target))
-                    {
-                        int amount = Math.Min(Roll(f, s, false), ally.MaxHp - ally.Hp);
-                        ally.Hp += amount;
-                        Emit(new FightEvent { Kind = FightEventKind.Healed, Source = f, Target = ally, Value = amount });
-                    }
+                    foreach (var ally in VictimsOf(f, s, target)) Heal(f, ally, Roll(f, s, false));
                     break;
 
                 case SpellEffect.Teleport:
@@ -257,6 +260,9 @@ namespace Aldaria.Rules
 
                 case SpellEffect.Buff:
                     f.Buffs.Add(new Buff { Stat = s.BuffStat, Value = s.Min, TurnsLeft = s.BuffTurns, Source = s.Name });
+                    // Bônus de PA/PM vale já neste turno.
+                    if (s.BuffStat == BuffStat.Ap) f.Ap += s.Min;
+                    if (s.BuffStat == BuffStat.Mp) f.Mp += s.Min;
                     Emit(new FightEvent { Kind = FightEventKind.BuffApplied, Source = f, Target = f, Value = s.Min, Text = $"+{s.Min} {BuffLabel(s.BuffStat)}" });
                     break;
             }
@@ -279,8 +285,17 @@ namespace Aldaria.Rules
                 if (--f.Buffs[i].TurnsLeft <= 0) f.Buffs.RemoveAt(i);
 
             Emit(new FightEvent { Kind = FightEventKind.TurnEnded, Source = f });
+            AdvanceTurn();
+        }
 
-            for (int guard = 0; guard < order.Count; guard++)
+        // ---------------------------------------------------------------- internos
+
+        bool CanAct(Fighter f) => Phase == FightPhase.Fighting && f == Current && f.IsAlive;
+
+        /// <summary>Passa para o próximo lutador vivo. O veneno é aplicado no início do turno e pode derrubar alguém antes de jogar.</summary>
+        void AdvanceTurn()
+        {
+            for (int guard = 0; guard < order.Count * 2 && Phase == FightPhase.Fighting; guard++)
             {
                 turnIndex++;
                 if (turnIndex >= order.Count)
@@ -288,22 +303,30 @@ namespace Aldaria.Rules
                     turnIndex = 0;
                     Round++;
                 }
-                if (order[turnIndex].IsAlive) break;
+                var next = order[turnIndex];
+                if (!next.IsAlive) continue;
+                if (BeginTurn(next)) return;
             }
-            BeginTurn();
         }
 
-        // ---------------------------------------------------------------- internos
-
-        bool CanAct(Fighter f) => Phase == FightPhase.Fighting && f == Current && f.IsAlive;
-
-        void BeginTurn()
+        /// <summary>Começa o turno de alguém. Devolve false se o veneno o derrubou.</summary>
+        bool BeginTurn(Fighter f)
         {
-            var f = Current;
+            foreach (var b in f.Buffs.ToArray())
+            {
+                if (b.Stat != BuffStat.Poison || !f.IsAlive) continue;
+                Damage(null, f, b.Value, b.Source);
+            }
+            if (!f.IsAlive)
+            {
+                CheckEnd();
+                return false;
+            }
             f.Ap = Math.Max(0, f.BaseAp + f.BuffTotal(BuffStat.Ap));
             f.Mp = Math.Max(0, f.BaseMp + f.BuffTotal(BuffStat.Mp));
             f.CastsThisTurn.Clear();
             Emit(new FightEvent { Kind = FightEventKind.TurnStarted, Source = f });
+            return true;
         }
 
         Fighter OccupantAssuming(Cell c, Fighter self, Cell selfCell)
@@ -313,13 +336,13 @@ namespace Aldaria.Rules
             return o == self ? null : o;
         }
 
-        List<Fighter> VictimsOf(SpellDef s, Cell target)
+        List<Fighter> VictimsOf(Fighter caster, SpellDef s, Cell target)
         {
             var list = new List<Fighter>();
             foreach (var c in AreaCells(s, target))
             {
                 var f = FighterAt(c);
-                if (f != null) list.Add(f);
+                if (f != null && !(s.ExcludeCaster && f == caster)) list.Add(f);
             }
             return list;
         }
@@ -327,16 +350,41 @@ namespace Aldaria.Rules
         int Roll(Fighter f, SpellDef s, bool isDamage)
         {
             int v = rng.Next(s.Min, s.Max + 1);
-            if (isDamage) v += f.BuffTotal(BuffStat.Damage);
+            if (isDamage) v += f.BuffTotal(BuffStat.Damage) + f.FlatDamage;
             return Math.Max(0, v * (100 + f.Power) / 100);
         }
 
-        void Damage(Fighter source, Fighter target, int amount)
+        int Damage(Fighter source, Fighter target, int amount, string cause = null)
         {
             amount = Math.Min(amount, target.Hp);
             target.Hp -= amount;
-            Emit(new FightEvent { Kind = FightEventKind.Damaged, Source = source, Target = target, Value = amount });
+            Emit(new FightEvent { Kind = FightEventKind.Damaged, Source = source, Target = target, Value = amount, Text = cause });
             if (!target.IsAlive) Emit(new FightEvent { Kind = FightEventKind.Died, Target = target });
+            return amount;
+        }
+
+        void Heal(Fighter source, Fighter target, int amount)
+        {
+            amount = Math.Min(amount, target.MaxHp - target.Hp);
+            target.Hp += amount;
+            Emit(new FightEvent { Kind = FightEventKind.Healed, Source = source, Target = target, Value = amount });
+        }
+
+        void Pull(Fighter source, Fighter target, int cells)
+        {
+            int dx = source.Cell.X - target.Cell.X;
+            int dy = source.Cell.Y - target.Cell.Y;
+            if (dx == 0 && dy == 0) return;
+            var step = Math.Abs(dx) >= Math.Abs(dy) ? new Cell(Math.Sign(dx), 0) : new Cell(0, Math.Sign(dy));
+            var start = target.Cell;
+            for (int i = 0; i < cells; i++)
+            {
+                var next = target.Cell + step;
+                if (!IsFree(next)) break;
+                target.Cell = next;
+            }
+            if (target.Cell != start)
+                Emit(new FightEvent { Kind = FightEventKind.Pushed, Source = source, Target = target, Cell = target.Cell, Path = new List<Cell> { start, target.Cell } });
         }
 
         void Push(Fighter source, Fighter target, Cell awayFrom, int cells)
@@ -360,7 +408,7 @@ namespace Aldaria.Rules
             }
             if (target.Cell != start)
                 Emit(new FightEvent { Kind = FightEventKind.Pushed, Source = source, Target = target, Cell = target.Cell, Path = new List<Cell> { start, target.Cell } });
-            if (blocked > 0) Damage(source, target, blocked * (4 + source.Level / 2));
+            if (blocked > 0) Damage(source, target, blocked * (4 + source.Level / 2), "Colisão");
         }
 
         void CheckEnd()

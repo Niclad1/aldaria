@@ -9,7 +9,7 @@ namespace Aldaria.Game
     /// Toda a arte do protótipo, desenhada por código e guardada em cache.
     /// Para usar arte feita à mão, basta trocar o que estes métodos devolvem por sprites importados.
     /// </summary>
-    public static class Art
+    public static partial class Art
     {
         public const float TilePpu = 128f;
         public const float CharacterPpu = 128f;
@@ -50,7 +50,7 @@ namespace Aldaria.Game
 
         // ================================================================== terreno
 
-        public static Sprite TileSprite(Tile kind, int variant)
+        static Sprite LegacyTile(Tile kind, int variant)
         {
             if (kind == Tile.Tree || kind == Tile.Rock || kind == Tile.Bush) kind = Tile.Grass;
             variant = kind == Tile.Water ? 0 : variant % 4;
@@ -224,7 +224,7 @@ namespace Aldaria.Game
 
         // ================================================================== cenário
 
-        public static Sprite Tree(int variant) => Cached($"tree_{variant % 3}", () => DrawTree(variant % 3));
+        static Sprite LegacyTree(int variant) => Cached($"tree_{variant % 3}", () => DrawTree(variant % 3));
 
         static Sprite DrawTree(int variant)
         {
@@ -276,7 +276,7 @@ namespace Aldaria.Game
             return p.ToSprite(new Vector2(64, 16), PropPpu);
         }
 
-        public static Sprite Rock(int variant) => Cached($"rock_{variant % 2}", () =>
+        static Sprite LegacyRock(int variant) => Cached($"rock_{variant % 2}", () =>
         {
             var p = new Painter(96, 80);
             p.Fill(Ellipse(48, 16, 34, 11), new Color(0, 0, 0, 0.28f), -2f, null, 5f);
@@ -291,7 +291,7 @@ namespace Aldaria.Game
             return p.ToSprite(new Vector2(48, 16), TilePpu);
         });
 
-        public static Sprite Bush(int variant) => Cached($"bush_{variant % 2}", () =>
+        static Sprite LegacyBush(int variant) => Cached($"bush_{variant % 2}", () =>
         {
             var p = new Painter(96, 72);
             var rng = new System.Random(variant + 40);
@@ -306,7 +306,7 @@ namespace Aldaria.Game
 
         // ================================================================== personagens
 
-        public static Sprite Character(string visual) => Cached("char_" + visual, () =>
+        static Sprite LegacyCharacter(string visual) => Cached("legacy_char_" + visual, () =>
         {
             switch (visual)
             {
@@ -529,7 +529,7 @@ namespace Aldaria.Game
 
         // ================================================================== ícones de feitiço
 
-        public static Texture2D SpellIcon(SpellDef s) => Tex("icon_" + s.Id, () =>
+        static Texture2D LegacySpellIcon(SpellDef s) => Tex("legacy_icon_" + s.Id, () =>
         {
             var p = new Painter(64, 64);
             var col = ElementColor(s.Element);
@@ -583,8 +583,21 @@ namespace Aldaria.Game
 
         // ================================================================== interface
 
+        public static Texture2D LegacyPanel() => LegacyUiBox("panel", Hex("#f5ead0"), Hex("#6b4a2b"), Hex("#e3d2ad"), 7f, 2.5f);
+        public static Texture2D LegacyDark() => LegacyUiBox("dark", new Color(0.14f, 0.11f, 0.09f, 0.9f), Hex("#b08d57"), new Color(0.09f, 0.07f, 0.06f, 0.92f), 7f, 2f);
+        public static Texture2D LegacySlot(bool on) => on
+            ? LegacyUiBox("slot_on", Hex("#7a5530"), Hex("#ffd54f"), Hex("#4d3520"), 7f, 3f)
+            : LegacyUiBox("slot", Hex("#4c3828"), Hex("#c9a86a"), Hex("#2e2219"), 7f, 2f);
+        public static Texture2D LegacyButton(int state) => state == 0
+            ? LegacyUiBox("btn", Hex("#e6953f"), Hex("#5a3515"), Hex("#b8661d"))
+            : state == 1 ? LegacyUiBox("btn_h", Hex("#f5ab58"), Hex("#5a3515"), Hex("#c97a2c")) : LegacyUiBox("btn_a", Hex("#b8661d"), Hex("#5a3515"), Hex("#9a5516"));
+        public static Texture2D LegacyField(bool focused) => focused
+            ? LegacyUiBox("field_f", Hex("#ffffff"), Hex("#e6953f"), Hex("#f8f0e0"), 5f, 2f)
+            : LegacyUiBox("field", Hex("#fffaf0"), Hex("#8a6a45"), Hex("#f3ead8"), 5f, 2f);
+
+
         /// <summary>Retângulo arredondado para painéis e botões da interface (usado com 9-slice).</summary>
-        public static Texture2D UiBox(string key, Color fill, Color border, Color? fillBottom = null, float radius = 6f, float borderWidth = 2f) => Tex("ui_" + key, () =>
+        static Texture2D LegacyUiBox(string key, Color fill, Color border, Color? fillBottom = null, float radius = 6f, float borderWidth = 2f) => Tex("ui_" + key, () =>
         {
             var p = new Painter(32, 32);
             var outer = Box(16, 16, 16, 16, radius);

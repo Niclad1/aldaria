@@ -18,7 +18,7 @@ namespace Aldaria.Game
         /// <summary>Onde o ator vai parar quando terminar de andar.</summary>
         public Cell Destination => path.Count > 0 ? lastQueued : PlanningCell;
         public Sprite Sprite => body.sprite;
-        public Vector3 HeadPosition => transform.position + Vector3.up * (body.sprite.bounds.size.y + 0.08f);
+        public Vector3 HeadPosition => transform.position + Vector3.up * (Art.ContentTop(body.sprite) * body.transform.localScale.y + 0.06f);
 
         SpriteRenderer body, shadow, ring;
         readonly Queue<Cell> path = new Queue<Cell>();
@@ -28,6 +28,7 @@ namespace Aldaria.Game
         bool moving, animating;
         Color flashColor;
         Action onArrive;
+        Vector3 baseScale = Vector3.one;
 
         public static Actor Create(string name, Sprite sprite, Cell cell, Transform parent)
         {
@@ -108,10 +109,14 @@ namespace Aldaria.Game
         public bool HitTest(Vector2 world)
         {
             if (!gameObject.activeInHierarchy || alpha < 0.5f) return false;
-            var b = body.bounds;
-            b.Expand(new Vector3(-b.size.x * 0.25f, -b.size.y * 0.1f, 1f));
-            return b.Contains(new Vector3(world.x, world.y, b.center.z));
+            var p = transform.position;
+            float halfW = body.sprite.bounds.extents.x * 0.55f;
+            float top = Art.ContentTop(body.sprite);
+            return world.x > p.x - halfW && world.x < p.x + halfW && world.y > p.y - 0.1f && world.y < p.y + top;
         }
+
+        /// <summary>Troca o tamanho do desenho (chefes ficam maiores).</summary>
+        public void SetScale(float s) => body.transform.localScale = baseScale = new Vector3(s, s, 1f);
 
         public IEnumerator SlideTo(Cell c, float duration)
         {
@@ -204,7 +209,7 @@ namespace Aldaria.Game
             bobPhase += dt;
             float squash = moving ? 0f : Mathf.Sin(bobPhase * 3.2f) * 0.022f;
             body.transform.localPosition = new Vector3(0f, hop, 0f);
-            body.transform.localScale = new Vector3(1f - squash * 0.6f, 1f + squash, 1f);
+            body.transform.localScale = new Vector3(baseScale.x * (1f - squash * 0.6f), baseScale.y * (1f + squash), 1f);
             shadow.transform.localScale = Vector3.one * (1f - hop * 0.6f);
 
             if (flash > 0f) flash -= dt * 3.5f;

@@ -1,0 +1,2374 @@
+{
+ "sprites": [
+  {
+   "name": "bush_forest_0",
+   "width": 170,
+   "height": 140,
+   "pivotX": 85,
+   "pivotY": 20,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop"
+  },
+  {
+   "name": "bush_forest_1",
+   "width": 170,
+   "height": 140,
+   "pivotX": 85,
+   "pivotY": 20,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop"
+  },
+  {
+   "name": "bush_meadow_0",
+   "width": 170,
+   "height": 140,
+   "pivotX": 85,
+   "pivotY": 20,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop"
+  },
+  {
+   "name": "bush_meadow_1",
+   "width": 170,
+   "height": 140,
+   "pivotX": 85,
+   "pivotY": 20,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop"
+  },
+  {
+   "name": "bush_ruins_0",
+   "width": 170,
+   "height": 140,
+   "pivotX": 85,
+   "pivotY": 20,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop"
+  },
+  {
+   "name": "bush_ruins_1",
+   "width": 170,
+   "height": 140,
+   "pivotX": 85,
+   "pivotY": 20,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop"
+  },
+  {
+   "name": "bush_swamp_0",
+   "width": 170,
+   "height": 140,
+   "pivotX": 85,
+   "pivotY": 20,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop"
+  },
+  {
+   "name": "bush_swamp_1",
+   "width": 170,
+   "height": 140,
+   "pivotX": 85,
+   "pivotY": 20,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop"
+  },
+  {
+   "name": "bush_village_0",
+   "width": 170,
+   "height": 140,
+   "pivotX": 85,
+   "pivotY": 20,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop"
+  },
+  {
+   "name": "bush_village_1",
+   "width": 170,
+   "height": 140,
+   "pivotX": 85,
+   "pivotY": 20,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop"
+  },
+  {
+   "name": "char_arcanista",
+   "width": 220,
+   "height": 340,
+   "pivotX": 110,
+   "pivotY": 18,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "char"
+  },
+  {
+   "name": "char_cogumelo",
+   "width": 220,
+   "height": 230,
+   "pivotX": 110,
+   "pivotY": 18,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "char"
+  },
+  {
+   "name": "char_druida",
+   "width": 220,
+   "height": 340,
+   "pivotX": 110,
+   "pivotY": 18,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "char"
+  },
+  {
+   "name": "char_esqueleto",
+   "width": 220,
+   "height": 300,
+   "pivotX": 110,
+   "pivotY": 18,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "char"
+  },
+  {
+   "name": "char_golem",
+   "width": 280,
+   "height": 300,
+   "pivotX": 140,
+   "pivotY": 18,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "char"
+  },
+  {
+   "name": "char_guardiao",
+   "width": 220,
+   "height": 340,
+   "pivotX": 110,
+   "pivotY": 18,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "char"
+  },
+  {
+   "name": "char_javali",
+   "width": 260,
+   "height": 220,
+   "pivotX": 130,
+   "pivotY": 18,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "char"
+  },
+  {
+   "name": "char_lanudo",
+   "width": 240,
+   "height": 220,
+   "pivotX": 120,
+   "pivotY": 18,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "char"
+  },
+  {
+   "name": "char_lobo",
+   "width": 250,
+   "height": 240,
+   "pivotX": 125,
+   "pivotY": 18,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "char"
+  },
+  {
+   "name": "char_monge",
+   "width": 220,
+   "height": 340,
+   "pivotX": 110,
+   "pivotY": 18,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "char"
+  },
+  {
+   "name": "char_morcego",
+   "width": 280,
+   "height": 240,
+   "pivotX": 140,
+   "pivotY": 18,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "char"
+  },
+  {
+   "name": "char_npc_anciao",
+   "width": 220,
+   "height": 340,
+   "pivotX": 110,
+   "pivotY": 18,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "char"
+  },
+  {
+   "name": "char_npc_capita",
+   "width": 220,
+   "height": 340,
+   "pivotX": 110,
+   "pivotY": 18,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "char"
+  },
+  {
+   "name": "char_npc_costureira",
+   "width": 220,
+   "height": 340,
+   "pivotX": 110,
+   "pivotY": 18,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "char"
+  },
+  {
+   "name": "char_npc_eremita",
+   "width": 220,
+   "height": 340,
+   "pivotX": 110,
+   "pivotY": 18,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "char"
+  },
+  {
+   "name": "char_npc_herbalista",
+   "width": 220,
+   "height": 340,
+   "pivotX": 110,
+   "pivotY": 18,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "char"
+  },
+  {
+   "name": "char_npc_mercador",
+   "width": 220,
+   "height": 340,
+   "pivotX": 110,
+   "pivotY": 18,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "char"
+  },
+  {
+   "name": "char_pipio",
+   "width": 200,
+   "height": 200,
+   "pivotX": 100,
+   "pivotY": 18,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "char"
+  },
+  {
+   "name": "char_rei_lanudo",
+   "width": 320,
+   "height": 330,
+   "pivotX": 160,
+   "pivotY": 18,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "char"
+  },
+  {
+   "name": "char_sapo",
+   "width": 230,
+   "height": 200,
+   "pivotX": 115,
+   "pivotY": 18,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "char"
+  },
+  {
+   "name": "char_sentinela",
+   "width": 220,
+   "height": 340,
+   "pivotX": 110,
+   "pivotY": 18,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "char"
+  },
+  {
+   "name": "char_sombra",
+   "width": 220,
+   "height": 340,
+   "pivotX": 110,
+   "pivotY": 18,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "char"
+  },
+  {
+   "name": "fence_x",
+   "width": 220,
+   "height": 150,
+   "pivotX": 110,
+   "pivotY": 40,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop"
+  },
+  {
+   "name": "fence_y",
+   "width": 220,
+   "height": 150,
+   "pivotX": 110,
+   "pivotY": 40,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop"
+  },
+  {
+   "name": "house_0",
+   "width": 420,
+   "height": 520,
+   "pivotX": 210,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop"
+  },
+  {
+   "name": "house_1",
+   "width": 420,
+   "height": 520,
+   "pivotX": 210,
+   "pivotY": 120,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop"
+  },
+  {
+   "name": "icon_item_adagas_gemeas",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_item_amuleto_la",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_item_amuleto_noite",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_item_amuleto_rei",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_item_anel_cobre",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_item_anel_osso",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_item_anel_pantano",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_item_arco_curto",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_item_asa_morcego",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_item_botas_simples",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_item_botas_viajante",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_item_cajado_galho",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_item_cajado_raiz",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_item_capa_lobo",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_item_capa_penas",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_item_chapeu_cogumelo",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_item_cinto_couro",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_item_coroa_la",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_item_couro",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_item_elmo_pedra",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_item_espada_treino",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_item_esporo",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_item_faixas_treino",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_item_fragmento",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_item_gorro_la",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_item_gosma",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_item_la",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_item_lamina_javali",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_item_osso",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_item_pao",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_item_pelo_lobo",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_item_pena",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_item_pocao_media",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_item_pocao_pequena",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_item_presa_javali",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_item_varinha_aprendiz",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_spell_adaga",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_spell_arremesso",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_spell_atracao",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_spell_bola_fogo",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_spell_espinhos",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_spell_explosiva",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_spell_faisca",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_spell_flecha",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_spell_foco",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_spell_furia",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_spell_golpe",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_spell_meditacao",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_spell_nova",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_spell_palma",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_spell_pancada",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_spell_passo",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_spell_raizes",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_spell_recuo",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_spell_salto",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_spell_seiva",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_spell_semente",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_spell_sismico",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_spell_tiro",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "icon_spell_vampiro",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 96,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "icon"
+  },
+  {
+   "name": "pillar_0",
+   "width": 150,
+   "height": 300,
+   "pivotX": 75,
+   "pivotY": 30,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop"
+  },
+  {
+   "name": "pillar_1",
+   "width": 150,
+   "height": 200,
+   "pivotX": 75,
+   "pivotY": 30,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop"
+  },
+  {
+   "name": "rock_0",
+   "width": 160,
+   "height": 130,
+   "pivotX": 80,
+   "pivotY": 22,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop"
+  },
+  {
+   "name": "rock_1",
+   "width": 160,
+   "height": 130,
+   "pivotX": 80,
+   "pivotY": 22,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop"
+  },
+  {
+   "name": "rock_moss_0",
+   "width": 160,
+   "height": 130,
+   "pivotX": 80,
+   "pivotY": 22,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop"
+  },
+  {
+   "name": "rock_moss_1",
+   "width": 160,
+   "height": 130,
+   "pivotX": 80,
+   "pivotY": 22,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop"
+  },
+  {
+   "name": "tile_forest_flowers_0",
+   "width": 200,
+   "height": 138,
+   "pivotX": 100,
+   "pivotY": 88,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "tile_forest_grass_0",
+   "width": 200,
+   "height": 138,
+   "pivotX": 100,
+   "pivotY": 88,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "tile_forest_grass_1",
+   "width": 200,
+   "height": 138,
+   "pivotX": 100,
+   "pivotY": 88,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "tile_forest_grass_2",
+   "width": 200,
+   "height": 138,
+   "pivotX": 100,
+   "pivotY": 88,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "tile_forest_path_0",
+   "width": 200,
+   "height": 138,
+   "pivotX": 100,
+   "pivotY": 88,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "tile_forest_path_1",
+   "width": 200,
+   "height": 138,
+   "pivotX": 100,
+   "pivotY": 88,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "tile_forest_water_0",
+   "width": 200,
+   "height": 138,
+   "pivotX": 100,
+   "pivotY": 88,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "tile_meadow_flowers_0",
+   "width": 200,
+   "height": 138,
+   "pivotX": 100,
+   "pivotY": 88,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "tile_meadow_grass_0",
+   "width": 200,
+   "height": 138,
+   "pivotX": 100,
+   "pivotY": 88,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "tile_meadow_grass_1",
+   "width": 200,
+   "height": 138,
+   "pivotX": 100,
+   "pivotY": 88,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "tile_meadow_grass_2",
+   "width": 200,
+   "height": 138,
+   "pivotX": 100,
+   "pivotY": 88,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "tile_meadow_path_0",
+   "width": 200,
+   "height": 138,
+   "pivotX": 100,
+   "pivotY": 88,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "tile_meadow_path_1",
+   "width": 200,
+   "height": 138,
+   "pivotX": 100,
+   "pivotY": 88,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "tile_meadow_water_0",
+   "width": 200,
+   "height": 138,
+   "pivotX": 100,
+   "pivotY": 88,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "tile_ruins_flowers_0",
+   "width": 200,
+   "height": 138,
+   "pivotX": 100,
+   "pivotY": 88,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "tile_ruins_grass_0",
+   "width": 200,
+   "height": 138,
+   "pivotX": 100,
+   "pivotY": 88,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "tile_ruins_grass_1",
+   "width": 200,
+   "height": 138,
+   "pivotX": 100,
+   "pivotY": 88,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "tile_ruins_grass_2",
+   "width": 200,
+   "height": 138,
+   "pivotX": 100,
+   "pivotY": 88,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "tile_ruins_path_0",
+   "width": 200,
+   "height": 138,
+   "pivotX": 100,
+   "pivotY": 88,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "tile_ruins_path_1",
+   "width": 200,
+   "height": 138,
+   "pivotX": 100,
+   "pivotY": 88,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "tile_ruins_water_0",
+   "width": 200,
+   "height": 138,
+   "pivotX": 100,
+   "pivotY": 88,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "tile_swamp_flowers_0",
+   "width": 200,
+   "height": 138,
+   "pivotX": 100,
+   "pivotY": 88,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "tile_swamp_grass_0",
+   "width": 200,
+   "height": 138,
+   "pivotX": 100,
+   "pivotY": 88,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "tile_swamp_grass_1",
+   "width": 200,
+   "height": 138,
+   "pivotX": 100,
+   "pivotY": 88,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "tile_swamp_grass_2",
+   "width": 200,
+   "height": 138,
+   "pivotX": 100,
+   "pivotY": 88,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "tile_swamp_path_0",
+   "width": 200,
+   "height": 138,
+   "pivotX": 100,
+   "pivotY": 88,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "tile_swamp_path_1",
+   "width": 200,
+   "height": 138,
+   "pivotX": 100,
+   "pivotY": 88,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "tile_swamp_water_0",
+   "width": 200,
+   "height": 138,
+   "pivotX": 100,
+   "pivotY": 88,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "tile_village_flowers_0",
+   "width": 200,
+   "height": 138,
+   "pivotX": 100,
+   "pivotY": 88,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "tile_village_grass_0",
+   "width": 200,
+   "height": 138,
+   "pivotX": 100,
+   "pivotY": 88,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "tile_village_grass_1",
+   "width": 200,
+   "height": 138,
+   "pivotX": 100,
+   "pivotY": 88,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "tile_village_grass_2",
+   "width": 200,
+   "height": 138,
+   "pivotX": 100,
+   "pivotY": 88,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "tile_village_path_0",
+   "width": 200,
+   "height": 138,
+   "pivotX": 100,
+   "pivotY": 88,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "tile_village_path_1",
+   "width": 200,
+   "height": 138,
+   "pivotX": 100,
+   "pivotY": 88,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "tile_village_water_0",
+   "width": 200,
+   "height": 138,
+   "pivotX": 100,
+   "pivotY": 88,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "tile"
+  },
+  {
+   "name": "tree_forest_0",
+   "width": 220,
+   "height": 400,
+   "pivotX": 110,
+   "pivotY": 24,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop"
+  },
+  {
+   "name": "tree_forest_1",
+   "width": 220,
+   "height": 400,
+   "pivotX": 110,
+   "pivotY": 24,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop"
+  },
+  {
+   "name": "tree_forest_2",
+   "width": 260,
+   "height": 360,
+   "pivotX": 130,
+   "pivotY": 24,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop"
+  },
+  {
+   "name": "tree_meadow_0",
+   "width": 260,
+   "height": 360,
+   "pivotX": 130,
+   "pivotY": 24,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop"
+  },
+  {
+   "name": "tree_meadow_1",
+   "width": 260,
+   "height": 360,
+   "pivotX": 130,
+   "pivotY": 24,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop"
+  },
+  {
+   "name": "tree_meadow_2",
+   "width": 260,
+   "height": 360,
+   "pivotX": 130,
+   "pivotY": 24,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop"
+  },
+  {
+   "name": "tree_ruins_0",
+   "width": 240,
+   "height": 340,
+   "pivotX": 120,
+   "pivotY": 24,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop"
+  },
+  {
+   "name": "tree_ruins_1",
+   "width": 240,
+   "height": 340,
+   "pivotX": 120,
+   "pivotY": 24,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop"
+  },
+  {
+   "name": "tree_swamp_0",
+   "width": 280,
+   "height": 360,
+   "pivotX": 140,
+   "pivotY": 24,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop"
+  },
+  {
+   "name": "tree_swamp_1",
+   "width": 240,
+   "height": 340,
+   "pivotX": 120,
+   "pivotY": 24,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop"
+  },
+  {
+   "name": "tree_village_0",
+   "width": 260,
+   "height": 360,
+   "pivotX": 130,
+   "pivotY": 24,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop"
+  },
+  {
+   "name": "tree_village_1",
+   "width": 260,
+   "height": 360,
+   "pivotX": 130,
+   "pivotY": 24,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop"
+  },
+  {
+   "name": "ui_button",
+   "width": 96,
+   "height": 48,
+   "pivotX": 48,
+   "pivotY": 24,
+   "ppu": 100,
+   "border": [
+    20,
+    20,
+    20,
+    20
+   ],
+   "kind": "ui"
+  },
+  {
+   "name": "ui_button_down",
+   "width": 96,
+   "height": 48,
+   "pivotX": 48,
+   "pivotY": 24,
+   "ppu": 100,
+   "border": [
+    20,
+    20,
+    20,
+    20
+   ],
+   "kind": "ui"
+  },
+  {
+   "name": "ui_button_hover",
+   "width": 96,
+   "height": 48,
+   "pivotX": 48,
+   "pivotY": 24,
+   "ppu": 100,
+   "border": [
+    20,
+    20,
+    20,
+    20
+   ],
+   "kind": "ui"
+  },
+  {
+   "name": "ui_dark",
+   "width": 64,
+   "height": 64,
+   "pivotX": 32,
+   "pivotY": 32,
+   "ppu": 100,
+   "border": [
+    20,
+    20,
+    20,
+    20
+   ],
+   "kind": "ui"
+  },
+  {
+   "name": "ui_panel",
+   "width": 96,
+   "height": 96,
+   "pivotX": 48,
+   "pivotY": 48,
+   "ppu": 100,
+   "border": [
+    30,
+    30,
+    30,
+    30
+   ],
+   "kind": "ui"
+  },
+  {
+   "name": "ui_slot",
+   "width": 64,
+   "height": 64,
+   "pivotX": 32,
+   "pivotY": 32,
+   "ppu": 100,
+   "border": [
+    18,
+    18,
+    18,
+    18
+   ],
+   "kind": "ui"
+  },
+  {
+   "name": "ui_slot_hover",
+   "width": 64,
+   "height": 64,
+   "pivotX": 32,
+   "pivotY": 32,
+   "ppu": 100,
+   "border": [
+    18,
+    18,
+    18,
+    18
+   ],
+   "kind": "ui"
+  },
+  {
+   "name": "ui_slot_on",
+   "width": 64,
+   "height": 64,
+   "pivotX": 32,
+   "pivotY": 32,
+   "ppu": 100,
+   "border": [
+    18,
+    18,
+    18,
+    18
+   ],
+   "kind": "ui"
+  },
+  {
+   "name": "well",
+   "width": 220,
+   "height": 290,
+   "pivotX": 110,
+   "pivotY": 40,
+   "ppu": 200,
+   "border": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "kind": "prop"
+  }
+ ]
+}

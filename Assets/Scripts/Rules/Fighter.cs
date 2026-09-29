@@ -27,6 +27,8 @@ namespace Aldaria.Rules
         public int Initiative;
         /// <summary>Bônus percentual em dano e cura.</summary>
         public int Power;
+        /// <summary>Dano fixo somado a cada ataque (vem de equipamentos).</summary>
+        public int FlatDamage;
         public Cell Cell;
         public List<SpellDef> Spells = new List<SpellDef>();
         public readonly List<Buff> Buffs = new List<Buff>();
@@ -46,22 +48,25 @@ namespace Aldaria.Rules
         public int CooldownOf(SpellDef s) => Cooldowns.TryGetValue(s.Id, out int n) ? n : 0;
         public int CastsOf(SpellDef s) => CastsThisTurn.TryGetValue(s.Id, out int n) ? n : 0;
 
-        public static Fighter FromClass(int id, string name, ClassDef cls, int level, int hp)
+        public static Fighter FromProfile(int id, PlayerProfile p)
         {
-            int maxHp = Progression.MaxHp(cls, level);
+            var cls = p.Class;
+            var gear = p.EquipmentStats;
+            int maxHp = p.MaxHp;
             return new Fighter
             {
                 Id = id,
-                Name = name,
+                Name = p.Name,
                 Visual = cls.Id,
                 Team = Team.Players,
-                Level = level,
+                Level = p.Level,
                 MaxHp = maxHp,
-                Hp = hp <= 0 ? maxHp : System.Math.Min(hp, maxHp),
-                BaseAp = cls.Ap,
-                BaseMp = cls.Mp,
-                Initiative = cls.Initiative + level * 5,
-                Power = Progression.Power(level),
+                Hp = p.Hp <= 0 ? maxHp : System.Math.Min(p.Hp, maxHp),
+                BaseAp = cls.Ap + gear.Ap,
+                BaseMp = cls.Mp + gear.Mp,
+                Initiative = cls.Initiative + p.Level * 5 + gear.Initiative,
+                Power = Progression.Power(p.Level) + gear.Power,
+                FlatDamage = gear.Damage,
                 Spells = cls.Spells,
             };
         }

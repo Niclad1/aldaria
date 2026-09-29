@@ -28,7 +28,7 @@ namespace Aldaria.Rules
         Fighter,
         /// <summary>Célula livre e caminhável (teleporte).</summary>
         EmptyCell,
-        /// <summary>Só o próprio lançador.</summary>
+        /// <summary>Só o próprio lançador (buffs e explosões ao redor de si).</summary>
         Self
     }
 
@@ -36,7 +36,9 @@ namespace Aldaria.Rules
     {
         Damage,
         Ap,
-        Mp
+        Mp,
+        /// <summary>Veneno: causa "Value" de dano no início de cada turno do alvo.</summary>
+        Poison
     }
 
     public sealed class SpellDef
@@ -54,12 +56,20 @@ namespace Aldaria.Rules
         public bool InLineOnly;
         /// <summary>Raio (em passos) da área de efeito ao redor da célula alvo. 0 = só a célula.</summary>
         public int Area;
+        /// <summary>A área não atinge quem lançou (explosões ao redor de si).</summary>
+        public bool ExcludeCaster;
         public int Min;
         public int Max;
         /// <summary>Quantas células o alvo é empurrado para longe do lançador.</summary>
         public int Push;
+        /// <summary>Quantas células o alvo é puxado na direção do lançador.</summary>
+        public int Pull;
+        /// <summary>Porcentagem do dano causado que volta como cura para o lançador.</summary>
+        public int LifeSteal;
         /// <summary>PM retirados do alvo no próximo turno dele.</summary>
         public int MpSteal;
+        public int PoisonDamage;
+        public int PoisonTurns;
         public BuffStat BuffStat;
         public int BuffTurns;
         public int Cooldown;
@@ -87,7 +97,17 @@ namespace Aldaria.Rules
         public int Ap = 6;
         public int Mp = 3;
         public int Initiative;
+        public string StarterWeapon;
         public List<SpellDef> Spells = new List<SpellDef>();
+    }
+
+    public sealed class DropDef
+    {
+        public string ItemId;
+        /// <summary>Chance de 0 a 100.</summary>
+        public int Chance;
+        public int Min = 1;
+        public int Max = 1;
     }
 
     public sealed class MonsterDef
@@ -99,6 +119,8 @@ namespace Aldaria.Rules
         public int Ap = 6;
         public int Mp = 3;
         public int Initiative;
+        public bool IsBoss;
         public List<SpellDef> Spells = new List<SpellDef>();
+        public List<DropDef> Drops = new List<DropDef>();
     }
 }

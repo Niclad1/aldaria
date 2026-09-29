@@ -10,7 +10,11 @@ namespace Aldaria.Rules
         Water,
         Tree,
         Rock,
-        Bush
+        Bush,
+        House,
+        Fence,
+        Well,
+        Pillar
     }
 
     /// <summary>Um mapa do mundo: grid de células com o tipo de terreno de cada uma.</summary>
@@ -20,8 +24,11 @@ namespace Aldaria.Rules
         public readonly int Height;
         public int MapX;
         public int MapY;
+        public Region Region;
         public string Name = "";
         public readonly List<Cell> Exits = new List<Cell>();
+        /// <summary>Canto de trás (menor x e y) de cada casa 2x2.</summary>
+        public readonly List<Cell> Houses = new List<Cell>();
 
         readonly Tile[] tiles;
 
@@ -49,12 +56,12 @@ namespace Aldaria.Rules
             return t == Tile.Grass || t == Tile.Flowers || t == Tile.Path;
         }
 
-        /// <summary>Árvores e pedras bloqueiam a linha de visão; água e arbustos não.</summary>
+        /// <summary>Árvores, pedras, casas, poços e colunas bloqueiam a linha de visão; água, cercas e arbustos não.</summary>
         public bool BlocksSight(Cell c)
         {
             if (!InBounds(c)) return true;
             var t = this[c];
-            return t == Tile.Tree || t == Tile.Rock;
+            return t == Tile.Tree || t == Tile.Rock || t == Tile.House || t == Tile.Well || t == Tile.Pillar;
         }
 
         public IEnumerable<Cell> Cells()

@@ -29,17 +29,13 @@ namespace Aldaria.Game
             tiles.SetParent(go.transform, false);
             foreach (var c in map.Cells())
             {
-                int variant = (int)(Painter.Hash(c.X, c.Y, map.MapX * 13 + map.MapY) * 1000f);
                 var tile = new GameObject($"{c}").AddComponent<SpriteRenderer>();
                 tile.transform.SetParent(tiles, false);
                 tile.transform.position = Iso.ToWorld(c);
-                tile.sprite = Art.TileSprite(map[c], variant);
+                tile.sprite = Art.Ground(map, c);
                 tile.sortingOrder = c.X + c.Y;
 
-                Sprite prop = null;
-                if (map[c] == Tile.Tree) prop = Art.Tree(variant % 11 == 0 ? 2 : variant % 2);
-                else if (map[c] == Tile.Rock) prop = Art.Rock(variant);
-                else if (map[c] == Tile.Bush) prop = Art.Bush(variant);
+                var prop = Art.Prop(map, c);
                 if (prop != null)
                 {
                     var r = new GameObject("Cenário").AddComponent<SpriteRenderer>();
@@ -48,6 +44,19 @@ namespace Aldaria.Game
                     r.sortingOrder = Iso.SortOrder(tile.transform.position.y, 1);
                     view.props.Add(r);
                 }
+            }
+
+            // Casas ocupam 2x2 células: ficam no centro do terreno e são ordenadas pela célula da frente.
+            foreach (var h in map.Houses)
+            {
+                var sprite = Art.Get(Visuals.House(map, h));
+                if (sprite == null) continue;
+                var r = new GameObject("Casa").AddComponent<SpriteRenderer>();
+                r.transform.SetParent(go.transform, false);
+                r.transform.position = (Iso.ToWorld(h) + Iso.ToWorld(new Cell(h.X + 1, h.Y + 1))) * 0.5f;
+                r.sprite = sprite;
+                r.sortingOrder = Iso.SortOrder(Iso.ToWorld(new Cell(h.X + 1, h.Y + 1)).y, 2);
+                view.props.Add(r);
             }
 
             foreach (var exit in map.Exits)

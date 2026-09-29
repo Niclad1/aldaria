@@ -1,0 +1,52 @@
+name: Aldaria
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  regras:
+    name: Testes das regras
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+      - run: dotnet run -c Release --project tests/Regras
+
+  webgl:
+    name: Build WebGL (Unity)
+    runs-on: ubuntu-latest
+    # Só roda se a licença da Unity estiver cadastrada nos secrets do repositório.
+    if: ${{ github.event_name != 'pull_request' }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verificar licença
+        id: lic
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        run: |
+          if [ -z "$UNITY_LICENSE" ]; then echo "tem=false" >> "$GITHUB_OUTPUT"; echo "Sem UNITY_LICENSE: build pulado."; else echo "tem=true" >> "$GITHUB_OUTPUT"; fi
+      - uses: actions/cache@v4
+        if: steps.lic.outputs.tem == 'true'
+        with:
+          path: Library
+          key: Library-WebGL-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: Library-WebGL-
+      - uses: game-ci/unity-builder@v4
+        if: steps.lic.outputs.tem == 'true'
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          targetPlatform: WebGL
+          buildMethod: Aldaria.EditorTools.Builder.WebGL
+      - uses: actions/upload-artifact@v4
+        if: steps.lic.outputs.tem == 'true'
+        with:
+          name: Aldaria-WebGL
+          path: Build/WebGL

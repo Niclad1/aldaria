@@ -1,88 +1,127 @@
 # Aldaria
 
-Protótipo de um **MMORPG tático por turnos** no estilo Dofus, feito em **Unity**:
-mapa isométrico em "ilhas" de grama, exploração clicando nas células, grupos de monstros
-passeando pelo mapa e combate por turnos com **PA** (pontos de ação), **PM** (pontos de
-movimento), feitiços com alcance, linha de visão, empurrão e área de efeito.
+**RPG tático por turnos no estilo Dofus**, feito em **Unity 6**: mundo isométrico dividido em
+mapas com coordenadas `[x,y]`, vila com moradores e missões, grupos de monstros passeando e
+combate por turnos com **PA** (pontos de ação), **PM** (pontos de movimento), feitiços com
+alcance, linha de visão, área, empurrão, veneno e roubo de vida.
 
-![Prévia do mapa em modo de luta](docs/previa-mapa.png)
-![Classes, monstros e ícones de feitiço](docs/previa-personagens.png)
+![Vila de Aldaria](docs/vila.png)
 
-> As imagens acima foram geradas pelo próprio código de desenho do jogo (sem a interface).
+| | |
+|---|---|
+| ![Luta na pradaria](docs/luta-pradaria.png) | ![Luta na floresta](docs/luta-floresta.png) |
+| ![Luta no pântano](docs/luta-pantano.png) | ![Luta nas ruínas contra o Rei Lanudo](docs/luta-ruinas.png) |
+
+![Classes, moradores e monstros](docs/personagens.png)
+![Ícones de feitiços e itens](docs/icones.png)
+
+> As imagens acima foram montadas com a arte do jogo pelas ferramentas de prévia (sem a interface).
 
 ## Como abrir
 
-1. Instale o **Unity Hub** e o **Unity 6 (6000.0 LTS)**. Outras versões recentes (2022.3+) também devem funcionar.
-2. No Unity Hub: **Add → Add project from disk** e escolha a pasta `aldaria/`.
-3. Com o projeto aberto, aperte **Play**. Não precisa montar cena nem arrastar nada:
-   o jogo se monta sozinho (`GameController` usa `RuntimeInitializeOnLoadMethod`).
-
-Para gerar um executável: salve a cena aberta (Ctrl+S), adicione-a em
-**File → Build Profiles** e faça o build para Windows, Mac, Linux, Android ou WebGL.
+1. Instale o **Unity Hub** e o **Unity 6 (6000.0 LTS)**. Outras versões 6000.x devem funcionar.
+2. No Unity Hub: **Add → Add project from disk** e escolha esta pasta.
+3. Aperte **Play**. Não precisa montar cena nem arrastar nada: o jogo se monta sozinho por código
+   (`GameController` usa `RuntimeInitializeOnLoadMethod`).
+4. Para gerar executável: menu **Aldaria → Build → WebGL / Windows / Linux**
+   (ele cria a cena `Assets/Scenes/Aldaria.unity` sozinho se ainda não existir).
 
 ## Controles
 
 | Ação | Como |
 |---|---|
 | Andar | Clique numa célula |
+| Conversar | Clique num morador (**!** = missão nova, **?** = missão para entregar) |
 | Lutar | Clique num grupo de monstros |
 | Trocar de mapa | Ande até uma célula com brilho dourado na borda |
+| Inventário / Missões | **I** / **J** (ou os botões no canto) |
 | Posicionar no início da luta | Clique numa célula azul e depois em **Pronto!** |
 | Mover na luta | Clique numa célula verde (gasta PM) |
 | Feitiço | Teclas **1-4** ou clique no ícone, depois clique no alvo |
-| Cancelar feitiço | Botão direito ou **Esc** |
-| Passar o turno | **Espaço** ou botão *Passar turno* (cada turno tem 30 s) |
+| Cancelar feitiço / fechar painel | Botão direito ou **Esc** |
+| Passar o turno | **Espaço** ou *Passar turno* (30 s por turno) |
 | Zoom | Rolagem do mouse |
 
-## O que já tem
+## O que tem no jogo
 
-- **3 classes**: Guardião (corpo a corpo, salto, empurrão, fúria), Sentinela (arqueira de
-  longo alcance, flecha explosiva em área, tiro em linha que atravessa obstáculos) e
-  Druida (cura, raízes que tiram PM, dano em área).
-- **3 monstros**: Lanudo, Pipio e Cogumelo Bravo, com IA que ataca, se reposiciona e persegue.
-- **Mundo com coordenadas** `[x,y]` como no Dofus: cada mapa é gerado a partir da
-  coordenada (sempre igual), com trilhas, lagos, árvores, pedras e arbustos.
-  Quanto mais longe de `[0,0]`, mais fortes os monstros.
-- Ordem de turnos por iniciativa, timer por turno, recargas, bônus/penalidades temporários.
-- Experiência, níveis, ouro e regeneração de vida fora da luta. O personagem é salvo automaticamente.
-- Tela de criação de personagem, chat de combate, dicas ao passar o mouse, números de dano flutuando.
+- **6 classes**, cada uma com 4 feitiços: Guardião (corpo a corpo), Sentinela (arqueira),
+  Druida (cura e controle), Arcanista (magia de área), Sombra (assassina com veneno e roubo de vida)
+  e Monge (puxa, empurra e bagunça o campo).
+- **10 monstros** em 4 regiões: Pradaria (Lanudo, Pipio, Cogumelo Bravo), Floresta (Javali,
+  Lobo Cinzento), Pântano (Sapo Venenoso, Morcego), Ruínas (Esqueleto Arqueiro, Golem de Pedra)
+  e o chefe **Rei Lanudo** no mapa `[-3,0]`.
+- **Vila de Aldaria** em `[0,0]` com 4 moradores, mais a Capitã Ferra na floresta e o eremita nas ruínas.
+- **8 missões** encadeadas (derrotar monstros, coletar itens, falar com alguém, chegar a um lugar).
+- **Inventário e equipamentos** em 7 espaços (arma, chapéu, capa, amuleto, anel, cinto, botas),
+  38 itens com raridade, **loja** para comprar e vender, **poções** e drops de monstros.
+- Mundo com biomas diferentes; quanto mais longe da vila, mais fortes os monstros.
+- XP, níveis, ouro e salvamento automático.
 
 ## Por que é leve
 
-Não tem nenhum arquivo de imagem, modelo 3D ou som: **toda a arte é desenhada por código**
-na primeira vez que o jogo abre (`Art.cs` + `Painter.cs`) e fica em cache. Os scripts somam
-poucas centenas de KB e o jogo roda em qualquer máquina que rode Unity 2D.
+Toda a arte é **vetorial (SVG)** e vira PNG pequeno: são 160 desenhos que somam cerca de 3 MB.
+Não há modelos 3D, e a interface é desenhada por código (IMGUI), sem prefabs.
+
+## A arte (e como criar a sua)
+
+```
+art/src/            ← os desenhos-fonte em SVG (edite no Inkscape, Illustrator ou Figma)
+tools/art/          ← gerador e conversor
+Assets/Resources/Art/ ← os PNGs que a Unity usa (gerados, não edite à mão)
+```
+
+- **Editar um desenho:** abra o `.svg` em `art/src/`, altere, salve e rode
+  `cd tools/art && npm install && node render.mjs`. Só isso: o jogo passa a usar o desenho novo.
+- **Trocar por arte feita à mão:** substitua o SVG por outro do mesmo nome e tamanho (ou ajuste
+  largura, altura e pivô em `art/src/manifest.json`).
+- **Gerar tudo de novo pelo código:** `python3 generate.py` (atenção: sobrescreve os SVGs; dá
+  para gerar só um grupo, por exemplo `python3 generate.py monsters`).
+- Se algum desenho faltar, o jogo usa uma versão simples desenhada por código, então nunca quebra.
+
+A fonte da interface é a **Fredoka** (licença OFL, em `Assets/Resources/Fonts`).
+
+## Unity pela linha de comando
+
+```
+tools/unity/instalar-unity.sh      # baixa a Unity 6 LTS + WebGL para Linux (sem o Hub)
+tools/unity/ativar-licenca.sh      # ativa a licença a partir da variável UNITY_LICENSE
+tools/unity/build.sh WebGL         # gera Build/WebGL (também: Windows, Linux, CheckCompile)
+```
+
+A Unity exige uma licença, mesmo a gratuita (Personal). Para ativar numa máquina sem tela:
+entre no Unity Hub no seu computador (isso cria o arquivo `Unity_lic.ulf`) e coloque o **conteúdo**
+desse arquivo na variável de ambiente `UNITY_LICENSE`.
+
+O mesmo vale para o GitHub: o workflow em `.github/workflows/build.yml` roda os testes das regras
+sempre, e gera o **build WebGL** (jogável no navegador) quando os secrets `UNITY_LICENSE`,
+`UNITY_EMAIL` e `UNITY_PASSWORD` estão cadastrados no repositório.
 
 ## Organização do código
 
 ```
 Assets/Scripts/
-  Rules/   regras puras em C#, SEM dependência da Unity (asmdef com noEngineReferences)
-    Cell, GridMap, MapGenerator     grid, terreno e geração de mapas por coordenada
-    Pathfinder, LineOfSight         A*, alcance de movimento, linha de visão
-    Spells, Catalog                 feitiços, classes e monstros  ← balanceamento fica aqui
-    Fighter, Fight, MonsterAI       a luta por turnos e a IA
-    Progression                     XP, níveis, recompensas e o perfil salvo
+  Rules/   regras em C# puro, SEM Unity (dá para rodar num servidor)
+    Cell, GridMap, MapGenerator, Visuals   grid, biomas, geração dos mapas e escolha dos desenhos
+    Pathfinder, LineOfSight                A*, alcance de movimento, linha de visão
+    Spells, Fighter, Fight, MonsterAI      a luta por turnos e a IA
+    Items, Quests, Progression             itens, inventário, missões, XP e o perfil salvo
+    Catalog*.cs                            classes, monstros, itens, NPCs e missões ← conteúdo e balanceamento
   Game/    tudo que é Unity (tela, input, animação)
-    GameController                  ponto de entrada, exploração, troca de mapa, câmera
-    FightDirector                   liga a luta às animações e ao input
-    Hud                             interface (IMGUI) e entrada de mouse/teclado
-    WorldView, Actor, Iso           desenho do mapa e dos personagens em isométrico
-    Art, Painter                    arte gerada por código
+    GameController                         exploração, NPCs, troca de mapa, câmera
+    FightDirector                          liga a luta às animações e ao input
+    Hud, HudPanels                         interface: telas, inventário, missões, conversa, loja
+    WorldView, Actor, Iso                  mapa e personagens em isométrico
+    ArtLibrary, Art, Painter               carrega a arte (e o plano B desenhado por código)
+  Editor/  Builder: builds pelo menu ou pela linha de comando
+tests/Regras/   testes das regras: dotnet run -c Release
 ```
 
-A separação `Rules` / `Game` é o que prepara o caminho para o MMO: a luta gera uma fila de
-`FightEvent` (moveu, lançou feitiço, levou dano...). Hoje essa fila é animada localmente;
-num MMO, o **servidor** roda exatamente o mesmo código de `Rules` e envia esses eventos
-para os clientes.
+A luta gera uma fila de `FightEvent` (moveu, lançou feitiço, levou dano...). Hoje essa fila é
+animada localmente; no modo online, o **servidor** roda o mesmo código de `Rules` e envia esses
+eventos para os jogadores.
 
-## Próximos passos rumo ao MMO
+## Próximos passos
 
-1. **Servidor autoritativo** em .NET reaproveitando a pasta `Rules` (o cliente só envia
-   intenções: "quero andar para X", "quero lançar Y em Z").
-2. **Rede**: WebSocket ou UDP (ex.: LiteNetLib) para mapas compartilhados, chat e lutas em grupo.
-3. **Contas e banco de dados** (PostgreSQL) no lugar do `PlayerPrefs`.
-4. **Arte definitiva**: o Dofus usa arte vetorial animada. Dá para trocar os sprites de
-   `Art.cs` por arte feita à mão (Spine ou Unity 2D Animation) sem mexer nas regras.
-5. **Conteúdo**: equipamentos e inventário, NPCs e missões, mais classes e monstros,
-   masmorras, profissões, trilha sonora.
+1. **Modo online**: servidor .NET reaproveitando `Rules`, contas e banco de dados.
+2. Animações por quadros para os personagens (andar, atacar), sons e música.
+3. Mais regiões, masmorras, profissões e criação de itens.

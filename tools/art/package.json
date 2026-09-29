@@ -1,0 +1,13 @@
+{
+  "name": "aldaria-art",
+  "private": true,
+  "type": "module",
+  "description": "Converte a arte SVG do Aldaria em PNG para a Unity",
+  "scripts": {
+    "gerar": "python3 generate.py",
+    "render": "node render.mjs"
+  },
+  "dependencies": {
+    "playwright-core": "1.56.1"
+  }
+}

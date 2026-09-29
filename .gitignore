@@ -28,3 +28,9 @@
 *.apk
 *.aab
 *.unitypackage
+
+# Ferramentas
+node_modules/
+tests/**/bin/
+tests/**/obj/
+__pycache__/
